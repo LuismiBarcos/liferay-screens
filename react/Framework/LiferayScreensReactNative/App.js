@@ -13,29 +13,69 @@ import {Platform,
   View
 } from 'react-native';
 import LoginScreenlet from './LiferayScreens/LoginScreenlet';
-
+import UserPortraitScreenlet from './LiferayScreens/UserPortraitScreenlet';
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      logged: false
+    };
+
+    this._loginSucceded = this._loginSucceded.bind(this);
+    this._loginFailed = this._loginFailed.bind(this);
+
+    this._userPortraitError = this._userPortraitError.bind(this);
+    this._userPortraitLoaded = this._userPortraitLoaded.bind(this);
+  }
+  
   render() {
-    return (
-      <View style={styles.container}>
-        <LoginScreenlet style={styles.login}
-            onLoginSuccess={this._loginSucceded}
-            onLoginError={this._loginFailed}
-            onCredentialsSavedUserAttributes={this._onCredentialsSavedUserAttributes}
-            onCredentialsLoadedUserAttributes={this._onCredentialsLoadedUserAttributes}
+    if(this.state.logged) {
+      return (
+        <View style={styles.container}>
+          <UserPortraitScreenlet 
+            style={styles.login}
+            onUserPortraitLoaded={this._userPortraitLoaded}
+            onUserPortraitError={this._userPortraitError}
+            userId={this.state.userId}
           />
-      </View>
-    );
+        </View>
+      );
+    } else {
+      return (
+        <View style={styles.container}>
+          <LoginScreenlet style={styles.login}
+              onLoginSuccess={this._loginSucceded}
+              onLoginError={this._loginFailed}
+              onCredentialsSavedUserAttributes={this._onCredentialsSavedUserAttributes}
+              onCredentialsLoadedUserAttributes={this._onCredentialsLoadedUserAttributes}
+            />
+        </View>
+      );
+    }
   }
 
-  // Events
+  // UserPortrait events
+  _userPortraitLoaded(image){
+    console.log('Image loaded -> ', image)
+  }
+
+  _userPortraitError(error) {
+    console.log('Error -> ', error);
+  }
+
+  // Login Events
   _loginSucceded(attributes) {
-    debugger;
+    console.log('Login done!', attributes);
+    this.setState({
+			logged: true,
+			userId: attributes.userId
+		});
   }
 
   _loginFailed(error) {
-    debugger;
+    console.log('Login failed!');
   }
 
   _onCredentialsSavedUserAttributes(attributes) {
