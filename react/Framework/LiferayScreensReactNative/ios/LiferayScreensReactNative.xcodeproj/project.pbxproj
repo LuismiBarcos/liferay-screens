@@ -12,7 +12,7 @@
 		00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302C01ABCB91800DB3ED1 /* libRCTImage.a */; };
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
-		00E356F31AD99517003FC87E /* LiferayScreensTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* LiferayScreensTests.m */; };
+		00E356F31AD99517003FC87E /* LiferayScreensReactNativeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* LiferayScreensReactNativeTests.m */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -33,12 +33,16 @@
 		2D02E4C71E0B4AEC006451C7 /* libRCTText-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E941DF850E9000B6D8A /* libRCTText-tvOS.a */; };
 		2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E991DF850E9000B6D8A /* libRCTWebSocket-tvOS.a */; };
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
-		2DCD954D1E0B4F2C00145EB5 /* LiferayScreensTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* LiferayScreensTests.m */; };
+		2DCD954D1E0B4F2C00145EB5 /* LiferayScreensReactNativeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* LiferayScreensReactNativeTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		A7C42779D75CC0C414DF1541 /* Pods_LiferayScreens.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931A1EF17A85CB48B060F413 /* Pods_LiferayScreens.framework */; };
+		A678B5F3210B01650008EB10 /* LoginScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A678B5F2210B01650008EB10 /* LoginScreenletManager.swift */; };
+		A678B5F5210B01900008EB10 /* LoginScreenletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A678B5F4210B01900008EB10 /* LoginScreenletView.swift */; };
+		A678B5F7210B01DF0008EB10 /* LoginScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A678B5F6210B01DF0008EB10 /* LoginScreenletModule.m */; };
+		A678B5F9210B04720008EB10 /* liferay-server-context.plist in Resources */ = {isa = PBXBuildFile; fileRef = A678B5F8210B04710008EB10 /* liferay-server-context.plist */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
+		D08BFC75B4C7DDE5C348C890 /* Pods_LiferayScreensReactNative.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C9DC2BB322CA17601E395A /* Pods_LiferayScreensReactNative.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,7 +86,7 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = LiferayScreens;
+			remoteInfo = LiferayScreensReactNative;
 		};
 		139105C01AF99BAD00B5F7CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -110,7 +114,7 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "LiferayScreens-tvOS";
+			remoteInfo = "LiferayScreensReactNative-tvOS";
 		};
 		2D16E6711FA4F8DC00B85C8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -324,29 +328,34 @@
 		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "../node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
 		00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTNetwork.xcodeproj; path = "../node_modules/react-native/Libraries/Network/RCTNetwork.xcodeproj"; sourceTree = "<group>"; };
 		00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVibration.xcodeproj; path = "../node_modules/react-native/Libraries/Vibration/RCTVibration.xcodeproj"; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* LiferayScreensTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiferayScreensTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* LiferayScreensReactNativeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiferayScreensReactNativeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* LiferayScreensTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiferayScreensTests.m; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* LiferayScreensReactNativeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiferayScreensReactNativeTests.m; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* LiferayScreens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiferayScreens.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = LiferayScreens/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = LiferayScreens/AppDelegate.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* LiferayScreensReactNative.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiferayScreensReactNative.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = LiferayScreensReactNative/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = LiferayScreensReactNative/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = LiferayScreens/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = LiferayScreens/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = LiferayScreens/main.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = LiferayScreensReactNative/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = LiferayScreensReactNative/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = LiferayScreensReactNative/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* LiferayScreens-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LiferayScreens-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* LiferayScreens-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LiferayScreens-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		195529A5507DFA1652599BCD /* Pods-LiferayScreensReactNative.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiferayScreensReactNative.release.xcconfig"; path = "Pods/Target Support Files/Pods-LiferayScreensReactNative/Pods-LiferayScreensReactNative.release.xcconfig"; sourceTree = "<group>"; };
+		2D02E47B1E0B4A5D006451C7 /* LiferayScreensReactNative-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LiferayScreensReactNative-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* LiferayScreensReactNative-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LiferayScreensReactNative-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
-		684DBAD5242E2836C7ECD5D9 /* Pods-LiferayScreens.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiferayScreens.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiferayScreens/Pods-LiferayScreens.debug.xcconfig"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		931A1EF17A85CB48B060F413 /* Pods_LiferayScreens.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiferayScreens.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A678B5F1210B01640008EB10 /* LiferayScreensReactNative-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiferayScreensReactNative-Bridging-Header.h"; sourceTree = "<group>"; };
+		A678B5F2210B01650008EB10 /* LoginScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenletManager.swift; sourceTree = "<group>"; };
+		A678B5F4210B01900008EB10 /* LoginScreenletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenletView.swift; sourceTree = "<group>"; };
+		A678B5F6210B01DF0008EB10 /* LoginScreenletModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginScreenletModule.m; sourceTree = "<group>"; };
+		A678B5F8210B04710008EB10 /* liferay-server-context.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "liferay-server-context.plist"; path = "LiferayScreensReactNative/liferay-server-context.plist"; sourceTree = "<group>"; };
+		AB1ED82B7B85E932D100FADB /* Pods-LiferayScreensReactNative.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiferayScreensReactNative.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiferayScreensReactNative/Pods-LiferayScreensReactNative.debug.xcconfig"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
-		D0802FC3A1157AE7730C1D33 /* Pods-LiferayScreens.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiferayScreens.release.xcconfig"; path = "Pods/Target Support Files/Pods-LiferayScreens/Pods-LiferayScreens.release.xcconfig"; sourceTree = "<group>"; };
+		D2C9DC2BB322CA17601E395A /* Pods_LiferayScreensReactNative.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiferayScreensReactNative.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -375,7 +384,7 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				A7C42779D75CC0C414DF1541 /* Pods_LiferayScreens.framework in Frameworks */,
+				D08BFC75B4C7DDE5C348C890 /* Pods_LiferayScreensReactNative.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,13 +456,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		00E356EF1AD99517003FC87E /* LiferayScreensTests */ = {
+		00E356EF1AD99517003FC87E /* LiferayScreensReactNativeTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* LiferayScreensTests.m */,
+				00E356F21AD99517003FC87E /* LiferayScreensReactNativeTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = LiferayScreensTests;
+			path = LiferayScreensReactNativeTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -484,7 +493,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* LiferayScreens */ = {
+		13B07FAE1A68108700A75B9A /* LiferayScreensReactNative */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -494,8 +503,9 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				A678B5F8210B04710008EB10 /* liferay-server-context.plist */,
 			);
-			name = LiferayScreens;
+			name = LiferayScreensReactNative;
 			sourceTree = "<group>";
 		};
 		146834001AC3E56700842450 /* Products */ = {
@@ -521,11 +531,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		1D2D883D07FC25F0DD7A09D0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AB1ED82B7B85E932D100FADB /* Pods-LiferayScreensReactNative.debug.xcconfig */,
+				195529A5507DFA1652599BCD /* Pods-LiferayScreensReactNative.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
-				931A1EF17A85CB48B060F413 /* Pods_LiferayScreens.framework */,
+				D2C9DC2BB322CA17601E395A /* Pods_LiferayScreensReactNative.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -579,12 +598,13 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* LiferayScreens */,
+				A678B5C9210B01180008EB10 /* LiferayScreenlets */,
+				13B07FAE1A68108700A75B9A /* LiferayScreensReactNative */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* LiferayScreensTests */,
+				00E356EF1AD99517003FC87E /* LiferayScreensReactNativeTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				F297B4AEFC1BEAF4827C2F78 /* Pods */,
+				1D2D883D07FC25F0DD7A09D0 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -594,12 +614,39 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* LiferayScreens.app */,
-				00E356EE1AD99517003FC87E /* LiferayScreensTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* LiferayScreens-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* LiferayScreens-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* LiferayScreensReactNative.app */,
+				00E356EE1AD99517003FC87E /* LiferayScreensReactNativeTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* LiferayScreensReactNative-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* LiferayScreensReactNative-tvOSTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A678B5C9210B01180008EB10 /* LiferayScreenlets */ = {
+			isa = PBXGroup;
+			children = (
+				A678B5EF210B012F0008EB10 /* Auth */,
+			);
+			path = LiferayScreenlets;
+			sourceTree = "<group>";
+		};
+		A678B5EF210B012F0008EB10 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				A678B5F0210B014B0008EB10 /* Login */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		A678B5F0210B014B0008EB10 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A678B5F2210B01650008EB10 /* LoginScreenletManager.swift */,
+				A678B5F4210B01900008EB10 /* LoginScreenletView.swift */,
+				A678B5F6210B01DF0008EB10 /* LoginScreenletModule.m */,
+				A678B5F1210B01640008EB10 /* LiferayScreensReactNative-Bridging-Header.h */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		ADBDB9201DFEBF0600ED6528 /* Products */ = {
@@ -611,21 +658,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F297B4AEFC1BEAF4827C2F78 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				684DBAD5242E2836C7ECD5D9 /* Pods-LiferayScreens.debug.xcconfig */,
-				D0802FC3A1157AE7730C1D33 /* Pods-LiferayScreens.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* LiferayScreensTests */ = {
+		00E356ED1AD99517003FC87E /* LiferayScreensReactNativeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "LiferayScreensTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "LiferayScreensReactNativeTests" */;
 			buildPhases = (
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
@@ -636,34 +674,34 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = LiferayScreensTests;
-			productName = LiferayScreensTests;
-			productReference = 00E356EE1AD99517003FC87E /* LiferayScreensTests.xctest */;
+			name = LiferayScreensReactNativeTests;
+			productName = LiferayScreensReactNativeTests;
+			productReference = 00E356EE1AD99517003FC87E /* LiferayScreensReactNativeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* LiferayScreens */ = {
+		13B07F861A680F5B00A75B9A /* LiferayScreensReactNative */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "LiferayScreens" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "LiferayScreensReactNative" */;
 			buildPhases = (
-				0CB3D0767E35AFA0A691F169 /* [CP] Check Pods Manifest.lock */,
+				CCBF6C26B3CDFEE7DE122904 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				18DFD24DD01ED8A667E122BB /* [CP] Embed Pods Frameworks */,
+				8EC34A87CA23DDF5FD9351CB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = LiferayScreens;
+			name = LiferayScreensReactNative;
 			productName = "Hello World";
-			productReference = 13B07F961A680F5B00A75B9A /* LiferayScreens.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* LiferayScreensReactNative.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* LiferayScreens-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* LiferayScreensReactNative-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "LiferayScreens-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "LiferayScreensReactNative-tvOS" */;
 			buildPhases = (
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -674,14 +712,14 @@
 			);
 			dependencies = (
 			);
-			name = "LiferayScreens-tvOS";
-			productName = "LiferayScreens-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* LiferayScreens-tvOS.app */;
+			name = "LiferayScreensReactNative-tvOS";
+			productName = "LiferayScreensReactNative-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* LiferayScreensReactNative-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* LiferayScreens-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* LiferayScreensReactNative-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "LiferayScreens-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "LiferayScreensReactNative-tvOSTests" */;
 			buildPhases = (
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
@@ -692,9 +730,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "LiferayScreens-tvOSTests";
-			productName = "LiferayScreens-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* LiferayScreens-tvOSTests.xctest */;
+			name = "LiferayScreensReactNative-tvOSTests";
+			productName = "LiferayScreensReactNative-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* LiferayScreensReactNative-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -710,6 +748,9 @@
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
+					13B07F861A680F5B00A75B9A = {
+						LastSwiftMigration = 0930;
+					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
@@ -721,7 +762,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "LiferayScreens" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "LiferayScreensReactNative" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -784,10 +825,10 @@
 			);
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* LiferayScreens */,
-				00E356ED1AD99517003FC87E /* LiferayScreensTests */,
-				2D02E47A1E0B4A5D006451C7 /* LiferayScreens-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* LiferayScreens-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* LiferayScreensReactNative */,
+				00E356ED1AD99517003FC87E /* LiferayScreensReactNativeTests */,
+				2D02E47A1E0B4A5D006451C7 /* LiferayScreensReactNative-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* LiferayScreensReactNative-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1068,6 +1109,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				A678B5F9210B04720008EB10 /* liferay-server-context.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1103,31 +1145,27 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		0CB3D0767E35AFA0A691F169 /* [CP] Check Pods Manifest.lock */ = {
+		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "Bundle React Native Code And Images";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-LiferayScreens-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		18DFD24DD01ED8A667E122BB /* [CP] Embed Pods Frameworks */ = {
+		8EC34A87CA23DDF5FD9351CB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-LiferayScreens/Pods-LiferayScreens-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-LiferayScreensReactNative/Pods-LiferayScreensReactNative-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
@@ -1166,22 +1204,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LiferayScreens/Pods-LiferayScreens-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LiferayScreensReactNative/Pods-LiferayScreensReactNative-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
+		CCBF6C26B3CDFEE7DE122904 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "Bundle React Native Code And Images";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LiferayScreensReactNative-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1190,7 +1232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* LiferayScreensTests.m in Sources */,
+				00E356F31AD99517003FC87E /* LiferayScreensReactNativeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1198,8 +1240,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A678B5F5210B01900008EB10 /* LoginScreenletView.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				A678B5F3210B01650008EB10 /* LoginScreenletManager.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				A678B5F7210B01DF0008EB10 /* LoginScreenletModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1216,7 +1261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* LiferayScreensTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* LiferayScreensReactNativeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1225,12 +1270,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* LiferayScreens */;
+			target = 13B07F861A680F5B00A75B9A /* LiferayScreensReactNative */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* LiferayScreens-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* LiferayScreensReactNative-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1242,7 +1287,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = LiferayScreens;
+			path = LiferayScreensReactNative;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1251,12 +1296,13 @@
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = LiferayScreensTests/Info.plist;
+				INFOPLIST_FILE = LiferayScreensReactNativeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1264,16 +1310,17 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LiferayScreens.app/LiferayScreens";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LiferayScreensReactNative.app/LiferayScreensReactNative";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = LiferayScreensTests/Info.plist;
+				INFOPLIST_FILE = LiferayScreensReactNativeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1281,43 +1328,50 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LiferayScreens.app/LiferayScreens";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LiferayScreensReactNative.app/LiferayScreensReactNative";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 684DBAD5242E2836C7ECD5D9 /* Pods-LiferayScreens.debug.xcconfig */;
+			baseConfigurationReference = AB1ED82B7B85E932D100FADB /* Pods-LiferayScreensReactNative.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				INFOPLIST_FILE = LiferayScreens/Info.plist;
+				INFOPLIST_FILE = LiferayScreensReactNative/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_NAME = LiferayScreens;
+				PRODUCT_NAME = LiferayScreensReactNative;
+				SWIFT_OBJC_BRIDGING_HEADER = "LiferayScreenlets/Auth/Login/LiferayScreensReactNative-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D0802FC3A1157AE7730C1D33 /* Pods-LiferayScreens.release.xcconfig */;
+			baseConfigurationReference = 195529A5507DFA1652599BCD /* Pods-LiferayScreensReactNative.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = LiferayScreens/Info.plist;
+				INFOPLIST_FILE = LiferayScreensReactNative/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_NAME = LiferayScreens;
+				PRODUCT_NAME = LiferayScreensReactNative;
+				SWIFT_OBJC_BRIDGING_HEADER = "LiferayScreenlets/Auth/Login/LiferayScreensReactNative-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -1334,13 +1388,13 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "LiferayScreens-tvOS/Info.plist";
+				INFOPLIST_FILE = "LiferayScreensReactNative-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.LiferayScreens-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.LiferayScreensReactNative-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1360,13 +1414,13 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "LiferayScreens-tvOS/Info.plist";
+				INFOPLIST_FILE = "LiferayScreensReactNative-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.LiferayScreens-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.LiferayScreensReactNative-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1385,16 +1439,16 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "LiferayScreens-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "LiferayScreensReactNative-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.LiferayScreens-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.LiferayScreensReactNative-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LiferayScreens-tvOS.app/LiferayScreens-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LiferayScreensReactNative-tvOS.app/LiferayScreensReactNative-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
@@ -1410,16 +1464,16 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "LiferayScreens-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "LiferayScreensReactNative-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.LiferayScreens-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.LiferayScreensReactNative-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LiferayScreens-tvOS.app/LiferayScreens-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LiferayScreensReactNative-tvOS.app/LiferayScreensReactNative-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -1503,7 +1557,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "LiferayScreensTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "LiferayScreensReactNativeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -1512,7 +1566,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "LiferayScreens" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "LiferayScreensReactNative" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -1521,7 +1575,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "LiferayScreens-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "LiferayScreensReactNative-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -1530,7 +1584,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "LiferayScreens-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "LiferayScreensReactNative-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -1539,7 +1593,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "LiferayScreens" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "LiferayScreensReactNative" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
