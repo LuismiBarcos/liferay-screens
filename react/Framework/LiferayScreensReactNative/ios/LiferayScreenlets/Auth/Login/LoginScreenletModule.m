@@ -19,4 +19,7 @@ RCT_EXPORT_VIEW_PROPERTY(onLoginError, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onCredentialsSavedUserAttributes, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onCredentialsLoadedUserAttributes, RCTBubblingEventBlock)
 
+// Attributes
+RCT_EXPORT_VIEW_PROPERTY(saveCredentials, BOOL)
+
 @end

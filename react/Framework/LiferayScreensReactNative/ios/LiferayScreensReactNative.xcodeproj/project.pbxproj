@@ -36,6 +36,8 @@
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		A60D405A210F35E500AB71D6 /* SessionContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60D4059210F35E500AB71D6 /* SessionContextManager.swift */; };
+		A60D405C210F386800AB71D6 /* SessionContextModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A60D405B210F386800AB71D6 /* SessionContextModule.m */; };
 		A678B5F3210B01650008EB10 /* LoginScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A678B5F2210B01650008EB10 /* LoginScreenletManager.swift */; };
 		A678B5F5210B01900008EB10 /* LoginScreenletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A678B5F4210B01900008EB10 /* LoginScreenletView.swift */; };
 		A678B5F7210B01DF0008EB10 /* LoginScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A678B5F6210B01DF0008EB10 /* LoginScreenletModule.m */; };
@@ -353,6 +355,8 @@
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		A60D4059210F35E500AB71D6 /* SessionContextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionContextManager.swift; sourceTree = "<group>"; };
+		A60D405B210F386800AB71D6 /* SessionContextModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionContextModule.m; sourceTree = "<group>"; };
 		A678B5F1210B01640008EB10 /* LiferayScreensReactNative-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiferayScreensReactNative-Bridging-Header.h"; sourceTree = "<group>"; };
 		A678B5F2210B01650008EB10 /* LoginScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenletManager.swift; sourceTree = "<group>"; };
 		A678B5F4210B01900008EB10 /* LoginScreenletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenletView.swift; sourceTree = "<group>"; };
@@ -632,9 +636,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A60D4033210F35C500AB71D6 /* Context */ = {
+			isa = PBXGroup;
+			children = (
+				A60D4059210F35E500AB71D6 /* SessionContextManager.swift */,
+				A60D405B210F386800AB71D6 /* SessionContextModule.m */,
+			);
+			path = Context;
+			sourceTree = "<group>";
+		};
 		A678B5C9210B01180008EB10 /* LiferayScreenlets */ = {
 			isa = PBXGroup;
 			children = (
+				A60D4033210F35C500AB71D6 /* Context */,
 				A678B60B210F03520008EB10 /* ImageGallery */,
 				A678B604210B2D1E0008EB10 /* UserPortrait */,
 				A678B5EF210B012F0008EB10 /* Auth */,
@@ -1278,10 +1292,12 @@
 				A678B5F3210B01650008EB10 /* LoginScreenletManager.swift in Sources */,
 				A678B608210B2D550008EB10 /* UserPortraitScreenletView.swift in Sources */,
 				A678B606210B2D2D0008EB10 /* UserPortraitScreenletManager.swift in Sources */,
+				A60D405C210F386800AB71D6 /* SessionContextModule.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				A678B60F210F05110008EB10 /* ImageGalleryScreenletView.swift in Sources */,
 				A678B611210F09850008EB10 /* ImageGalleryScreenletModule.m in Sources */,
 				A678B5F7210B01DF0008EB10 /* LoginScreenletModule.m in Sources */,
+				A60D405A210F35E500AB71D6 /* SessionContextManager.swift in Sources */,
 				A678B60A210B2FD30008EB10 /* UserPortraitScreenletModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

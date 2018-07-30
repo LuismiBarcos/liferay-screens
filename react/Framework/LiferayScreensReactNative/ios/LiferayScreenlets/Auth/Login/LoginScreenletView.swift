@@ -9,7 +9,18 @@
 import LiferayScreens
 
 class LoginScreenletView: RCTView, LoginScreenletDelegate {
+  // Variables
   var screenlet: LoginScreenlet!
+  private var saveCredentials: Bool = false
+  var SaveCredentials : Bool {
+    get {
+      return saveCredentials
+    }
+    set {
+      saveCredentials = newValue
+      screenlet.saveCredentials = saveCredentials
+    }
+  }
   
   // Events
   var onLoginSuccess: RCTBubblingEventBlock?

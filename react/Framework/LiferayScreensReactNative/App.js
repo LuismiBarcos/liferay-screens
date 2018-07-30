@@ -10,7 +10,8 @@ import React, {Component} from 'react';
 import {Platform, 
   StyleSheet, 
   Text, 
-  View
+  View,
+  NativeModules
 } from 'react-native';
 import LoginScreenlet from './LiferayScreens/LoginScreenlet';
 import UserPortraitScreenlet from './LiferayScreens/UserPortraitScreenlet';
@@ -29,6 +30,22 @@ export default class App extends Component {
 
     this._userPortraitError = this._userPortraitError.bind(this);
     this._userPortraitLoaded = this._userPortraitLoaded.bind(this);
+
+    
+  }
+
+  async componentWillMount(){
+    try {
+      var userId = await SessionContext.loadCredentials()
+      if(userId) {
+        this.setState({
+          logged: true,
+          userId: userId
+        });
+      }
+    } catch(e) {
+      console.error(e);
+    }
   }
   
   render() {
@@ -39,8 +56,7 @@ export default class App extends Component {
             style={styles.portrait}
             onUserPortraitLoaded={this._userPortraitLoaded}
             onUserPortraitError={this._userPortraitError}
-            // userId={this.state.userId}
-            userId={20156}
+            userId={this.state.userId}
           />
           <ImageGalleryScreenlet 
             style={styles.gallery}
@@ -60,6 +76,7 @@ export default class App extends Component {
               onLoginError={this._loginFailed}
               onCredentialsSavedUserAttributes={this._onCredentialsSavedUserAttributes}
               onCredentialsLoadedUserAttributes={this._onCredentialsLoadedUserAttributes}
+              saveCredentials={true}
             />
         </View>
       );
@@ -109,6 +126,8 @@ export default class App extends Component {
     debugger;
   }
 }
+
+const SessionContext = NativeModules.SessionContextManager;
 
 const styles = StyleSheet.create({
   container: {
