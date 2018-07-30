@@ -43,6 +43,9 @@
 		A678B606210B2D2D0008EB10 /* UserPortraitScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A678B605210B2D2D0008EB10 /* UserPortraitScreenletManager.swift */; };
 		A678B608210B2D550008EB10 /* UserPortraitScreenletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A678B607210B2D550008EB10 /* UserPortraitScreenletView.swift */; };
 		A678B60A210B2FD30008EB10 /* UserPortraitScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A678B609210B2FD30008EB10 /* UserPortraitScreenletModule.m */; };
+		A678B60D210F03760008EB10 /* ImageGalleryScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A678B60C210F03760008EB10 /* ImageGalleryScreenletManager.swift */; };
+		A678B60F210F05110008EB10 /* ImageGalleryScreenletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A678B60E210F05110008EB10 /* ImageGalleryScreenletView.swift */; };
+		A678B611210F09850008EB10 /* ImageGalleryScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A678B610210F09850008EB10 /* ImageGalleryScreenletModule.m */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		D08BFC75B4C7DDE5C348C890 /* Pods_LiferayScreensReactNative.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C9DC2BB322CA17601E395A /* Pods_LiferayScreensReactNative.framework */; };
 /* End PBXBuildFile section */
@@ -358,6 +361,9 @@
 		A678B605210B2D2D0008EB10 /* UserPortraitScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPortraitScreenletManager.swift; sourceTree = "<group>"; };
 		A678B607210B2D550008EB10 /* UserPortraitScreenletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPortraitScreenletView.swift; sourceTree = "<group>"; };
 		A678B609210B2FD30008EB10 /* UserPortraitScreenletModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserPortraitScreenletModule.m; sourceTree = "<group>"; };
+		A678B60C210F03760008EB10 /* ImageGalleryScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGalleryScreenletManager.swift; sourceTree = "<group>"; };
+		A678B60E210F05110008EB10 /* ImageGalleryScreenletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGalleryScreenletView.swift; sourceTree = "<group>"; };
+		A678B610210F09850008EB10 /* ImageGalleryScreenletModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageGalleryScreenletModule.m; sourceTree = "<group>"; };
 		AB1ED82B7B85E932D100FADB /* Pods-LiferayScreensReactNative.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiferayScreensReactNative.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiferayScreensReactNative/Pods-LiferayScreensReactNative.debug.xcconfig"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		D2C9DC2BB322CA17601E395A /* Pods_LiferayScreensReactNative.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiferayScreensReactNative.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -629,6 +635,7 @@
 		A678B5C9210B01180008EB10 /* LiferayScreenlets */ = {
 			isa = PBXGroup;
 			children = (
+				A678B60B210F03520008EB10 /* ImageGallery */,
 				A678B604210B2D1E0008EB10 /* UserPortrait */,
 				A678B5EF210B012F0008EB10 /* Auth */,
 			);
@@ -662,6 +669,16 @@
 				A678B609210B2FD30008EB10 /* UserPortraitScreenletModule.m */,
 			);
 			path = UserPortrait;
+			sourceTree = "<group>";
+		};
+		A678B60B210F03520008EB10 /* ImageGallery */ = {
+			isa = PBXGroup;
+			children = (
+				A678B60C210F03760008EB10 /* ImageGalleryScreenletManager.swift */,
+				A678B60E210F05110008EB10 /* ImageGalleryScreenletView.swift */,
+				A678B610210F09850008EB10 /* ImageGalleryScreenletModule.m */,
+			);
+			path = ImageGallery;
 			sourceTree = "<group>";
 		};
 		ADBDB9201DFEBF0600ED6528 /* Products */ = {
@@ -1255,12 +1272,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A678B60D210F03760008EB10 /* ImageGalleryScreenletManager.swift in Sources */,
 				A678B5F5210B01900008EB10 /* LoginScreenletView.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				A678B5F3210B01650008EB10 /* LoginScreenletManager.swift in Sources */,
 				A678B608210B2D550008EB10 /* UserPortraitScreenletView.swift in Sources */,
 				A678B606210B2D2D0008EB10 /* UserPortraitScreenletManager.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				A678B60F210F05110008EB10 /* ImageGalleryScreenletView.swift in Sources */,
+				A678B611210F09850008EB10 /* ImageGalleryScreenletModule.m in Sources */,
 				A678B5F7210B01DF0008EB10 /* LoginScreenletModule.m in Sources */,
 				A678B60A210B2FD30008EB10 /* UserPortraitScreenletModule.m in Sources */,
 			);

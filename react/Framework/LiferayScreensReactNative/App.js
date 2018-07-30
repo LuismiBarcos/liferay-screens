@@ -14,6 +14,7 @@ import {Platform,
 } from 'react-native';
 import LoginScreenlet from './LiferayScreens/LoginScreenlet';
 import UserPortraitScreenlet from './LiferayScreens/UserPortraitScreenlet';
+import ImageGalleryScreenlet from './LiferayScreens/ImageGalleryScreenlet';
 
 export default class App extends Component {
   constructor(props) {
@@ -35,10 +36,19 @@ export default class App extends Component {
       return (
         <View style={styles.container}>
           <UserPortraitScreenlet 
-            style={styles.login}
+            style={styles.portrait}
             onUserPortraitLoaded={this._userPortraitLoaded}
             onUserPortraitError={this._userPortraitError}
-            userId={this.state.userId}
+            // userId={this.state.userId}
+            userId={20156}
+          />
+          <ImageGalleryScreenlet 
+            style={styles.gallery}
+            onContentsReceived={this._onContentsReceived}
+            onGalleryError={this._onGalleryError}
+            onItemSelected={this._onItemSelected}
+            folderId={72155}
+            repositoryId={20143}
           />
         </View>
       );
@@ -54,6 +64,19 @@ export default class App extends Component {
         </View>
       );
     }
+  }
+
+  // ImageGallery event
+  _onContentsReceived() {
+    console.log('Content received');
+  }
+
+  _onGalleryError(error) {
+    console.log('Error -> ',error);
+  }
+
+  _onItemSelected(attributes){
+    console.log('Item selected -> ', attributes);
   }
 
   // UserPortrait events
@@ -89,13 +112,21 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    flex: 1,    
     backgroundColor: '#F5FCFF',
+    alignItems: 'center',
+    justifyContent: 'flex-start'
   },
   login: {
 		height: 300,
     width: 300,
-	}
+  },
+  portrait: {
+    height: 150,
+    width: 150
+  },
+  gallery: {
+    height: 400,
+    width: 400
+  }
 });

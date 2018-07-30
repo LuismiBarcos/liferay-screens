@@ -17,7 +17,7 @@
 RCT_EXPORT_VIEW_PROPERTY(onUserPortraitLoaded, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onUserPortraitError, RCTBubblingEventBlock)
 
-// Propreties
+// Properties
 RCT_EXPORT_VIEW_PROPERTY(userId, NSNumber)
 
 @end
