@@ -21,15 +21,28 @@ class UserPortraitScreenletView: RCTView, UserPortraitScreenletDelegate {
       self.screenlet.load(userId: userId.int64Value)
     }
   }
+  private var editable: Bool = false
+  var Editable: Bool {
+    get {
+      return editable
+    }
+    set {
+      editable = newValue
+      self.screenlet.editable = editable
+    }
+  }
   
   // Events
   var onUserPortraitLoaded: RCTBubblingEventBlock?
   var onUserPortraitError: RCTBubblingEventBlock?
+  var onUserPortraitUploaded: RCTBubblingEventBlock?
+  var onUserPortraitUploadError: RCTBubblingEventBlock?
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.screenlet = UserPortraitScreenlet(frame: frame, themeName: "default")
     self.screenlet.delegate = self
+    self.screenlet.presentingViewController = UIApplication.shared.delegate?.window??.rootViewController
     self.addSubview(self.screenlet)
     
     self.screenlet.translatesAutoresizingMaskIntoConstraints = false
@@ -64,10 +77,18 @@ class UserPortraitScreenletView: RCTView, UserPortraitScreenletDelegate {
   }
   
   func screenlet(_ screenlet: UserPortraitScreenlet, onUserPortraitUploaded attributes: [String: AnyObject]) {
-    // TODO: Send event to JS to notify that user portrait was uploaded
+    let event: [String: Any] = [
+      "target": self.reactTag,
+      "attributes": attributes
+    ]
+    self.onUserPortraitUploaded?(event)
   }
   
   func screenlet(_ screenlet: UserPortraitScreenlet, onUserPortraitUploadError error: NSError) {
-    // TODO: Send event to JS to notify abou the error in the upload process
+    let event: [String: Any] = [
+      "target": self.reactTag,
+      "error": error.description
+    ]
+    self.onUserPortraitUploadError?(event)
   }
 }

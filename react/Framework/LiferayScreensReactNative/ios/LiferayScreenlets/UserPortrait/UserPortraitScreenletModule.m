@@ -16,8 +16,11 @@
 // Events
 RCT_EXPORT_VIEW_PROPERTY(onUserPortraitLoaded, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onUserPortraitError, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onUserPortraitUploaded, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onUserPortraitUploadError, RCTBubblingEventBlock)
 
 // Properties
 RCT_EXPORT_VIEW_PROPERTY(userId, NSNumber)
+RCT_EXPORT_VIEW_PROPERTY(editable, BOOL)
 
 @end

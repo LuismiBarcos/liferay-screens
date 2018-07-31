@@ -15,7 +15,9 @@ export default class UserPortrait extends Component {
                 style={styles.portrait}
                 onUserPortraitLoaded={this._userPortraitLoaded}
                 onUserPortraitError={this._userPortraitError}
+                onUserPortraitUploaded={this._onUserPortraitUploaded}
                 userId={this.props.userId}
+                editable={true}
             />
         );
     }
@@ -27,6 +29,10 @@ export default class UserPortrait extends Component {
 
   _userPortraitError(error) {
     console.log('Error -> ', error);
+  }
+
+  _onUserPortraitUploaded(attributes) {
+      console.log('Portrait uploaded -> ', attributes);
   }
 }
 
