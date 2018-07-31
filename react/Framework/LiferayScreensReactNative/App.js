@@ -13,9 +13,10 @@ import {Platform,
   View,
   NativeModules
 } from 'react-native';
-import LoginScreenlet from './LiferayScreens/LoginScreenlet';
-import UserPortraitScreenlet from './LiferayScreens/UserPortraitScreenlet';
-import ImageGalleryScreenlet from './LiferayScreens/ImageGalleryScreenlet';
+
+import Login from './Components/Login';
+import UserPortrait from './Components/UserPortrait';
+import ImageGallery from './Components/ImageGallery'
 
 export default class App extends Component {
   constructor(props) {
@@ -25,13 +26,7 @@ export default class App extends Component {
       logged: false
     };
 
-    this._loginSucceded = this._loginSucceded.bind(this);
-    this._loginFailed = this._loginFailed.bind(this);
-
-    this._userPortraitError = this._userPortraitError.bind(this);
-    this._userPortraitLoaded = this._userPortraitLoaded.bind(this);
-
-    
+    this._onLoginSuccess = this._onLoginSuccess.bind(this);    
   }
 
   async componentWillMount(){
@@ -52,78 +47,25 @@ export default class App extends Component {
     if(this.state.logged) {
       return (
         <View style={styles.container}>
-          <UserPortraitScreenlet 
-            style={styles.portrait}
-            onUserPortraitLoaded={this._userPortraitLoaded}
-            onUserPortraitError={this._userPortraitError}
-            userId={this.state.userId}
-          />
-          <ImageGalleryScreenlet 
-            style={styles.gallery}
-            onContentsReceived={this._onContentsReceived}
-            onGalleryError={this._onGalleryError}
-            onItemSelected={this._onItemSelected}
-            folderId={72155}
-            repositoryId={20143}
-          />
+          <UserPortrait userId={this.state.userId}/>
+          <ImageGallery />
         </View>
       );
     } else {
       return (
         <View style={styles.container}>
-          <LoginScreenlet style={styles.login}
-              onLoginSuccess={this._loginSucceded}
-              onLoginError={this._loginFailed}
-              onCredentialsSavedUserAttributes={this._onCredentialsSavedUserAttributes}
-              onCredentialsLoadedUserAttributes={this._onCredentialsLoadedUserAttributes}
-              saveCredentials={true}
-            />
+          <Login onLoginSuccess={this._onLoginSuccess} />
         </View>
       );
     }
   }
 
-  // ImageGallery event
-  _onContentsReceived() {
-    console.log('Content received');
-  }
-
-  _onGalleryError(error) {
-    console.log('Error -> ',error);
-  }
-
-  _onItemSelected(attributes){
-    console.log('Item selected -> ', attributes);
-  }
-
-  // UserPortrait events
-  _userPortraitLoaded(image){
-    console.log('Image loaded -> ', image)
-  }
-
-  _userPortraitError(error) {
-    console.log('Error -> ', error);
-  }
-
-  // Login Events
-  _loginSucceded(attributes) {
-    console.log('Login done!', attributes);
+  //Login success
+  _onLoginSuccess(userId) {
     this.setState({
 			logged: true,
-			userId: attributes.userId
-		});
-  }
-
-  _loginFailed(error) {
-    console.log('Login failed!');
-  }
-
-  _onCredentialsSavedUserAttributes(attributes) {
-    debugger;
-  }
-
-  _onCredentialsLoadedUserAttributes(attributes) {
-    debugger;
+			userId: userId
+    });
   }
 }
 
@@ -135,17 +77,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
     alignItems: 'center',
     justifyContent: 'flex-start'
-  },
-  login: {
-		height: 300,
-    width: 300,
-  },
-  portrait: {
-    height: 150,
-    width: 150
-  },
-  gallery: {
-    height: 400,
-    width: 400
   }
 });
