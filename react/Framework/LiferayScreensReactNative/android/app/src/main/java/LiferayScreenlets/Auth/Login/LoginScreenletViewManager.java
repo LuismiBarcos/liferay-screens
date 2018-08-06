@@ -14,6 +14,7 @@ import com.liferay.mobile.screens.auth.login.LoginListener;
 import com.liferay.mobile.screens.auth.login.LoginScreenlet;
 import com.liferay.mobile.screens.context.AuthenticationType;
 import com.liferay.mobile.screens.context.User;
+import com.liferay.mobile.screens.context.storage.CredentialsStorageBuilder;
 
 import org.json.JSONObject;
 
@@ -36,6 +37,13 @@ public class LoginScreenletViewManager extends SimpleViewManager<LoginScreenlet>
         this.screenlet.setListener(this);
         setScreenletProperties(com.liferay.mobile.screens.R.layout.login_default);
         return this.screenlet;
+    }
+
+    @ReactProp(name="saveCredentials")
+    public void saveCredentials(LoginScreenlet screenlet, boolean saveCredentials) {
+        if(saveCredentials) {
+            this.screenlet.setCredentialsStorage(CredentialsStorageBuilder.StorageType.SHARED_PREFERENCES);
+        }
     }
 
     @ReactProp(name = "theme")

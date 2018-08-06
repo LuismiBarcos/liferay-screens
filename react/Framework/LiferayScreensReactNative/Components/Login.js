@@ -25,6 +25,7 @@ export default class Login extends Component {
             <LoginScreenlet style={styles.login}
               onLoginSuccess={this._loginSucceded}
               onLoginError={this._loginFailed}
+              saveCredentials={true}
             />
         );
     }
