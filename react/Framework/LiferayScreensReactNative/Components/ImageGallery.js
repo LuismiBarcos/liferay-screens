@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {
     StyleSheet,
     View,
+    Button,
     requireNativeComponent,
 } from 'react-native'
 import ImageGalleryScreenlet from './../LiferayScreens/ImageGalleryScreenlet';
@@ -12,9 +13,10 @@ export default class ImageGallery extends Component {
         return(
             <ImageGalleryScreenlet 
                 style={styles.gallery}
+                ref={(ref) => this.imageGalleryScreenlet = ref}
                 onContentsReceived={this._onContentsReceived}
                 onGalleryError={this._onGalleryError}
-                onItemSelected={this._onItemSelected}
+                onItemSelected={this._onItemSelected.bind(this)}
                 folderId={72155}
                 repositoryId={20143}
             />
