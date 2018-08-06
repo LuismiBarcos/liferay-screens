@@ -30,34 +30,34 @@ export default class App extends Component {
   }
 
   async componentWillMount(){
-    try {
-      var userId = await SessionContext.loadCredentials()
-      if(userId) {
-        this.setState({
-          logged: true,
-          userId: userId
-        });
-      }
-    } catch(e) {
-      console.error(e);
-    }
+    // try {
+    //   // var userId = await SessionContext.loadCredentials()
+    //   if(userId) {
+    //     this.setState({
+    //       logged: true,
+    //       userId: userId
+    //     });
+    //   }
+    // } catch(e) {
+    //   console.error(e);
+    // }
   }
   
   render() {
-    if(this.state.logged) {
-      return (
-        <View style={styles.container}>
-          <UserPortrait userId={this.state.userId}/>
-          <ImageGallery />
-        </View>
-      );
-    } else {
+    // if(this.state.logged) {
+    //   return (
+    //     <View style={styles.container}>
+    //       <UserPortrait userId={this.state.userId}/>
+    //       <ImageGallery />
+    //     </View>
+    //   );
+    // } else {
       return (
         <View style={styles.container}>
           <Login onLoginSuccess={this._onLoginSuccess} />
         </View>
       );
-    }
+    // }
   }
 
   //Login success
@@ -69,7 +69,7 @@ export default class App extends Component {
   }
 }
 
-const SessionContext = NativeModules.SessionContextManager;
+// const SessionContext = NativeModules.SessionContextManager;
 
 const styles = StyleSheet.create({
   container: {

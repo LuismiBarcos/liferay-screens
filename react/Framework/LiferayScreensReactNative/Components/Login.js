@@ -7,7 +7,7 @@ import {Platform,
   View,
   NativeModules
 } from 'react-native';
-import LoginScreenlet from './../LiferayScreens/LoginScreenlet';
+import LoginScreenlet from './../LiferayScreens/Auth/Login/LoginScreenlet';
 export default class Login extends Component {
     constructor(props) {
         super(props);
@@ -25,9 +25,6 @@ export default class Login extends Component {
             <LoginScreenlet style={styles.login}
               onLoginSuccess={this._loginSucceded}
               onLoginError={this._loginFailed}
-              onCredentialsSavedUserAttributes={this._onCredentialsSavedUserAttributes}
-              onCredentialsLoadedUserAttributes={this._onCredentialsLoadedUserAttributes}
-              saveCredentials={true}
             />
         );
     }
@@ -35,11 +32,13 @@ export default class Login extends Component {
     // Login Events
   _loginSucceded(attributes) {
     console.log('Login done!', attributes);
+    debugger;
     this.props.onLoginSuccess(attributes.userId)
   }
 
   _loginFailed(error) {
     console.log('Login failed!');
+    debugger;
   }
 
   _onCredentialsSavedUserAttributes(attributes) {

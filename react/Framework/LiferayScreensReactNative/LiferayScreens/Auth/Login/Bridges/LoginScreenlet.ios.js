@@ -6,6 +6,8 @@ import {
     requireNativeComponent,
 } from 'react-native'
 
+const NativeLoginScreenlet = requireNativeComponent('LoginScreenlet');
+
 export default class LoginScreenlet extends Component {
     render() {
         return (
@@ -49,5 +51,3 @@ export default class LoginScreenlet extends Component {
         this.props.onCredentialsLoadedUserAttributes(attributes.nativeEvent);
     }
 }
-
-const NativeLoginScreenlet = requireNativeComponent('LoginScreenlet');
