@@ -6,7 +6,7 @@ import {Platform,
   View,
   NativeModules
 } from 'react-native';
-import UserPortraitScreenlet from "./../LiferayScreens/UserPortraitScreenlet";
+import UserPortraitScreenlet from "./../LiferayScreens/UserPortrait/UserPortraitScreenlet";
 
 export default class UserPortrait extends Component {
     render() {
@@ -17,7 +17,7 @@ export default class UserPortrait extends Component {
                 onUserPortraitError={this._userPortraitError}
                 onUserPortraitUploaded={this._onUserPortraitUploaded}
                 userId={this.props.userId}
-                editable={true}
+                
             />
         );
     }

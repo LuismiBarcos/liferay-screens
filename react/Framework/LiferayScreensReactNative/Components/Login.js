@@ -33,7 +33,9 @@ export default class Login extends Component {
     // Login Events
   _loginSucceded(attributes) {
     console.log('Login done!', attributes);
-    debugger;
+    if(typeof attributes.userId === 'string'){
+      attributes.userId = parseInt(attributes.userId);
+    }
     this.props.onLoginSuccess(attributes.userId)
   }
 

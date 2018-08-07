@@ -30,7 +30,7 @@ public class SessionContextModule extends ReactContextBaseJavaModule{
         if(SessionContext.isLoggedIn()) {
             JSONObject jsonObject = new JSONObject(SessionContext.getCurrentUser().getValues());
             WritableMap event = Arguments.createMap();
-            event.putString("user", jsonObject.toString());
+            event.putInt("user", (int) SessionContext.getCurrentUser().getId());
             promise.resolve(event);
         } else {
             promise.reject("NOT_USER", "Enter credentials");

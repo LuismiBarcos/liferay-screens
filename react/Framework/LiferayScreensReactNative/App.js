@@ -32,10 +32,11 @@ export default class App extends Component {
   async componentWillMount(){
     try {
       var userId = await SessionContext.loadCredentials()
+      
       if(userId) {
         this.setState({
           logged: true,
-          userId: userId
+          userId: userId.user
         });
       }
     } catch(e) {
@@ -50,8 +51,8 @@ export default class App extends Component {
       return (
         <View style={styles.container}>
         <Text> Logged </Text>
-          {/* <UserPortrait userId={this.state.userId}/>
-          <ImageGallery /> */}
+          <UserPortrait userId={this.state.userId}/>
+          {/* <ImageGallery />  */}
         </View>
       );
     } else {
