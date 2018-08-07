@@ -1,10 +1,12 @@
-'use-strict'
+'use strict'
 import React, {Component} from 'react';
 import {
     StyleSheet,
     View,
     requireNativeComponent,
 } from 'react-native'
+
+const NativeImageGalleryScreenlet = requireNativeComponent('ImageGalleryScreenlet');
 
 export default class ImageGalleryScreenlet extends Component {
     render() {
@@ -42,5 +44,3 @@ export default class ImageGalleryScreenlet extends Component {
         this.props.onItemSelected(event.nativeEvent.image)
     }
 }
-
-const NativeImageGalleryScreenlet = requireNativeComponent('ImageGalleryScreenlet');
