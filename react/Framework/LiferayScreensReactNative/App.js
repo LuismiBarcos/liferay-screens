@@ -47,21 +47,21 @@ export default class App extends Component {
   }
   
   render() {
-    // if(this.state.logged) {
+    if(this.state.logged) {
       return (
         <View style={styles.container}>
         <Text> Logged </Text>
-          {/* <UserPortrait userId={this.state.userId}/> */}
+          <UserPortrait userId={this.state.userId}/>
           <ImageGallery /> 
         </View>
       );
-    // } else {
-    //   return (
-    //     <View style={styles.container}>
-    //       <Login onLoginSuccess={this._onLoginSuccess} />
-    //     </View>
-    //   );
-    // }
+    } else {
+      return (
+        <View style={styles.container}>
+          <Login onLoginSuccess={this._onLoginSuccess} />
+        </View>
+      );
+    }
   }
 
   //Login success

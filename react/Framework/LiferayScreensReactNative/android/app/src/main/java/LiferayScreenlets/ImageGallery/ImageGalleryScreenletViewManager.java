@@ -13,10 +13,14 @@ import com.facebook.react.uimanager.annotations.ReactProp;
 import com.liferay.mobile.screens.imagegallery.ImageGalleryListener;
 import com.liferay.mobile.screens.imagegallery.ImageGalleryScreenlet;
 import com.liferay.mobile.screens.imagegallery.model.ImageEntry;
+import com.liferay.mobile.screens.util.LiferayLocale;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class ImageGalleryScreenletViewManager extends SimpleViewManager<ImageGalleryScreenlet> implements ImageGalleryListener{
@@ -33,9 +37,21 @@ public class ImageGalleryScreenletViewManager extends SimpleViewManager<ImageGal
     @Override
     protected ImageGalleryScreenlet createViewInstance(ThemedReactContext reactContext) {
         this.reactContext = reactContext;
-        this.screenlet = new ImageGalleryScreenlet(reactContext);
+//        this.screenlet = new ImageGalleryScreenlet(reactContext);
+//        this.screenlet.render(com.liferay.mobile.screens.R.layout.gallery_default);
+//        this.screenlet.setListener(this);
+//        this.screenlet.setFirstPageSize(50);
+//        this.screenlet.setPageSize(25);
+//        this.screenlet.setLocale(new Locale(LiferayLocale.getDefaultSupportedLocale()));
+        this.screenlet= new ImageGalleryScreenlet(reactContext);
         this.screenlet.render(com.liferay.mobile.screens.R.layout.gallery_default);
+        this.screenlet.setRepositoryId(20143);
+        this.screenlet.setFolderId(72155);
         this.screenlet.setListener(this);
+        this.screenlet.setFirstPageSize(50);
+        this.screenlet.setPageSize(25);
+        this.screenlet.setLocale(new Locale(LiferayLocale.getDefaultSupportedLocale()));
+        this.screenlet.load();
         return this.screenlet;
     }
 
@@ -97,7 +113,18 @@ public class ImageGalleryScreenletViewManager extends SimpleViewManager<ImageGal
     @Override
     public void onListPageReceived(int i, int i1, List<ImageEntry> list, int i2) {
         WritableMap event = Arguments.createMap();
-        event.putString("images", new JSONObject((Map) list).toString());
+        JSONArray jsonArray = new JSONArray();
+        for (ImageEntry image:
+                list) {
+            jsonArray.put(image.getValues());
+        }
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("images", jsonArray);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        event.putString("images", jsonObject.toString());
         this.sendEvent("onListPageReceived", event);
     }
 
@@ -112,7 +139,7 @@ public class ImageGalleryScreenletViewManager extends SimpleViewManager<ImageGal
     public void error(Exception e, String s) {
         WritableMap event = Arguments.createMap();
         event.putString("error", s);
-        this.sendEvent("onUserPortraitError", event);
+        this.sendEvent("onImageGalleryError", event);
     }
 
     private void sendEvent(String eventName ,WritableMap event ){

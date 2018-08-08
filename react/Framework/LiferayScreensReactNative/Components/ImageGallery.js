@@ -18,8 +18,8 @@ export default class ImageGallery extends Component {
                 onGalleryError={this._onGalleryError}
                 onItemSelected={this._onItemSelected.bind(this)}
                 onListPageFailed={this._onListPageFailed.bind(this)}
-                folderId={72155}
-                repositoryId={20143}
+                // folderId={72155}
+                // repositoryId={20143}
             />
         );
     }

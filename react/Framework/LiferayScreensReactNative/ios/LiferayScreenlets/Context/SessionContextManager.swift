@@ -20,6 +20,7 @@ class SessionContextManager: NSObject, RCTBridgeModule {
   
   func loadCredentials(_ resolver: RCTPromiseResolveBlock, rejecter: RCTPromiseRejectBlock) {
     SessionContext.loadStoredCredentials()
-    resolver(SessionContext.currentContext?.user.userId)
+//    resolver(SessionContext.currentContext?.user.userId)
+    resolver(SessionContext.currentContext?.user)
   }
 }

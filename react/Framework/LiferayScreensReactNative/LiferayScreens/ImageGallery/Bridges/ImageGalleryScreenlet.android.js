@@ -12,7 +12,7 @@ export default class ImageGalleryScreenlet extends Component {
         this._onListPageFailed = this._onListPageFailed.bind(this);
         this._onListPageReceived = this._onListPageReceived.bind(this);
         this._onItemSelected = this._onItemSelected.bind(this);
-        this._onUserPortraitError = this._onUserPortraitError.bind(this);
+        this._onImageGalleryError = this._onImageGalleryError.bind(this);
     }
     
     componentWillMount() {
@@ -20,7 +20,7 @@ export default class ImageGalleryScreenlet extends Component {
         DeviceEventEmitter.addListener('onListPageFailed', this._onListPageFailed);
         DeviceEventEmitter.addListener('onListPageReceived', this._onListPageReceived);
         DeviceEventEmitter.addListener('onItemSelected', this._onItemSelected);
-        DeviceEventEmitter.addListener('onUserPortraitError', this._onUserPortraitError);
+        DeviceEventEmitter.addListener('onImageGalleryError', this._onImageGalleryError);
     }
     
     render(){
@@ -32,7 +32,7 @@ export default class ImageGalleryScreenlet extends Component {
     }
 
     _onListPageFailed(event) {
-        console.log('Error loading the content');
+        console.log('onListPageFailed android.js', event.error);
         if(!this.props.onListPageFailed) {
             return;
         }
@@ -57,12 +57,12 @@ export default class ImageGalleryScreenlet extends Component {
         this.props.onItemSelected(event.imageLoaded);
     }
 
-    _onUserPortraitError(event) {
-        console.log('Error!!!!!');
+    _onImageGalleryError(event) {
+        console.log('onImageGalleryError android.js');
         debugger;
-        if(!this.props.onUserPortraitError) {
+        if(!this.props.onImageGalleryError) {
             return;
         }
-        this.props.onUserPortraitError(event.imageLoaded);
+        this.props.onImageGalleryError(event.imageLoaded);
     }
 }

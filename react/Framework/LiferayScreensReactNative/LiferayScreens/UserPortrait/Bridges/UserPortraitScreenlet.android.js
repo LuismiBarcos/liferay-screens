@@ -31,7 +31,6 @@ export default class UserPortraitScreenlet extends Component {
 
     _onUserPortraitLoadReceived(event) {
         console.log('Image loaded!');
-        debugger;
         if(!this.props.onUserPortraitLoadReceived) {
             return;
         }
@@ -40,7 +39,6 @@ export default class UserPortraitScreenlet extends Component {
 
     _onUserPortraitUploaded(event) {
         console.log('Image uploaded!');
-        debugger;
         if(!this.props.onUserPortraitUploaded) {
             return;
         }
@@ -49,7 +47,6 @@ export default class UserPortraitScreenlet extends Component {
 
     _onUserPortraitError(event) {
         console.log('Error!!');
-        debugger;
         if(!this.props.onUserPortraitError) {
             return;
         }
