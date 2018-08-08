@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import LiferayScreenlets.Auth.Login.LoginScreenletPackage;
+import LiferayScreenlets.Comment.List.CommnentListScreenletPackage;
 import LiferayScreenlets.Context.SessionContextPackage;
 import LiferayScreenlets.ImageGallery.ImageGalleryScreenletPackage;
 import LiferayScreenlets.UserPortrait.UserPortraitScreenletPackage;
@@ -31,7 +32,8 @@ public class MainApplication extends Application implements ReactApplication {
             new LoginScreenletPackage(),
             new SessionContextPackage(),
             new UserPortraitScreenletPackage(),
-            new ImageGalleryScreenletPackage()
+            new ImageGalleryScreenletPackage(),
+            new CommnentListScreenletPackage()
       );
     }
 

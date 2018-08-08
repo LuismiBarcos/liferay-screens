@@ -17,6 +17,7 @@ import {Platform,
 import Login from './Components/Login';
 import UserPortrait from './Components/UserPortrait';
 import ImageGallery from './Components/ImageGallery'
+import CommentList from './Components/CommentList';
 
 export default class App extends Component {
   constructor(props) {
@@ -52,7 +53,8 @@ export default class App extends Component {
         <View style={styles.container}>
         <Text> Logged </Text>
           <UserPortrait userId={this.state.userId}/>
-          <ImageGallery /> 
+          {/* <ImageGallery />  */}
+          <CommentList />
         </View>
       );
     } else {
