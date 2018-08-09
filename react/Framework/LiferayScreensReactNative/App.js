@@ -18,6 +18,7 @@ import Login from './Components/Login';
 import UserPortrait from './Components/UserPortrait';
 import ImageGallery from './Components/ImageGallery'
 import CommentList from './Components/CommentList';
+import SignUp from './Components/SignUp';
 
 export default class App extends Component {
   constructor(props) {
@@ -51,10 +52,11 @@ export default class App extends Component {
     if(this.state.logged) {
       return (
         <View style={styles.container}>
-        <Text> Logged </Text>
-          <UserPortrait userId={this.state.userId}/>
+        <Text> Logged with id {this.state.userId}</Text>
+          {/* <UserPortrait userId={this.state.userId}/> */}
           {/* <ImageGallery />  */}
-          <CommentList />
+          {/* <CommentList /> */}
+          <SignUp />
         </View>
       );
     } else {
