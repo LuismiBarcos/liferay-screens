@@ -18,6 +18,8 @@ export default class CommentList extends Component {
         return(
             <CommentListScreenlet 
                 style={styles.comments}
+                classPK={74606}
+                className={"com.liferay.document.library.kernel.model.DLFileEntry"}
             />
         );
     }
