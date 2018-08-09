@@ -19,7 +19,7 @@ export default class SignUpScreenlet extends Component {
         );
     }
 
-    // Android events
+    // Common events
     _onSignUpSuccess(user) {
         console.log('Sign up! -> new user', user);
         debugger;
