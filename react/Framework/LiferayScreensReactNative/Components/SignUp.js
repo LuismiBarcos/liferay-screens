@@ -14,7 +14,7 @@ export default class SignUp extends Component {
             <SignUpScreenlet 
                 style={styles.signup}
                 anonymousApiUserName={"test@liferay.com"}
-                apiPassword={"test11"}
+                anonymousApiPassword={"test11"}
             />
         );
     }

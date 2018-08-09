@@ -25,14 +25,14 @@ class SignUpScreenletView: RCTView, SignUpScreenletDelegate {
   
   /// We have to rename anonymousApiPassword to ApiPassword because the first name
   /// create a conflict with ReactNative
-  private var apiPassword: String = ""
-  var ApiPassword: String {
+  private var anonymousApiPassword: String = ""
+  var AnonymousApiPassword: String {
     get{
-      return apiPassword
+      return anonymousApiPassword
     }
     set {
-      apiPassword = newValue
-      self.screenlet.anonymousApiPassword = apiPassword
+      anonymousApiPassword = newValue
+      self.screenlet.anonymousApiPassword = anonymousApiPassword
     }
   }
   

@@ -42,7 +42,7 @@ public class SignUpScreenletViewManager extends SimpleViewManager<SignUpScreenle
     }
 
     /// We have to change the name because in iOS create a conflict and do not work
-    @ReactProp(name="apiPassword")
+    @ReactProp(name="anonymousApiPassword")
     public void setAnonymousApiPassword(SignUpScreenlet signUpScreenlet, String anonymousApiPassword) {
         this.screenlet.setAnonymousApiPassword(anonymousApiPassword);
     }
