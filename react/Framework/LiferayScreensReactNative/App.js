@@ -21,7 +21,7 @@ import CommentList from './Components/CommentList';
 import SignUp from './Components/SignUp';
 import Rating from './Components/Rating';
 import ForgotPassword from './Components/ForgotPassword';
-
+import DDLForm from './Components/DDLForm';
 
 export default class App extends Component {
   constructor(props) {
@@ -37,8 +37,8 @@ export default class App extends Component {
   async componentWillMount(){
     try {
       var userId = await SessionContext.loadCredentials()
-      
-      if(userId) {
+
+      if(userId.user != 0) {
         this.setState({
           logged: true,
           userId: userId.user
@@ -61,7 +61,8 @@ export default class App extends Component {
           {/* <CommentList /> */}
           {/* <SignUp /> */}
           {/* <Rating /> */}
-          <ForgotPassword />
+          {/* <ForgotPassword /> */}
+          <DDLForm />
         </View>
       );
     } else {
