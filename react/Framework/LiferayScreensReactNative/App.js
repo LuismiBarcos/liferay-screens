@@ -20,6 +20,7 @@ import ImageGallery from './Components/ImageGallery'
 import CommentList from './Components/CommentList';
 import SignUp from './Components/SignUp';
 import Rating from './Components/Rating';
+import ForgotPassword from './Components/ForgotPassword';
 
 
 export default class App extends Component {
@@ -59,7 +60,8 @@ export default class App extends Component {
           {/* <ImageGallery />  */}
           {/* <CommentList /> */}
           {/* <SignUp /> */}
-          <Rating />
+          {/* <Rating /> */}
+          <ForgotPassword />
         </View>
       );
     } else {
