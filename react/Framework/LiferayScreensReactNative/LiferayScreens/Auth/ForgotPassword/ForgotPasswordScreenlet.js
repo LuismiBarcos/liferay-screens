@@ -15,6 +15,8 @@ export default class ForgotPasswordScreenlet extends Component {
                 {...this.props}
                 onForgotPasswordSent={this._onForgotPasswordSent.bind(this)}
                 onForgotPasswordError={this._onForgotPasswordError.bind(this)}
+                onForgotPasswordRequestSuccess={this._onForgotPasswordRequestSuccess.bind(this)}
+                onForgotPasswordRequestFailure={this._onForgotPasswordRequestFailure.bind(this)}
             />
         );
     }
@@ -34,6 +36,23 @@ export default class ForgotPasswordScreenlet extends Component {
             return;
         }
         this.props.onForgotPasswordError(error);
-     }
+    }
+
+    // Android events
+    _onForgotPasswordRequestSuccess(passwordSent) {
+        console.log('_onForgotPasswordRequestSuccess -> ', passwordSent)
+        if(!this.props.onForgotPasswordRequestSuccess) {
+            return;
+        }
+        this.props.onForgotPasswordRequestSuccess(passwordSent);
+    }
+
+    _onForgotPasswordRequestFailure(error) {
+        console.log('_onForgotPasswordRequestFailure -> ', error);
+        if(!this.props.onForgotPasswordRequestFailure) {
+            return;
+        }
+        this.props.onForgotPasswordRequestFailure(error);
+    }
 }
 

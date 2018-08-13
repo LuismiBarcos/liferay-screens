@@ -13,6 +13,8 @@ export default class ForgotPassword extends Component {
         return(
             <ForgotPasswordScreenlet 
                 style={styles.forgot}
+                anonymousApiUserName={"test@liferay.com"}
+                anonymousApiPassword={"test11"}
             />
         );
     }
