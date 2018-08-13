@@ -19,6 +19,8 @@ import UserPortrait from './Components/UserPortrait';
 import ImageGallery from './Components/ImageGallery'
 import CommentList from './Components/CommentList';
 import SignUp from './Components/SignUp';
+import Rating from './Components/Rating';
+
 
 export default class App extends Component {
   constructor(props) {
@@ -56,7 +58,8 @@ export default class App extends Component {
           {/* <UserPortrait userId={this.state.userId}/> */}
           {/* <ImageGallery />  */}
           {/* <CommentList /> */}
-          <SignUp />
+          {/* <SignUp /> */}
+          <Rating />
         </View>
       );
     } else {

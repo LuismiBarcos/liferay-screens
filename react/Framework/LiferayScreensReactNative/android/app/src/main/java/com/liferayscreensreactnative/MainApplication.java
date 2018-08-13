@@ -16,6 +16,7 @@ import LiferayScreenlets.Auth.SignUp.SignUpScreenletPackage;
 import LiferayScreenlets.Comment.List.CommnentListScreenletPackage;
 import LiferayScreenlets.Context.SessionContextPackage;
 import LiferayScreenlets.ImageGallery.ImageGalleryScreenletPackage;
+import LiferayScreenlets.Rating.RatingScreenletPackage;
 import LiferayScreenlets.UserPortrait.UserPortraitScreenletPackage;
 
 public class MainApplication extends Application implements ReactApplication {
@@ -35,7 +36,8 @@ public class MainApplication extends Application implements ReactApplication {
             new UserPortraitScreenletPackage(),
             new ImageGalleryScreenletPackage(),
             new CommnentListScreenletPackage(),
-            new SignUpScreenletPackage()
+            new SignUpScreenletPackage(),
+            new RatingScreenletPackage()
       );
     }
 
