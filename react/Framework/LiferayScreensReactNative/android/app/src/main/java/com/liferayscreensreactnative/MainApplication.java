@@ -16,6 +16,7 @@ import LiferayScreenlets.Auth.Login.LoginScreenletPackage;
 import LiferayScreenlets.Auth.SignUp.SignUpScreenletPackage;
 import LiferayScreenlets.Comment.List.CommnentListScreenletPackage;
 import LiferayScreenlets.Context.SessionContextPackage;
+import LiferayScreenlets.DDL.Form.DDLFormScreenletPackage;
 import LiferayScreenlets.ImageGallery.ImageGalleryScreenletPackage;
 import LiferayScreenlets.Rating.RatingScreenletPackage;
 import LiferayScreenlets.UserPortrait.UserPortraitScreenletPackage;
@@ -39,7 +40,8 @@ public class MainApplication extends Application implements ReactApplication {
             new CommnentListScreenletPackage(),
             new SignUpScreenletPackage(),
             new RatingScreenletPackage(),
-            new ForgotPasswordPackage()
+            new ForgotPasswordPackage(),
+            new DDLFormScreenletPackage()
       );
     }
 

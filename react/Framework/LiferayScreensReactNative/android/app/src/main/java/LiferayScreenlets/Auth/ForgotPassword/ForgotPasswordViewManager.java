@@ -9,10 +9,7 @@ import com.facebook.react.uimanager.annotations.ReactProp;
 import com.liferay.mobile.screens.auth.BasicAuthMethod;
 import com.liferay.mobile.screens.auth.forgotpassword.ForgotPasswordListener;
 import com.liferay.mobile.screens.auth.forgotpassword.ForgotPasswordScreenlet;
-import com.liferay.mobile.screens.auth.signup.SignUpScreenlet;
 import com.liferay.mobile.screens.context.LiferayServerContext;
-
-import org.json.JSONObject;
 
 public class ForgotPasswordViewManager extends SimpleViewManager<ForgotPasswordScreenlet> implements ForgotPasswordListener{
 

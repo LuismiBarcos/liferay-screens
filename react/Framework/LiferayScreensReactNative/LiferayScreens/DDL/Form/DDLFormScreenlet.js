@@ -13,6 +13,7 @@ export default class DDLFormScreenlet extends Component {
         return(
             <NativeDDLFormScreenlet 
                 {...this.props}
+                //iOS
                 onFormLoaded={this._onFormLoaded.bind(this)} 
                 onFormLoadError={this._onFormLoadError.bind(this)}
                 onRecordLoaded={this._onRecordLoaded.bind(this)} 
@@ -23,6 +24,14 @@ export default class DDLFormScreenlet extends Component {
                 onUploadProgress={this._onUploadProgress.bind(this)} 
                 onUploadFinished={this._onUploadFinished.bind(this)} 
                 onUploadError={this._onUploadError.bind(this)}
+                //Android
+                onDDLFormLoaded = {this._onDDLFormLoaded.bind(this)}
+                onDDLFormRecordLoaded = {this._onDDLFormRecordLoaded.bind(this)}
+                onDDLFormRecordAdded = {this._onDDLFormRecordAdded.bind(this)}
+                onDDLFormRecordUpdated ={this._onDDLFormRecordUpdated.bind(this)}
+                onDDLFormDocumentUploaded = {this._onDDLFormDocumentUploaded.bind(this)}
+                onDDLFormDocumentUploadFailed = {this._onDDLFormDocumentUploadFailed.bind(this)}
+                onError = {this._onError.bind(this)}
             />
         );
     }
@@ -106,5 +115,62 @@ export default class DDLFormScreenlet extends Component {
             return;
         }
         this.props.onUploadError(error);
+    }
+
+    // Android events
+    _onDDLFormLoaded(record) {
+        console.log('_onDDLFormLoaded -> ', record)
+        if(!this.props.onDDLFormLoaded) {
+            return;
+        }
+        this.props.onDDLFormLoaded(record);
+    }
+
+    _onDDLFormRecordLoaded(map) {
+        console.log('onDDLFormRecordLoaded -> ', map)
+        if(!this.props.onDDLFormRecordLoaded) {
+            return;
+        }
+        this.props.onDDLFormRecordLoaded(map);
+    }
+
+    _onDDLFormRecordAdded(record) {
+        console.log('_onDDLFormRecordAdded -> ', record)
+        if(!this.props.onDDLFormRecordAdded) {
+            return;
+        }
+        this.props.onDDLFormRecordAdded(record);
+    }
+
+    _onDDLFormRecordUpdated(record) {
+        console.log('_onDDLFormRecordUpdated -> ', record)
+        if(!this.props.onDDLFormRecordUpdated) {
+            return;
+        }
+        this.props.onDDLFormRecordUpdated(record);
+    }
+
+    _onDDLFormDocumentUploaded(documentField) {
+        console.log('_onDDLFormDocumentUploaded -> ', documentField)
+        if(!this.props.onDDLFormDocumentUploaded) {
+            return;
+        }
+        this.props.onDDLFormDocumentUploaded(documentField);
+    }
+
+    _onDDLFormDocumentUploadFailed(error) {
+        console.log('_onDDLFormDocumentUploadFailed -> ', error)
+        if(!this.props.onDDLFormDocumentUploadFailed) {
+            return;
+        }
+        this.props.onDDLFormDocumentUploadFailed(error);
+    }
+
+    _onError(error) {
+        console.log('_onError -> ', error)
+        if(!this.props.onError) {
+            return;
+        }
+        this.props.onError(error);
     }
 }
