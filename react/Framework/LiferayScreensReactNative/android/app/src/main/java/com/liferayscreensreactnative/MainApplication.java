@@ -20,6 +20,7 @@ import LiferayScreenlets.DDL.Form.DDLFormScreenletPackage;
 import LiferayScreenlets.ImageGallery.ImageGalleryScreenletPackage;
 import LiferayScreenlets.Rating.RatingScreenletPackage;
 import LiferayScreenlets.UserPortrait.UserPortraitScreenletPackage;
+import LiferayScreenlets.WebContent.Display.WebContentDisplayScreenletPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -41,7 +42,8 @@ public class MainApplication extends Application implements ReactApplication {
             new SignUpScreenletPackage(),
             new RatingScreenletPackage(),
             new ForgotPasswordPackage(),
-            new DDLFormScreenletPackage()
+            new DDLFormScreenletPackage(),
+            new WebContentDisplayScreenletPackage()
       );
     }
 

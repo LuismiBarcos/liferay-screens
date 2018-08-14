@@ -13,14 +13,28 @@ export default class WebContentDisplayScreenlet extends Component {
         return(
             <NativeWebContentDisplayScreenlet 
                 {...this.props}
+                //iOS
                 onWebContentResponse={this._onWebContentResponse.bind(this)}
                 onRecordContentResponse={this._onRecordContentResponse.bind(this)}
                 onWebContentError={this._onWebContentError.bind(this)}
                 onUrlClicked={this._onUrlClicked.bind(this)}
+                //Android
+                onWebContentReceived = {this._onWebContentReceived.bind(this)}
+                onUrlClicked = {this._onUrlClicked.bind(this)}
+                onWebContentTouched = {this._onWebContentTouched.bind(this)}
+                onError = {this._onError.bind(this)}
             />
         );
     }
 
+    // Common events
+    _onUrlClicked(url) {
+        console.log('_onUrlClicked -> ', url);
+        if(!this.props.onUrlClicked){
+            return;
+        }
+        this.props.onUrlClicked(url)
+    }
     //iOS Events
     _onWebContentResponse(html) {
         console.log('_onWebContentResponse -> ', html);
@@ -46,11 +60,28 @@ export default class WebContentDisplayScreenlet extends Component {
         this.props.onWebContentError(error)
     }
 
-    _onUrlClicked(url) {
-        console.log('_onUrlClicked -> ', url);
-        if(!this.props.onUrlClicked){
+    // Android events
+    _onWebContentReceived(html) {
+        console.log('_onWebContentReceived -> ', html)
+        if(!this.props.onWebContentReceived) {
             return;
         }
-        this.props.onUrlClicked(url)
+        this.props.onWebContentReceived(html);
+    }
+
+    _onWebContentTouched(touched) {
+        console.log('_onWebContentTouched -> ', touched)
+        if(!this.props.onWebContentTouched) {
+            return;
+        }
+        this.props.onWebContentTouched(touched);
+    }
+
+    _onError(error) {
+        console.log('_onError -> ', error);
+        if(!this.props.onError) {
+            return;
+        }
+        this.props.onError(error);
     }
 }
