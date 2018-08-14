@@ -62,8 +62,8 @@ export default class App extends Component {
           {/* <SignUp /> */}
           {/* <Rating /> */}
           {/* <ForgotPassword /> */}
-          {/* <DDLForm /> */}
-          <WebContentDisplay />
+          <DDLForm />
+          {/* <WebContentDisplay /> */}
         </View>
       );
     } else {

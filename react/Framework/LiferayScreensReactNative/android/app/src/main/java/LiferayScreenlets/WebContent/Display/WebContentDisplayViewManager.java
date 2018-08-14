@@ -11,6 +11,7 @@ import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
 import com.liferay.mobile.screens.context.LiferayServerContext;
+import com.liferay.mobile.screens.context.SessionContext;
 import com.liferay.mobile.screens.util.LiferayLocale;
 import com.liferay.mobile.screens.webcontent.WebContent;
 import com.liferay.mobile.screens.webcontent.display.WebContentDisplayListener;
@@ -48,12 +49,13 @@ public class WebContentDisplayViewManager extends SimpleViewManager<WebContentDi
         this.screenlet.setLocale(new Locale(LiferayLocale.getDefaultSupportedLocale()));
         this.screenlet.setJavascriptEnabled(false);
         this.screenlet.setGroupId(LiferayServerContext.getGroupId());
+        this.screenlet.setUserId(SessionContext.getUserId());
     }
 
     @ReactProp(name = "articleId")
     public void setArticleId(WebContentDisplayScreenlet screenlet, String articleId){
         this.screenlet.setArticleId(articleId);
-        
+
     }
 
     // WebContentDisplayListener methods
