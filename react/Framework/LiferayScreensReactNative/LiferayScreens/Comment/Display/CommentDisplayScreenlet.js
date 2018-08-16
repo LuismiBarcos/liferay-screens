@@ -20,6 +20,11 @@ export default class CommentDisplayScreenlet extends Component {
                 onDeleteComment={this._onDeleteComment.bind(this)}
                 onCommentUpdated={this._onCommentUpdated.bind(this)}
                 onUpdateComment={this._onUpdateComment.bind(this)}
+                // Android events
+                onLoadCommentSuccess = {this._onLoadCommentSuccess.bind(this)}
+                onDeleteCommentSuccess = {this._onDeleteCommentSuccess.bind(this)}
+                onUpdateCommentSuccess = {this._onUpdateCommentSuccess.bind(this)}
+                onError = {this._onError.bind(this)}
             />
         );
     }
@@ -71,6 +76,39 @@ export default class CommentDisplayScreenlet extends Component {
             return;
         }
         this.props.onUpdateComment(comment, error);
+    }
+
+    // Android events
+    _onLoadCommentSuccess(comment) {
+        console.log('_onLoadCommentSuccess -> ', comment);
+        if(!this.props.onLoadCommentSuccess) {
+            return;
+        }
+        this.props.onLoadCommentSuccess(comment);
+    }
+
+    _onDeleteCommentSuccess(comment) {
+        console.log('_onDeleteCommentSuccess -> ', comment);
+        if(!this.props.onDeleteCommentSuccess) {
+            return;
+        }
+        this.props.onDeleteCommentSuccess(comment);
+    }
+
+    _onUpdateCommentSuccess(comment) {
+        console.log('_onUpdateCommentSuccess -> ', comment);
+        if(!this.props.onUpdateCommentSuccess) {
+            return;
+        }
+        this.props.onUpdateCommentSuccess(comment);
+    }
+
+    _onError(error) {
+        console.log('_onError -> ', error);
+        if(!this.props.onError) {
+            return;
+        }
+        this.props.onError(error);
     }
 }
 

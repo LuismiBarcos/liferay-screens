@@ -14,6 +14,7 @@ import java.util.List;
 import LiferayScreenlets.Auth.ForgotPassword.ForgotPasswordPackage;
 import LiferayScreenlets.Auth.Login.LoginScreenletPackage;
 import LiferayScreenlets.Auth.SignUp.SignUpScreenletPackage;
+import LiferayScreenlets.Comment.Display.CommentDisplayScreenletPackage;
 import LiferayScreenlets.Comment.List.CommnentListScreenletPackage;
 import LiferayScreenlets.Context.SessionContextPackage;
 import LiferayScreenlets.DDL.Form.DDLFormScreenletPackage;
@@ -49,7 +50,8 @@ public class MainApplication extends Application implements ReactApplication {
             new WebContentDisplayScreenletPackage(),
             new ImageDisplayScreenletPackage(),
             new VideoDisplayScreenletPackage(),
-            new AudioDisplayScreenletPackage()
+            new AudioDisplayScreenletPackage(),
+            new CommentDisplayScreenletPackage()
       );
     }
 
