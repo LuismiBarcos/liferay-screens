@@ -58,6 +58,9 @@
 		A63B0E1F21256C72003000F9 /* VideoDisplayScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63B0E1E21256C72003000F9 /* VideoDisplayScreenletManager.swift */; };
 		A63B0E2121256C8A003000F9 /* VideoDisplayScreenletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63B0E2021256C8A003000F9 /* VideoDisplayScreenletView.swift */; };
 		A63B0E2321256CA3003000F9 /* VideoDisplayScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A63B0E2221256CA3003000F9 /* VideoDisplayScreenletModule.m */; };
+		A63B0E25212581EA003000F9 /* AudioDisplayScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63B0E24212581EA003000F9 /* AudioDisplayScreenletManager.swift */; };
+		A63B0E272125820E003000F9 /* AudioDisplayScreenletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63B0E262125820E003000F9 /* AudioDisplayScreenletView.swift */; };
+		A63B0E292125826D003000F9 /* AudioDisplayScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A63B0E282125826D003000F9 /* AudioDisplayScreenletModule.m */; };
 		A678B5F3210B01650008EB10 /* LoginScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A678B5F2210B01650008EB10 /* LoginScreenletManager.swift */; };
 		A678B5F5210B01900008EB10 /* LoginScreenletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A678B5F4210B01900008EB10 /* LoginScreenletView.swift */; };
 		A678B5F7210B01DF0008EB10 /* LoginScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A678B5F6210B01DF0008EB10 /* LoginScreenletModule.m */; };
@@ -401,6 +404,9 @@
 		A63B0E1E21256C72003000F9 /* VideoDisplayScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDisplayScreenletManager.swift; sourceTree = "<group>"; };
 		A63B0E2021256C8A003000F9 /* VideoDisplayScreenletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDisplayScreenletView.swift; sourceTree = "<group>"; };
 		A63B0E2221256CA3003000F9 /* VideoDisplayScreenletModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoDisplayScreenletModule.m; sourceTree = "<group>"; };
+		A63B0E24212581EA003000F9 /* AudioDisplayScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDisplayScreenletManager.swift; sourceTree = "<group>"; };
+		A63B0E262125820E003000F9 /* AudioDisplayScreenletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDisplayScreenletView.swift; sourceTree = "<group>"; };
+		A63B0E282125826D003000F9 /* AudioDisplayScreenletModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioDisplayScreenletModule.m; sourceTree = "<group>"; };
 		A678B5F1210B01640008EB10 /* LiferayScreensReactNative-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiferayScreensReactNative-Bridging-Header.h"; sourceTree = "<group>"; };
 		A678B5F2210B01650008EB10 /* LoginScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenletManager.swift; sourceTree = "<group>"; };
 		A678B5F4210B01900008EB10 /* LoginScreenletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenletView.swift; sourceTree = "<group>"; };
@@ -764,9 +770,12 @@
 			children = (
 				A63B0E1821231B68003000F9 /* ImageDisplayScreenletManager.swift */,
 				A63B0E1A21231BA7003000F9 /* ImageDisplayScreenletView.swift */,
+				A63B0E262125820E003000F9 /* AudioDisplayScreenletView.swift */,
 				A63B0E2021256C8A003000F9 /* VideoDisplayScreenletView.swift */,
 				A63B0E1C21231E46003000F9 /* ImageDisplayScreenletModule.m */,
+				A63B0E282125826D003000F9 /* AudioDisplayScreenletModule.m */,
 				A63B0E1E21256C72003000F9 /* VideoDisplayScreenletManager.swift */,
+				A63B0E24212581EA003000F9 /* AudioDisplayScreenletManager.swift */,
 				A63B0E2221256CA3003000F9 /* VideoDisplayScreenletModule.m */,
 			);
 			path = FileDisplay;
@@ -1451,6 +1460,7 @@
 				A678B608210B2D550008EB10 /* UserPortraitScreenletView.swift in Sources */,
 				A678B606210B2D2D0008EB10 /* UserPortraitScreenletManager.swift in Sources */,
 				A60D405C210F386800AB71D6 /* SessionContextModule.m in Sources */,
+				A63B0E272125820E003000F9 /* AudioDisplayScreenletView.swift in Sources */,
 				A614515721217AC2001335C5 /* RatingScreenletView.swift in Sources */,
 				A63B0E1921231B68003000F9 /* ImageDisplayScreenletManager.swift in Sources */,
 				A63B0E1F21256C72003000F9 /* VideoDisplayScreenletManager.swift in Sources */,
@@ -1461,8 +1471,10 @@
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				A678B60F210F05110008EB10 /* ImageGalleryScreenletView.swift in Sources */,
 				A63B0E122122D289003000F9 /* WebContentDisplayScreenletManager.swift in Sources */,
+				A63B0E25212581EA003000F9 /* AudioDisplayScreenletManager.swift in Sources */,
 				A678B611210F09850008EB10 /* ImageGalleryScreenletModule.m in Sources */,
 				A614515E21218AD9001335C5 /* ForgotPasswordScreenletView.swift in Sources */,
+				A63B0E292125826D003000F9 /* AudioDisplayScreenletModule.m in Sources */,
 				A678B5F7210B01DF0008EB10 /* LoginScreenletModule.m in Sources */,
 				A68F8E4D21218CE90082A85C /* ForgotPasswordScreenletManager.m in Sources */,
 				A6145150211C504B001335C5 /* SignUpScreenletView.swift in Sources */,

@@ -25,6 +25,7 @@ import DDLForm from './Components/DDLForm';
 import WebContentDisplay from './Components/WebContentDisplay';
 import ImageDisplay from './Components/ImageDisplay';
 import VideoDisplay from './Components/VideoDisplay';
+import AudioDisplay from './Components/AudioDisplay';
 
 export default class App extends Component {
   constructor(props) {
@@ -68,7 +69,8 @@ export default class App extends Component {
           {/* <DDLForm /> */}
           {/* <WebContentDisplay /> */}
           {/* <ImageDisplay /> */}
-          <VideoDisplay />
+          {/* <VideoDisplay /> */}
+          <AudioDisplay />
         </View>
       );
     } else {
