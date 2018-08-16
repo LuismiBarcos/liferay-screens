@@ -27,7 +27,7 @@ import ImageDisplay from './Components/ImageDisplay';
 import VideoDisplay from './Components/VideoDisplay';
 import AudioDisplay from './Components/AudioDisplay';
 import CommentDisplay from './Components/CommentDisplay';
-
+import CommentAdd from './Components/CommentAdd'
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -63,7 +63,7 @@ export default class App extends Component {
         <Text> Logged with id {this.state.userId}</Text>
           {/* <UserPortrait userId={this.state.userId}/> */}
           {/* <ImageGallery />  */}
-          {/* <CommentList /> */}
+          <CommentList />
           {/* <SignUp /> */}
           {/* <Rating /> */}
           {/* <ForgotPassword /> */}
@@ -72,7 +72,8 @@ export default class App extends Component {
           {/* <ImageDisplay /> */}
           {/* <VideoDisplay /> */}
           {/* <AudioDisplay /> */}
-          <CommentDisplay />
+          {/* <CommentDisplay /> */}
+          <CommentAdd />
         </View>
       );
     } else {

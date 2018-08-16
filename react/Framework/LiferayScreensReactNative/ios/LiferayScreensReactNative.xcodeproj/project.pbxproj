@@ -38,6 +38,9 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		A6051AE821258CDB00897387 /* CommentDisplayScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6051AE721258CDB00897387 /* CommentDisplayScreenletManager.swift */; };
 		A6051B0F21258D1800897387 /* CommentDisplayScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A6051B0E21258D1800897387 /* CommentDisplayScreenletModule.m */; };
+		A6051B122125A15900897387 /* CommentAddScreenletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6051B112125A15900897387 /* CommentAddScreenletView.swift */; };
+		A6051B142125A2D500897387 /* CommentAddScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6051B132125A2D500897387 /* CommentAddScreenletManager.swift */; };
+		A6051B162125A30700897387 /* CommentAddScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A6051B152125A30700897387 /* CommentAddScreenletModule.m */; };
 		A60D405A210F35E500AB71D6 /* SessionContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60D4059210F35E500AB71D6 /* SessionContextManager.swift */; };
 		A60D405C210F386800AB71D6 /* SessionContextModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A60D405B210F386800AB71D6 /* SessionContextModule.m */; };
 		A6145147211B19AF001335C5 /* CommentListScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6145146211B19AF001335C5 /* CommentListScreenletManager.swift */; };
@@ -387,6 +390,9 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		A6051AE721258CDB00897387 /* CommentDisplayScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentDisplayScreenletManager.swift; sourceTree = "<group>"; };
 		A6051B0E21258D1800897387 /* CommentDisplayScreenletModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentDisplayScreenletModule.m; sourceTree = "<group>"; };
+		A6051B112125A15900897387 /* CommentAddScreenletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentAddScreenletView.swift; sourceTree = "<group>"; };
+		A6051B132125A2D500897387 /* CommentAddScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentAddScreenletManager.swift; sourceTree = "<group>"; };
+		A6051B152125A30700897387 /* CommentAddScreenletModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentAddScreenletModule.m; sourceTree = "<group>"; };
 		A60D4059210F35E500AB71D6 /* SessionContextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionContextManager.swift; sourceTree = "<group>"; };
 		A60D405B210F386800AB71D6 /* SessionContextModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionContextModule.m; sourceTree = "<group>"; };
 		A6145146211B19AF001335C5 /* CommentListScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentListScreenletManager.swift; sourceTree = "<group>"; };
@@ -696,6 +702,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A6051B102125A13E00897387 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				A6051B112125A15900897387 /* CommentAddScreenletView.swift */,
+				A6051B132125A2D500897387 /* CommentAddScreenletManager.swift */,
+				A6051B152125A30700897387 /* CommentAddScreenletModule.m */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
 		A60D4033210F35C500AB71D6 /* Context */ = {
 			isa = PBXGroup;
 			children = (
@@ -708,6 +724,7 @@
 		A614511D211B1969001335C5 /* Comment */ = {
 			isa = PBXGroup;
 			children = (
+				A6051B102125A13E00897387 /* Add */,
 				A63B0E2A21258A0A003000F9 /* Display */,
 				A6145143211B1974001335C5 /* List */,
 			);
@@ -1479,6 +1496,7 @@
 				A678B606210B2D2D0008EB10 /* UserPortraitScreenletManager.swift in Sources */,
 				A60D405C210F386800AB71D6 /* SessionContextModule.m in Sources */,
 				A63B0E272125820E003000F9 /* AudioDisplayScreenletView.swift in Sources */,
+				A6051B162125A30700897387 /* CommentAddScreenletModule.m in Sources */,
 				A614515721217AC2001335C5 /* RatingScreenletView.swift in Sources */,
 				A63B0E1921231B68003000F9 /* ImageDisplayScreenletManager.swift in Sources */,
 				A63B0E1F21256C72003000F9 /* VideoDisplayScreenletManager.swift in Sources */,
@@ -1504,8 +1522,10 @@
 				A678B60A210B2FD30008EB10 /* UserPortraitScreenletModule.m in Sources */,
 				A614514E211C5016001335C5 /* SignUpScreenletManager.swift in Sources */,
 				A614515921217CEF001335C5 /* RatingScreenletModule.m in Sources */,
+				A6051B122125A15900897387 /* CommentAddScreenletView.swift in Sources */,
 				A63B0E2321256CA3003000F9 /* VideoDisplayScreenletModule.m in Sources */,
 				A6145152211C5218001335C5 /* SignUpScreenletModule.m in Sources */,
+				A6051B142125A2D500897387 /* CommentAddScreenletManager.swift in Sources */,
 				A63B0E2121256C8A003000F9 /* VideoDisplayScreenletView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
