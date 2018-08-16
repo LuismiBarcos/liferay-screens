@@ -55,6 +55,9 @@
 		A63B0E1921231B68003000F9 /* ImageDisplayScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63B0E1821231B68003000F9 /* ImageDisplayScreenletManager.swift */; };
 		A63B0E1B21231BA7003000F9 /* ImageDisplayScreenletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63B0E1A21231BA7003000F9 /* ImageDisplayScreenletView.swift */; };
 		A63B0E1D21231E46003000F9 /* ImageDisplayScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A63B0E1C21231E46003000F9 /* ImageDisplayScreenletModule.m */; };
+		A63B0E1F21256C72003000F9 /* VideoDisplayScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63B0E1E21256C72003000F9 /* VideoDisplayScreenletManager.swift */; };
+		A63B0E2121256C8A003000F9 /* VideoDisplayScreenletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63B0E2021256C8A003000F9 /* VideoDisplayScreenletView.swift */; };
+		A63B0E2321256CA3003000F9 /* VideoDisplayScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A63B0E2221256CA3003000F9 /* VideoDisplayScreenletModule.m */; };
 		A678B5F3210B01650008EB10 /* LoginScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A678B5F2210B01650008EB10 /* LoginScreenletManager.swift */; };
 		A678B5F5210B01900008EB10 /* LoginScreenletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A678B5F4210B01900008EB10 /* LoginScreenletView.swift */; };
 		A678B5F7210B01DF0008EB10 /* LoginScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A678B5F6210B01DF0008EB10 /* LoginScreenletModule.m */; };
@@ -395,6 +398,9 @@
 		A63B0E1821231B68003000F9 /* ImageDisplayScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDisplayScreenletManager.swift; sourceTree = "<group>"; };
 		A63B0E1A21231BA7003000F9 /* ImageDisplayScreenletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDisplayScreenletView.swift; sourceTree = "<group>"; };
 		A63B0E1C21231E46003000F9 /* ImageDisplayScreenletModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageDisplayScreenletModule.m; sourceTree = "<group>"; };
+		A63B0E1E21256C72003000F9 /* VideoDisplayScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDisplayScreenletManager.swift; sourceTree = "<group>"; };
+		A63B0E2021256C8A003000F9 /* VideoDisplayScreenletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDisplayScreenletView.swift; sourceTree = "<group>"; };
+		A63B0E2221256CA3003000F9 /* VideoDisplayScreenletModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoDisplayScreenletModule.m; sourceTree = "<group>"; };
 		A678B5F1210B01640008EB10 /* LiferayScreensReactNative-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LiferayScreensReactNative-Bridging-Header.h"; sourceTree = "<group>"; };
 		A678B5F2210B01650008EB10 /* LoginScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenletManager.swift; sourceTree = "<group>"; };
 		A678B5F4210B01900008EB10 /* LoginScreenletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenletView.swift; sourceTree = "<group>"; };
@@ -758,7 +764,10 @@
 			children = (
 				A63B0E1821231B68003000F9 /* ImageDisplayScreenletManager.swift */,
 				A63B0E1A21231BA7003000F9 /* ImageDisplayScreenletView.swift */,
+				A63B0E2021256C8A003000F9 /* VideoDisplayScreenletView.swift */,
 				A63B0E1C21231E46003000F9 /* ImageDisplayScreenletModule.m */,
+				A63B0E1E21256C72003000F9 /* VideoDisplayScreenletManager.swift */,
+				A63B0E2221256CA3003000F9 /* VideoDisplayScreenletModule.m */,
 			);
 			path = FileDisplay;
 			sourceTree = "<group>";
@@ -1444,6 +1453,7 @@
 				A60D405C210F386800AB71D6 /* SessionContextModule.m in Sources */,
 				A614515721217AC2001335C5 /* RatingScreenletView.swift in Sources */,
 				A63B0E1921231B68003000F9 /* ImageDisplayScreenletManager.swift in Sources */,
+				A63B0E1F21256C72003000F9 /* VideoDisplayScreenletManager.swift in Sources */,
 				A68F8E5121219F600082A85C /* DDLFormScreenletManager.swift in Sources */,
 				A63B0E162122D4BF003000F9 /* WebContentDisplayScreenletModule.m in Sources */,
 				A6145147211B19AF001335C5 /* CommentListScreenletManager.swift in Sources */,
@@ -1462,7 +1472,9 @@
 				A678B60A210B2FD30008EB10 /* UserPortraitScreenletModule.m in Sources */,
 				A614514E211C5016001335C5 /* SignUpScreenletManager.swift in Sources */,
 				A614515921217CEF001335C5 /* RatingScreenletModule.m in Sources */,
+				A63B0E2321256CA3003000F9 /* VideoDisplayScreenletModule.m in Sources */,
 				A6145152211C5218001335C5 /* SignUpScreenletModule.m in Sources */,
+				A63B0E2121256C8A003000F9 /* VideoDisplayScreenletView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

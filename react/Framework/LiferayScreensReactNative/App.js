@@ -24,6 +24,7 @@ import ForgotPassword from './Components/ForgotPassword';
 import DDLForm from './Components/DDLForm';
 import WebContentDisplay from './Components/WebContentDisplay';
 import ImageDisplay from './Components/ImageDisplay';
+import VideoDisplay from './Components/VideoDisplay';
 
 export default class App extends Component {
   constructor(props) {
@@ -66,7 +67,8 @@ export default class App extends Component {
           {/* <ForgotPassword /> */}
           {/* <DDLForm /> */}
           {/* <WebContentDisplay /> */}
-          <ImageDisplay />
+          {/* <ImageDisplay /> */}
+          <VideoDisplay />
         </View>
       );
     } else {
