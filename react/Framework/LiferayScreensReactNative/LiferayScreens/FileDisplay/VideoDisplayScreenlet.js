@@ -15,8 +15,12 @@ export default class VideoDisplayScreenlet extends Component {
                 {...this.props}
                 onFileAssetResponse={this._onFileAssetResponse.bind(this)}
                 onFileAssetError={this._onFileAssetError.bind(this)}
-                // onRetrieveAssetSuccess={this._onRetrieveAssetSuccess.bind(this)}
-                // onError={this._onError.bind(this)}
+                // Android events
+                onVideoPrepared = {this._onVideoPrepared.bind(this)}
+                onVideoError = {this._onVideoError.bind(this)}
+                onVideoCompleted = {this._onVideoCompleted.bind(this)}
+                onRetrieveAssetSuccess = {this._onRetrieveAssetSuccess.bind(this)}
+                onError = {this._onError.bind(this)}
             />
         );
     }
@@ -39,19 +43,43 @@ export default class VideoDisplayScreenlet extends Component {
     }
 
     // Android events
-    // _onRetrieveAssetSuccess(assetEntry) {
-    //     console.log('_onRetrieveAssetSuccess -> ', assetEntry);
-    //     if(!this.props.onRetrieveAssetSuccess) {
-    //         return;
-    //     }
-    //     this.props.onRetrieveAssetSuccess(JSON.parse(assetEntry));
-    // }
+    _onVideoPrepared() {
+        console.log('_onVideoPrepared -> ');
+        if(!this.props.onVideoPrepared) {
+            return;
+        }
+        this.props.onVideoPrepared();
+    }
 
-    // _onError(error) {
-    //     console.log('_onError -> ', error);
-    //     if(!this.props.onError) {
-    //         return;
-    //     }
-    //     this.props.onError(error);
-    // }
+    _onVideoError(error) {
+        console.log('_onVideoPrepared -> ', error);
+        if(!this.props.onVideoError) {
+            return;
+        }
+        this.props.onVideoError(error);
+    }
+
+    _onVideoCompleted() {
+        console.log('_onVideoPrepared -> ');
+        if(!this.props.onVideoCompleted) {
+            return;
+        }
+        this.props.onVideoCompleted();
+    }
+
+    _onRetrieveAssetSuccess(assetEntry) {
+        console.log('_onVideoPrepared -> ', assetEntry);
+        if(!this.props.onRetrieveAssetSuccess) {
+            return;
+        }
+        this.props.onRetrieveAssetSuccess(assetEntry);
+    }
+
+    _onError(error) {
+        console.log('_onError -> ', error);
+        if(!this.props.onError) {
+            return;
+        }
+        this.props.onError(error);
+    }
 }
