@@ -23,6 +23,8 @@ import Rating from './Components/Rating';
 import ForgotPassword from './Components/ForgotPassword';
 import DDLForm from './Components/DDLForm';
 import WebContentDisplay from './Components/WebContentDisplay';
+import ImageDisplay from './Components/ImageDisplay';
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -62,8 +64,9 @@ export default class App extends Component {
           {/* <SignUp /> */}
           {/* <Rating /> */}
           {/* <ForgotPassword /> */}
-          <DDLForm />
+          {/* <DDLForm /> */}
           {/* <WebContentDisplay /> */}
+          <ImageDisplay />
         </View>
       );
     } else {
