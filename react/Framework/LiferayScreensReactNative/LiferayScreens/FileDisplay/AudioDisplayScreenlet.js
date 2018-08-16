@@ -15,8 +15,9 @@ export default class AudioDisplayScreenlet extends Component {
                 {...this.props}
                 onFileAssetResponse={this._onFileAssetResponse.bind(this)}
                 onFileAssetError={this._onFileAssetError.bind(this)}
-                // onRetrieveAssetSuccess={this._onRetrieveAssetSuccess.bind(this)}
-                // onError={this._onError.bind(this)}
+                // Android events
+                onRetrieveAssetSuccess={this._onRetrieveAssetSuccess.bind(this)}
+                onError={this._onError.bind(this)}
             />
         );
     }
@@ -39,19 +40,19 @@ export default class AudioDisplayScreenlet extends Component {
     }
 
     // Android events
-    // _onRetrieveAssetSuccess(assetEntry) {
-    //     console.log('_onRetrieveAssetSuccess -> ', assetEntry);
-    //     if(!this.props.onRetrieveAssetSuccess) {
-    //         return;
-    //     }
-    //     this.props.onRetrieveAssetSuccess(JSON.parse(assetEntry));
-    // }
+    _onRetrieveAssetSuccess(assetEntry) {
+        console.log('_onRetrieveAssetSuccess -> ', assetEntry);
+        if(!this.props.onRetrieveAssetSuccess) {
+            return;
+        }
+        this.props.onRetrieveAssetSuccess(JSON.parse(assetEntry));
+    }
 
-    // _onError(error) {
-    //     console.log('_onError -> ', error);
-    //     if(!this.props.onError) {
-    //         return;
-    //     }
-    //     this.props.onError(error);
-    // }
+    _onError(error) {
+        console.log('_onError -> ', error);
+        if(!this.props.onError) {
+            return;
+        }
+        this.props.onError(error);
+    }
 }

@@ -17,6 +17,7 @@ import LiferayScreenlets.Auth.SignUp.SignUpScreenletPackage;
 import LiferayScreenlets.Comment.List.CommnentListScreenletPackage;
 import LiferayScreenlets.Context.SessionContextPackage;
 import LiferayScreenlets.DDL.Form.DDLFormScreenletPackage;
+import LiferayScreenlets.FileDisplay.AudioDisplayScreenletPackage;
 import LiferayScreenlets.FileDisplay.ImageDisplayScreenletPackage;
 import LiferayScreenlets.FileDisplay.VideoDisplayScreenletPackage;
 import LiferayScreenlets.ImageGallery.ImageGalleryScreenletPackage;
@@ -47,7 +48,8 @@ public class MainApplication extends Application implements ReactApplication {
             new DDLFormScreenletPackage(),
             new WebContentDisplayScreenletPackage(),
             new ImageDisplayScreenletPackage(),
-            new VideoDisplayScreenletPackage()
+            new VideoDisplayScreenletPackage(),
+            new AudioDisplayScreenletPackage()
       );
     }
 
