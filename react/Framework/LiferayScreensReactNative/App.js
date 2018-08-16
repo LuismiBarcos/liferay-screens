@@ -26,6 +26,7 @@ import WebContentDisplay from './Components/WebContentDisplay';
 import ImageDisplay from './Components/ImageDisplay';
 import VideoDisplay from './Components/VideoDisplay';
 import AudioDisplay from './Components/AudioDisplay';
+import CommentDisplay from './Components/CommentDisplay';
 
 export default class App extends Component {
   constructor(props) {
@@ -70,7 +71,8 @@ export default class App extends Component {
           {/* <WebContentDisplay /> */}
           {/* <ImageDisplay /> */}
           {/* <VideoDisplay /> */}
-          <AudioDisplay />
+          {/* <AudioDisplay /> */}
+          <CommentDisplay />
         </View>
       );
     } else {
