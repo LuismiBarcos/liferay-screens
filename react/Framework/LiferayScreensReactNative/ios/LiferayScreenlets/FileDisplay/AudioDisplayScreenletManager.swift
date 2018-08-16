@@ -15,6 +15,4 @@ class AudioDisplayScreenletManager: RCTViewManager {
   override static func requiresMainQueueSetup() -> Bool {
     return false
   }
-  
-  override var methodQueue: DispatchQueue!
 }
