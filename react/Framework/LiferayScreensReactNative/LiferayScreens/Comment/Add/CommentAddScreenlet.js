@@ -18,6 +18,9 @@ export default class CommentAddScreenlet extends Component {
                 onAddCommentError={this._onAddCommentError.bind(this)}
                 onCommentUpdated={this._onCommentUpdated.bind(this)}
                 onUpdateCommentError={this._onUpdateCommentError.bind(this)}
+                // Android events
+                onAddCommentSuccess = {this._onAddCommentSuccess.bind(this)}
+                onError = {this._onError.bind(this)}
             />
         );
     }
@@ -53,5 +56,22 @@ export default class CommentAddScreenlet extends Component {
             return;
         }
         this.props.onUpdateCommentError(error)
+    }
+
+    // Android events
+    _onAddCommentSuccess(comment) {
+        console.log('_onAddCommentSuccess -> ', comment);
+        if(!this.props.onAddCommentSuccess) {
+            return;
+        }
+        this.props.onAddCommentSuccess(comment);
+    }
+
+    _onError(error) {
+        console.log('_onError -> ', error);
+        if(!this.props.onError) {
+            return;
+        }
+        this.props.onError(error);
     }
 }
