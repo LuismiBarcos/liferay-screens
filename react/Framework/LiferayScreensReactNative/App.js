@@ -14,7 +14,10 @@ import {Platform,
   NativeModules
 } from 'react-native';
 
+import { StackNavigator } from 'react-navigation';
+
 import Login from './Components/Login';
+import HomeScreen from './HomeScreen';
 import UserPortrait from './Components/UserPortrait';
 import ImageGallery from './Components/ImageGallery'
 import CommentList from './Components/CommentList';
@@ -28,6 +31,24 @@ import VideoDisplay from './Components/VideoDisplay';
 import AudioDisplay from './Components/AudioDisplay';
 import CommentDisplay from './Components/CommentDisplay';
 import CommentAdd from './Components/CommentAdd'
+
+const ScreenletsStack = StackNavigator({
+  HomeScreen:{ screen: HomeScreen },
+  UserPortrait:{ screen: UserPortrait },
+  ImageGallery:{ screen: ImageGallery},
+  CommentList:{ screen: CommentList },
+  SignUp:{ screen: SignUp },
+  Rating:{ screen: Rating },
+  ForgotPassword: {screen: ForgotPassword },
+  DDLForm: { screen: DDLForm },
+  WebContentDisplay: { screen: WebContentDisplay },
+  ImageDisplay: { screen: ImageDisplay },
+  VideoDisplay: { screen: VideoDisplay },
+  AudioDisplay: { screen: AudioDisplay },
+  CommentDisplay: { screen: CommentDisplay },
+  CommentAdd: { screen: CommentAdd }
+});
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -38,11 +59,10 @@ export default class App extends Component {
 
     this._onLoginSuccess = this._onLoginSuccess.bind(this);    
   }
-
+  
   async componentWillMount(){
     try {
       var userId = await SessionContext.loadCredentials()
-
       if(userId.user != 0) {
         this.setState({
           logged: true,
@@ -59,22 +79,29 @@ export default class App extends Component {
   render() {
     if(this.state.logged) {
       return (
-        <View style={styles.container}>
-        <Text> Logged with id {this.state.userId}</Text>
-          {/* <UserPortrait userId={this.state.userId}/> */}
-          {/* <ImageGallery />  */}
-          <CommentList />
-          {/* <SignUp /> */}
-          {/* <Rating /> */}
-          {/* <ForgotPassword /> */}
-          {/* <DDLForm /> */}
-          {/* <WebContentDisplay /> */}
-          {/* <ImageDisplay /> */}
-          {/* <VideoDisplay /> */}
-          {/* <AudioDisplay /> */}
-          {/* <CommentDisplay /> */}
-          <CommentAdd />
-        </View>
+        <ScreenletsStack userId={5}/>
+        // // <View style={styles.container}>
+        // {/* <Text> Logged with id {this.state.userId}</Text> */}
+        // {/* <Button 
+        //   title="Go to screenlet"
+        //   onPress={() => 
+        //     this.props.navigation.navigate('UserPortrait')
+        //   }
+        // /> */}
+        //   {/* <UserPortrait userId={this.state.userId}/> */}
+        //   {/* <ImageGallery />  */}
+        //   {/* <CommentList /> */}
+        //   {/* <SignUp /> */}
+        //   {/* <Rating /> */}
+        //   {/* <ForgotPassword /> */}
+        //   {/* <DDLForm /> */}
+        //   {/* <WebContentDisplay /> */}
+        //   {/* <ImageDisplay /> */}
+        //   {/* <VideoDisplay /> */}
+        //   {/* <AudioDisplay /> */}
+        //   {/* <CommentDisplay /> */}
+        //   {/* <CommentAdd /> */}
+        // {/* </View> */}
       );
     } else {
       return (

@@ -26,7 +26,6 @@ export default class CommentListScreenlet extends Component {
 
     //Events
     _onListResponseComments(event){
-        debugger;
         if(!this.props.onListResponseComments) {
             return;
         }
@@ -34,7 +33,6 @@ export default class CommentListScreenlet extends Component {
     }
 
     _onCommentListError(event){
-        debugger;
         if(!this.props.onCommentListError) {
             return;
         }
@@ -42,7 +40,6 @@ export default class CommentListScreenlet extends Component {
     }
 
     _onSelectedComment(event){
-        debugger;
         if(!this.props.onSelectedComment) {
             return;
         }
@@ -50,7 +47,6 @@ export default class CommentListScreenlet extends Component {
     }
 
     _onDeletedComment(event){
-        debugger;
         if(!this.props.onDeletedComment) {
             return;
         }
@@ -58,7 +54,6 @@ export default class CommentListScreenlet extends Component {
     }
 
     _onCommentDelete(event){
-        debugger;
         if(!this.props.onCommentDelete) {
             return;
         }
@@ -66,7 +61,6 @@ export default class CommentListScreenlet extends Component {
     }
 
     _onUpdatedComment(event){
-        debugger;
         if(!this.props.onUpdatedComment) {
             return;
         }
@@ -74,7 +68,6 @@ export default class CommentListScreenlet extends Component {
     }
 
     _onCommentUpdate(event){
-        debugger;
         if(!this.props.onCommentUpdate) {
             return;
         }

@@ -9,18 +9,24 @@ import {Platform,
 import UserPortraitScreenlet from "./../LiferayScreens/UserPortrait/UserPortraitScreenlet";
 
 export default class UserPortrait extends Component {
-    render() {
-        return(
-            <UserPortraitScreenlet 
-                style={styles.portrait}
-                onUserPortraitLoaded={this._userPortraitLoaded}
-                onUserPortraitError={this._userPortraitError}
-                onUserPortraitUploaded={this._onUserPortraitUploaded}
-                userId={this.props.userId}
-                
-            />
-        );
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      userId: this.props.navigation.getParam('userId', 0)
+    };
+  }
+  
+  render() {
+    return(
+        <UserPortraitScreenlet 
+            style={styles.portrait}
+            onUserPortraitLoaded={this._userPortraitLoaded}
+            onUserPortraitError={this._userPortraitError}
+            onUserPortraitUploaded={this._onUserPortraitUploaded}
+            userId={this.state.userId}
+        />
+    );
+  }
 
     // UserPortrait events
   _userPortraitLoaded(image){
