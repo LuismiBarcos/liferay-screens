@@ -41,6 +41,7 @@
 		A6051B122125A15900897387 /* CommentAddScreenletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6051B112125A15900897387 /* CommentAddScreenletView.swift */; };
 		A6051B142125A2D500897387 /* CommentAddScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6051B132125A2D500897387 /* CommentAddScreenletManager.swift */; };
 		A6051B162125A30700897387 /* CommentAddScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A6051B152125A30700897387 /* CommentAddScreenletModule.m */; };
+		A6051B3D2126F94F00897387 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		A60D405A210F35E500AB71D6 /* SessionContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60D4059210F35E500AB71D6 /* SessionContextManager.swift */; };
 		A60D405C210F386800AB71D6 /* SessionContextModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A60D405B210F386800AB71D6 /* SessionContextModule.m */; };
 		A6145147211B19AF001335C5 /* CommentListScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6145146211B19AF001335C5 /* CommentListScreenletManager.swift */; };
@@ -456,6 +457,7 @@
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
+				A6051B3D2126F94F00897387 /* libRCTLinking.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
