@@ -136,6 +136,12 @@ export default class HomeScreen extends Component {
                                 title="Asset display"
                             />
                         </View>
+                        <View style={styles.button}>
+                            <Button style={styles.button}
+                                onPress={() => navigate('WebContentList')}
+                                title="Web content list"
+                            />
+                        </View>
                     </View>
                 </ScrollView>
             );

@@ -53,4 +53,21 @@ export default class AssetDisplayScreenlet extends Component {
         }
         this.props.onAsset(asset);
     }
+
+    // Android events
+    _onRetrieveAssetSuccess(assetEntry) {
+        console.log('_onRetrieveAssetSuccess -> ', assetEntry);
+        if(!this.props.onRetrieveAssetSuccess) {
+            return;
+        }
+        this.props.onRetrieveAssetSuccess(assetEntry);
+    }
+
+    _onError(error) {
+        console.log('_onError -> ', error);
+        if(!this.props.onError) {
+            return;
+        }
+        this.props.onError(error);
+    }
 }

@@ -11,6 +11,7 @@ import com.facebook.soloader.SoLoader;
 import java.util.Arrays;
 import java.util.List;
 
+import LiferayScreenlets.Asset.Display.AssetDisplayScreenletPackage;
 import LiferayScreenlets.Asset.List.AssetListScreenletPackage;
 import LiferayScreenlets.Auth.ForgotPassword.ForgotPasswordPackage;
 import LiferayScreenlets.Auth.Login.LoginScreenletPackage;
@@ -57,7 +58,8 @@ public class MainApplication extends Application implements ReactApplication {
             new CommentDisplayScreenletPackage(),
             new CommentAddScreenletPackage(),
             new PdfDisplayScreenletPackage(),
-            new AssetListScreenletPackage()
+            new AssetListScreenletPackage(),
+            new AssetDisplayScreenletPackage()
       );
     }
 
