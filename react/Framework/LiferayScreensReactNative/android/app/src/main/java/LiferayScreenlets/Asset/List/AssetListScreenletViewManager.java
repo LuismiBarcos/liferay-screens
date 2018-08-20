@@ -57,7 +57,7 @@ public class AssetListScreenletViewManager extends SimpleViewManager<AssetListSc
     }
 
     @ReactProp(name = "portletItemName")
-    public void setClassName(AssetListScreenlet screenlet, String portletItemName) {
+    public void setPortletItemName(AssetListScreenlet screenlet, String portletItemName) {
         this.screenlet.setPortletItemName(portletItemName);
         if(this.screenlet.getClassNameId() == 0){
             this.screenlet.loadPage(0);
