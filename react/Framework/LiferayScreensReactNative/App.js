@@ -32,6 +32,7 @@ import AudioDisplay from './Components/AudioDisplay';
 import CommentDisplay from './Components/CommentDisplay';
 import CommentAdd from './Components/CommentAdd';
 import PdfDisplay from './Components/PdfDisplay';
+import AssetList from './Components/AssetList'
 
 const ScreenletsStack = StackNavigator({
   HomeScreen:{ screen: HomeScreen },
@@ -48,7 +49,8 @@ const ScreenletsStack = StackNavigator({
   AudioDisplay: { screen: AudioDisplay },
   CommentDisplay: { screen: CommentDisplay },
   CommentAdd: { screen: CommentAdd },
-  PdfDisplay: { screen: PdfDisplay}
+  PdfDisplay: { screen: PdfDisplay},
+  AssetList: { screen: AssetList}
 });
 
 export default class App extends Component {

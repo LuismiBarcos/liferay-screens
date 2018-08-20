@@ -122,6 +122,12 @@ export default class HomeScreen extends Component {
                                 title="Pdf display"
                             />
                         </View>
+                        <View style={styles.button}>
+                            <Button style={styles.button}
+                                onPress={() => navigate('AssetList')}
+                                title="Asset list"
+                            />
+                        </View>
                     </View>
                 </ScrollView>
             );
