@@ -42,6 +42,9 @@
 		A6051B142125A2D500897387 /* CommentAddScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6051B132125A2D500897387 /* CommentAddScreenletManager.swift */; };
 		A6051B162125A30700897387 /* CommentAddScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A6051B152125A30700897387 /* CommentAddScreenletModule.m */; };
 		A6051B3D2126F94F00897387 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
+		A6051B62212AA99400897387 /* PdfDisplayScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6051B61212AA99400897387 /* PdfDisplayScreenletManager.swift */; };
+		A6051B64212AA9AF00897387 /* PdfDisplayScreenletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6051B63212AA9AF00897387 /* PdfDisplayScreenletView.swift */; };
+		A6051B67212AAA6C00897387 /* PdfDisplayScreenletManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6051B66212AAA6C00897387 /* PdfDisplayScreenletManager.m */; };
 		A60D405A210F35E500AB71D6 /* SessionContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60D4059210F35E500AB71D6 /* SessionContextManager.swift */; };
 		A60D405C210F386800AB71D6 /* SessionContextModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A60D405B210F386800AB71D6 /* SessionContextModule.m */; };
 		A6145147211B19AF001335C5 /* CommentListScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6145146211B19AF001335C5 /* CommentListScreenletManager.swift */; };
@@ -394,6 +397,9 @@
 		A6051B112125A15900897387 /* CommentAddScreenletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentAddScreenletView.swift; sourceTree = "<group>"; };
 		A6051B132125A2D500897387 /* CommentAddScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentAddScreenletManager.swift; sourceTree = "<group>"; };
 		A6051B152125A30700897387 /* CommentAddScreenletModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentAddScreenletModule.m; sourceTree = "<group>"; };
+		A6051B61212AA99400897387 /* PdfDisplayScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfDisplayScreenletManager.swift; sourceTree = "<group>"; };
+		A6051B63212AA9AF00897387 /* PdfDisplayScreenletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfDisplayScreenletView.swift; sourceTree = "<group>"; };
+		A6051B66212AAA6C00897387 /* PdfDisplayScreenletManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PdfDisplayScreenletManager.m; sourceTree = "<group>"; };
 		A60D4059210F35E500AB71D6 /* SessionContextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionContextManager.swift; sourceTree = "<group>"; };
 		A60D405B210F386800AB71D6 /* SessionContextModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionContextModule.m; sourceTree = "<group>"; };
 		A6145146211B19AF001335C5 /* CommentListScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentListScreenletManager.swift; sourceTree = "<group>"; };
@@ -803,6 +809,9 @@
 				A63B0E1E21256C72003000F9 /* VideoDisplayScreenletManager.swift */,
 				A63B0E24212581EA003000F9 /* AudioDisplayScreenletManager.swift */,
 				A63B0E2221256CA3003000F9 /* VideoDisplayScreenletModule.m */,
+				A6051B61212AA99400897387 /* PdfDisplayScreenletManager.swift */,
+				A6051B63212AA9AF00897387 /* PdfDisplayScreenletView.swift */,
+				A6051B66212AAA6C00897387 /* PdfDisplayScreenletManager.m */,
 			);
 			path = FileDisplay;
 			sourceTree = "<group>";
@@ -1491,6 +1500,7 @@
 				A614514B211B1FAE001335C5 /* CommentListScreenletModule.m in Sources */,
 				A68F8E5421219F770082A85C /* DDLFormScreenletView.swift in Sources */,
 				A6145149211B19EE001335C5 /* CommentListScreenletView.swift in Sources */,
+				A6051B64212AA9AF00897387 /* PdfDisplayScreenletView.swift in Sources */,
 				A678B5F5210B01900008EB10 /* LoginScreenletView.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				A678B5F3210B01650008EB10 /* LoginScreenletManager.swift in Sources */,
@@ -1514,9 +1524,11 @@
 				A63B0E2C21258A3E003000F9 /* CommentDisplayScreenletView.swift in Sources */,
 				A678B611210F09850008EB10 /* ImageGalleryScreenletModule.m in Sources */,
 				A614515E21218AD9001335C5 /* ForgotPasswordScreenletView.swift in Sources */,
+				A6051B62212AA99400897387 /* PdfDisplayScreenletManager.swift in Sources */,
 				A63B0E292125826D003000F9 /* AudioDisplayScreenletModule.m in Sources */,
 				A678B5F7210B01DF0008EB10 /* LoginScreenletModule.m in Sources */,
 				A68F8E4D21218CE90082A85C /* ForgotPasswordScreenletManager.m in Sources */,
+				A6051B67212AAA6C00897387 /* PdfDisplayScreenletManager.m in Sources */,
 				A6145150211C504B001335C5 /* SignUpScreenletView.swift in Sources */,
 				A63B0E142122D2BC003000F9 /* WebContentDisplayScreenletView.swift in Sources */,
 				A60D405A210F35E500AB71D6 /* SessionContextManager.swift in Sources */,

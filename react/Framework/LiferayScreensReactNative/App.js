@@ -30,7 +30,8 @@ import ImageDisplay from './Components/ImageDisplay';
 import VideoDisplay from './Components/VideoDisplay';
 import AudioDisplay from './Components/AudioDisplay';
 import CommentDisplay from './Components/CommentDisplay';
-import CommentAdd from './Components/CommentAdd'
+import CommentAdd from './Components/CommentAdd';
+import PdfDisplay from './Components/PdfDisplay';
 
 const ScreenletsStack = StackNavigator({
   HomeScreen:{ screen: HomeScreen },
@@ -46,7 +47,8 @@ const ScreenletsStack = StackNavigator({
   VideoDisplay: { screen: VideoDisplay },
   AudioDisplay: { screen: AudioDisplay },
   CommentDisplay: { screen: CommentDisplay },
-  CommentAdd: { screen: CommentAdd }
+  CommentAdd: { screen: CommentAdd },
+  PdfDisplay: { screen: PdfDisplay}
 });
 
 export default class App extends Component {
@@ -57,68 +59,46 @@ export default class App extends Component {
       logged: false
     };
 
-    this._onLoginSuccess = this._onLoginSuccess.bind(this);    
+    // this._onLoginSuccess = this._onLoginSuccess.bind(this);    
   }
   
-  async componentWillMount(){
-    try {
-      var userId = await SessionContext.loadCredentials()
-      if(userId.user != 0) {
-        this.setState({
-          logged: true,
-          userId: userId.user
-        });
-      }
-    } catch(e) {
-      this.setState({
-        logged: false,
-      });
-    }
-  }
+  // async componentWillMount(){
+  //   try {
+  //     var userId = await SessionContext.loadCredentials()
+  //     if(userId.user != 0) {
+  //       this.setState({
+  //         logged: true,
+  //         userId: userId.user
+  //       });
+  //     }
+  //   } catch(e) {
+  //     this.setState({
+  //       logged: false,
+  //     });
+  //   }
+  // }
   
   render() {
-    if(this.state.logged) {
+    // if(this.state.logged) {
       return (
-        <ScreenletsStack userId={5}/>
-        // // <View style={styles.container}>
-        // {/* <Text> Logged with id {this.state.userId}</Text> */}
-        // {/* <Button 
-        //   title="Go to screenlet"
-        //   onPress={() => 
-        //     this.props.navigation.navigate('UserPortrait')
-        //   }
-        // /> */}
-        //   {/* <UserPortrait userId={this.state.userId}/> */}
-        //   {/* <ImageGallery />  */}
-        //   {/* <CommentList /> */}
-        //   {/* <SignUp /> */}
-        //   {/* <Rating /> */}
-        //   {/* <ForgotPassword /> */}
-        //   {/* <DDLForm /> */}
-        //   {/* <WebContentDisplay /> */}
-        //   {/* <ImageDisplay /> */}
-        //   {/* <VideoDisplay /> */}
-        //   {/* <AudioDisplay /> */}
-        //   {/* <CommentDisplay /> */}
-        //   {/* <CommentAdd /> */}
-        // {/* </View> */}
+        <ScreenletsStack />
       );
-    } else {
-      return (
-        <View style={styles.container}>
-          <Login onLoginSuccess={this._onLoginSuccess} />
-        </View>
-      );
-    }
+    // } else {
+    //   return (
+    //     <View style={styles.container}>
+    //       <Login onLoginSuccess={this._onLoginSuccess} />
+    //     </View>
+    //   );
+    // }
   }
 
   //Login success
-  _onLoginSuccess(userId) {
-    this.setState({
-			logged: true,
-			userId: userId
-    });
-  }
+  // _onLoginSuccess(userId) {
+  //   this.setState({
+	// 		logged: true,
+	// 		userId: userId
+  //   });
+  // }
 }
 
 const SessionContext = NativeModules.SessionContextManager;

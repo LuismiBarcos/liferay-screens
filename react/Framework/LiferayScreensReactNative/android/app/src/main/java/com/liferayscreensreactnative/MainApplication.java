@@ -21,6 +21,7 @@ import LiferayScreenlets.Context.SessionContextPackage;
 import LiferayScreenlets.DDL.Form.DDLFormScreenletPackage;
 import LiferayScreenlets.FileDisplay.AudioDisplayScreenletPackage;
 import LiferayScreenlets.FileDisplay.ImageDisplayScreenletPackage;
+import LiferayScreenlets.FileDisplay.PdfDisplayScreenletPackage;
 import LiferayScreenlets.FileDisplay.VideoDisplayScreenletPackage;
 import LiferayScreenlets.ImageGallery.ImageGalleryScreenletPackage;
 import LiferayScreenlets.Rating.RatingScreenletPackage;
@@ -53,7 +54,8 @@ public class MainApplication extends Application implements ReactApplication {
             new VideoDisplayScreenletPackage(),
             new AudioDisplayScreenletPackage(),
             new CommentDisplayScreenletPackage(),
-            new CommentAddScreenletPackage()
+            new CommentAddScreenletPackage(),
+            new PdfDisplayScreenletPackage()
       );
     }
 

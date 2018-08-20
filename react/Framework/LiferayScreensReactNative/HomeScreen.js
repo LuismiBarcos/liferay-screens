@@ -116,6 +116,12 @@ export default class HomeScreen extends Component {
                                 title="Comment Add"
                             />
                         </View>
+                        <View style={styles.button}>
+                            <Button style={styles.button}
+                                onPress={() => navigate('PdfDisplay')}
+                                title="Pdf display"
+                            />
+                        </View>
                     </View>
                 </ScrollView>
             );
