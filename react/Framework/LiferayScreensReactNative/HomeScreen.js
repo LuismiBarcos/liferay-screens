@@ -7,7 +7,9 @@ import {Platform,
     ScrollView,
     NativeModules
   } from 'react-native';
+
 import Login from './Components/Login'
+
 export default class HomeScreen extends Component {
     static navigationOptions = {
       title: 'Screenlets demo',
@@ -126,6 +128,12 @@ export default class HomeScreen extends Component {
                             <Button style={styles.button}
                                 onPress={() => navigate('AssetList')}
                                 title="Asset list"
+                            />
+                        </View>
+                        <View style={styles.button}>
+                            <Button style={styles.button}
+                                onPress={() => navigate('AssetDisplay')}
+                                title="Asset display"
                             />
                         </View>
                     </View>

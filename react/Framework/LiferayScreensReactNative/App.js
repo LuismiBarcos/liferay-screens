@@ -16,7 +16,6 @@ import {Platform,
 
 import { StackNavigator } from 'react-navigation';
 
-import Login from './Components/Login';
 import HomeScreen from './HomeScreen';
 import UserPortrait from './Components/UserPortrait';
 import ImageGallery from './Components/ImageGallery'
@@ -32,7 +31,8 @@ import AudioDisplay from './Components/AudioDisplay';
 import CommentDisplay from './Components/CommentDisplay';
 import CommentAdd from './Components/CommentAdd';
 import PdfDisplay from './Components/PdfDisplay';
-import AssetList from './Components/AssetList'
+import AssetList from './Components/AssetList';
+import AssetDisplay from './Components/AssetDisplay';
 
 const ScreenletsStack = StackNavigator({
   HomeScreen:{ screen: HomeScreen },
@@ -50,66 +50,14 @@ const ScreenletsStack = StackNavigator({
   CommentDisplay: { screen: CommentDisplay },
   CommentAdd: { screen: CommentAdd },
   PdfDisplay: { screen: PdfDisplay},
-  AssetList: { screen: AssetList}
+  AssetList: { screen: AssetList},
+  AssetDisplay: { screen: AssetDisplay}
 });
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      logged: false
-    };
-
-    // this._onLoginSuccess = this._onLoginSuccess.bind(this);    
-  }
-  
-  // async componentWillMount(){
-  //   try {
-  //     var userId = await SessionContext.loadCredentials()
-  //     if(userId.user != 0) {
-  //       this.setState({
-  //         logged: true,
-  //         userId: userId.user
-  //       });
-  //     }
-  //   } catch(e) {
-  //     this.setState({
-  //       logged: false,
-  //     });
-  //   }
-  // }
-  
   render() {
-    // if(this.state.logged) {
       return (
         <ScreenletsStack />
       );
-    // } else {
-    //   return (
-    //     <View style={styles.container}>
-    //       <Login onLoginSuccess={this._onLoginSuccess} />
-    //     </View>
-    //   );
-    // }
   }
-
-  //Login success
-  // _onLoginSuccess(userId) {
-  //   this.setState({
-	// 		logged: true,
-	// 		userId: userId
-  //   });
-  // }
 }
-
-const SessionContext = NativeModules.SessionContextManager;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,    
-    backgroundColor: '#F5FCFF',
-    alignItems: 'center',
-    justifyContent: 'flex-start'
-  }
-});

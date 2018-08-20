@@ -55,7 +55,9 @@ class AssetListScreenletView: RCTView, AssetListScreenletDelegate {
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-
+  
+  // MARK: AssetListScreenletDelegate methods
+  
   func screenlet(_ screenlet: AssetListScreenlet, onAssetListResponse assets: [Asset]) {
     let assetsAttributes = assets.map{
       $0.attributes

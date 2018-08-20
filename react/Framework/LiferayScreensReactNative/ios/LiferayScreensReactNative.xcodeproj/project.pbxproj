@@ -88,6 +88,9 @@
 		A68F8E5121219F600082A85C /* DDLFormScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F8E5021219F600082A85C /* DDLFormScreenletManager.swift */; };
 		A68F8E5421219F770082A85C /* DDLFormScreenletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F8E5321219F770082A85C /* DDLFormScreenletView.swift */; };
 		A68F8E5621219F8B0082A85C /* DDLFormScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A68F8E5521219F8B0082A85C /* DDLFormScreenletModule.m */; };
+		A6EAFD82212AFF480072D7C8 /* AssetDisplayScreenletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EAFD81212AFF480072D7C8 /* AssetDisplayScreenletView.swift */; };
+		A6EAFD84212B020F0072D7C8 /* AssetDisplayScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EAFD83212B020F0072D7C8 /* AssetDisplayScreenletManager.swift */; };
+		A6EAFD86212B024C0072D7C8 /* AssetDisplayScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EAFD85212B024C0072D7C8 /* AssetDisplayScreenletModule.m */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		D08BFC75B4C7DDE5C348C890 /* Pods_LiferayScreensReactNative.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C9DC2BB322CA17601E395A /* Pods_LiferayScreensReactNative.framework */; };
 /* End PBXBuildFile section */
@@ -447,6 +450,9 @@
 		A68F8E5021219F600082A85C /* DDLFormScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDLFormScreenletManager.swift; sourceTree = "<group>"; };
 		A68F8E5321219F770082A85C /* DDLFormScreenletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDLFormScreenletView.swift; sourceTree = "<group>"; };
 		A68F8E5521219F8B0082A85C /* DDLFormScreenletModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDLFormScreenletModule.m; sourceTree = "<group>"; };
+		A6EAFD81212AFF480072D7C8 /* AssetDisplayScreenletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDisplayScreenletView.swift; sourceTree = "<group>"; };
+		A6EAFD83212B020F0072D7C8 /* AssetDisplayScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDisplayScreenletManager.swift; sourceTree = "<group>"; };
+		A6EAFD85212B024C0072D7C8 /* AssetDisplayScreenletModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetDisplayScreenletModule.m; sourceTree = "<group>"; };
 		AB1ED82B7B85E932D100FADB /* Pods-LiferayScreensReactNative.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiferayScreensReactNative.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiferayScreensReactNative/Pods-LiferayScreensReactNative.debug.xcconfig"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		D2C9DC2BB322CA17601E395A /* Pods_LiferayScreensReactNative.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiferayScreensReactNative.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -729,6 +735,7 @@
 		A6051B68212AD5EB00897387 /* Asset */ = {
 			isa = PBXGroup;
 			children = (
+				A6EAFD5B212AFF2B0072D7C8 /* Display */,
 				A6051B69212AD5F700897387 /* List */,
 			);
 			path = Asset;
@@ -924,6 +931,16 @@
 				A68F8E5521219F8B0082A85C /* DDLFormScreenletModule.m */,
 			);
 			path = Form;
+			sourceTree = "<group>";
+		};
+		A6EAFD5B212AFF2B0072D7C8 /* Display */ = {
+			isa = PBXGroup;
+			children = (
+				A6EAFD81212AFF480072D7C8 /* AssetDisplayScreenletView.swift */,
+				A6EAFD83212B020F0072D7C8 /* AssetDisplayScreenletManager.swift */,
+				A6EAFD85212B024C0072D7C8 /* AssetDisplayScreenletModule.m */,
+			);
+			path = Display;
 			sourceTree = "<group>";
 		};
 		ADBDB9201DFEBF0600ED6528 /* Products */ = {
@@ -1536,6 +1553,7 @@
 				A63B0E272125820E003000F9 /* AudioDisplayScreenletView.swift in Sources */,
 				A6051B162125A30700897387 /* CommentAddScreenletModule.m in Sources */,
 				A614515721217AC2001335C5 /* RatingScreenletView.swift in Sources */,
+				A6EAFD84212B020F0072D7C8 /* AssetDisplayScreenletManager.swift in Sources */,
 				A63B0E1921231B68003000F9 /* ImageDisplayScreenletManager.swift in Sources */,
 				A63B0E1F21256C72003000F9 /* VideoDisplayScreenletManager.swift in Sources */,
 				A68F8E5121219F600082A85C /* DDLFormScreenletManager.swift in Sources */,
@@ -1549,8 +1567,10 @@
 				A6051AE821258CDB00897387 /* CommentDisplayScreenletManager.swift in Sources */,
 				A63B0E25212581EA003000F9 /* AudioDisplayScreenletManager.swift in Sources */,
 				A63B0E2C21258A3E003000F9 /* CommentDisplayScreenletView.swift in Sources */,
+				A6EAFD86212B024C0072D7C8 /* AssetDisplayScreenletModule.m in Sources */,
 				A678B611210F09850008EB10 /* ImageGalleryScreenletModule.m in Sources */,
 				A614515E21218AD9001335C5 /* ForgotPasswordScreenletView.swift in Sources */,
+				A6EAFD82212AFF480072D7C8 /* AssetDisplayScreenletView.swift in Sources */,
 				A6051B62212AA99400897387 /* PdfDisplayScreenletManager.swift in Sources */,
 				A63B0E292125826D003000F9 /* AudioDisplayScreenletModule.m in Sources */,
 				A678B5F7210B01DF0008EB10 /* LoginScreenletModule.m in Sources */,
