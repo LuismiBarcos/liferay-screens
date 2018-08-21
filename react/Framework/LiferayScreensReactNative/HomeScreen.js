@@ -160,6 +160,12 @@ export default class HomeScreen extends Component {
                                 title="File Display"
                             />
                         </View>
+                        <View style={styles.button}>
+                            <Button style={styles.button}
+                                onPress={() => navigate('Web')}
+                                title="Web"
+                            />
+                        </View>
                     </View>
                 </ScrollView>
             );

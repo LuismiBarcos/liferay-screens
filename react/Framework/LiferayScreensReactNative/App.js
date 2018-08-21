@@ -37,6 +37,7 @@ import WebContentList from './Components/WebContentList';
 import BlogsEntryDisplay from './Components/BlogsEntryDisplay';
 import DDLList from './Components/DDLList';
 import FileDisplay from './Components/FileDisplay';
+import Web from './Components/Web';
 
 const ScreenletsStack = StackNavigator({
   HomeScreen:{ screen: HomeScreen },
@@ -59,7 +60,8 @@ const ScreenletsStack = StackNavigator({
   WebContentList: { screen: WebContentList},
   BlogsEntryDisplay: { screen: BlogsEntryDisplay},
   DDLList: { screen: DDLList},
-  FileDisplay: { screen: FileDisplay}
+  FileDisplay: { screen: FileDisplay},
+  Web: { screen: Web}
 });
 
 export default class App extends Component {

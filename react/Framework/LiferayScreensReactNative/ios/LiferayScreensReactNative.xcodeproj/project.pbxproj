@@ -51,6 +51,9 @@
 		A60638F3212C391C00E78951 /* FileDisplayScreenletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60638F2212C391C00E78951 /* FileDisplayScreenletView.swift */; };
 		A606391A212C3ABF00E78951 /* FileDisplayScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6063919212C3ABF00E78951 /* FileDisplayScreenletManager.swift */; };
 		A606391C212C3AF900E78951 /* FileDisplayScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A606391B212C3AF900E78951 /* FileDisplayScreenletModule.m */; };
+		A606391F212C4C0C00E78951 /* WebScreenletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A606391E212C4C0C00E78951 /* WebScreenletView.swift */; };
+		A6063921212C4D8700E78951 /* WebScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6063920212C4D8700E78951 /* WebScreenletManager.swift */; };
+		A6063926212C50FE00E78951 /* WebScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A6063925212C50FE00E78951 /* WebScreenletModule.m */; };
 		A60D405A210F35E500AB71D6 /* SessionContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60D4059210F35E500AB71D6 /* SessionContextManager.swift */; };
 		A60D405C210F386800AB71D6 /* SessionContextModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A60D405B210F386800AB71D6 /* SessionContextModule.m */; };
 		A6145147211B19AF001335C5 /* CommentListScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6145146211B19AF001335C5 /* CommentListScreenletManager.swift */; };
@@ -424,6 +427,9 @@
 		A60638F2212C391C00E78951 /* FileDisplayScreenletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDisplayScreenletView.swift; sourceTree = "<group>"; };
 		A6063919212C3ABF00E78951 /* FileDisplayScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDisplayScreenletManager.swift; sourceTree = "<group>"; };
 		A606391B212C3AF900E78951 /* FileDisplayScreenletModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileDisplayScreenletModule.m; sourceTree = "<group>"; };
+		A606391E212C4C0C00E78951 /* WebScreenletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebScreenletView.swift; sourceTree = "<group>"; };
+		A6063920212C4D8700E78951 /* WebScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebScreenletManager.swift; sourceTree = "<group>"; };
+		A6063925212C50FE00E78951 /* WebScreenletModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebScreenletModule.m; sourceTree = "<group>"; };
 		A60D4059210F35E500AB71D6 /* SessionContextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionContextManager.swift; sourceTree = "<group>"; };
 		A60D405B210F386800AB71D6 /* SessionContextModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionContextModule.m; sourceTree = "<group>"; };
 		A6145146211B19AF001335C5 /* CommentListScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentListScreenletManager.swift; sourceTree = "<group>"; };
@@ -775,6 +781,16 @@
 			path = List;
 			sourceTree = "<group>";
 		};
+		A606391D212C4BF700E78951 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				A606391E212C4C0C00E78951 /* WebScreenletView.swift */,
+				A6063920212C4D8700E78951 /* WebScreenletManager.swift */,
+				A6063925212C50FE00E78951 /* WebScreenletModule.m */,
+			);
+			path = Web;
+			sourceTree = "<group>";
+		};
 		A60D4033210F35C500AB71D6 /* Context */ = {
 			isa = PBXGroup;
 			children = (
@@ -888,6 +904,7 @@
 		A678B5C9210B01180008EB10 /* LiferayScreenlets */ = {
 			isa = PBXGroup;
 			children = (
+				A606391D212C4BF700E78951 /* Web */,
 				A6EAFD8E212C03B20072D7C8 /* Blogs */,
 				A6051B68212AD5EB00897387 /* Asset */,
 				A63B0E1721231B15003000F9 /* FileDisplay */,
@@ -1621,6 +1638,7 @@
 				A6EAFD84212B020F0072D7C8 /* AssetDisplayScreenletManager.swift in Sources */,
 				A63B0E1921231B68003000F9 /* ImageDisplayScreenletManager.swift in Sources */,
 				A63B0E1F21256C72003000F9 /* VideoDisplayScreenletManager.swift in Sources */,
+				A606391F212C4C0C00E78951 /* WebScreenletView.swift in Sources */,
 				A68F8E5121219F600082A85C /* DDLFormScreenletManager.swift in Sources */,
 				A63B0E162122D4BF003000F9 /* WebContentDisplayScreenletModule.m in Sources */,
 				A6145147211B19AF001335C5 /* CommentListScreenletManager.swift in Sources */,
@@ -1650,8 +1668,10 @@
 				A60D405A210F35E500AB71D6 /* SessionContextManager.swift in Sources */,
 				A6EAFD8D212B1EE80072D7C8 /* WebContentListScreenletModule.m in Sources */,
 				A63B0E1B21231BA7003000F9 /* ImageDisplayScreenletView.swift in Sources */,
+				A6063921212C4D8700E78951 /* WebScreenletManager.swift in Sources */,
 				A678B60A210B2FD30008EB10 /* UserPortraitScreenletModule.m in Sources */,
 				A606391A212C3ABF00E78951 /* FileDisplayScreenletManager.swift in Sources */,
+				A6063926212C50FE00E78951 /* WebScreenletModule.m in Sources */,
 				A6051B6F212AE6E400897387 /* AssetListScreenletModule.m in Sources */,
 				A614514E211C5016001335C5 /* SignUpScreenletManager.swift in Sources */,
 				A614515921217CEF001335C5 /* RatingScreenletModule.m in Sources */,
