@@ -30,6 +30,7 @@ import LiferayScreenlets.FileDisplay.VideoDisplayScreenletPackage;
 import LiferayScreenlets.ImageGallery.ImageGalleryScreenletPackage;
 import LiferayScreenlets.Rating.RatingScreenletPackage;
 import LiferayScreenlets.UserPortrait.UserPortraitScreenletPackage;
+import LiferayScreenlets.Web.WebScreenletPackage;
 import LiferayScreenlets.WebContent.Display.WebContentDisplayScreenletPackage;
 import LiferayScreenlets.WebContent.List.WebContentListScreenletPackage;
 
@@ -65,7 +66,8 @@ public class MainApplication extends Application implements ReactApplication {
             new AssetDisplayScreenletPackage(),
             new WebContentListScreenletPackage(),
             new BlogsEntryDisplayScreenletPackage(),
-            new DDLListScreenletPackage()
+            new DDLListScreenletPackage(),
+            new WebScreenletPackage()
       );
     }
 

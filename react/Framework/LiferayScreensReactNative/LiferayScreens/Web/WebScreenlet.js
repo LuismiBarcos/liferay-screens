@@ -17,6 +17,10 @@ export default class WebScreenlet extends Component {
                 onPageLoaded={this._onPageLoaded.bind(this)}
                 onWebError={this._onWebError.bind(this)}
                 onNotify={this._onNotify.bind(this)}
+                // android events
+                onPageLoaded = {this._onPageLoaded.bind(this)}
+                onScriptMessageHandler = {this._onScriptMessageHandler.bind(this)}
+                onError = {this._onError.bind(this)}
             />
         );
     }
@@ -44,5 +48,30 @@ export default class WebScreenlet extends Component {
             return;
         }
         this.props.onNotify(namespace, message);
+    }
+
+    // Android events
+    _onPageLoaded(page) {
+        console.log('_onPageLoaded -> ', page);
+        if(!this.props.onWebContentReceived) {
+            return;
+        }
+        this.props.onWebContentReceived(page);
+    }
+
+    _onScriptMessageHandler(message) {
+        console.log('_onScriptMessageHandler -> ', message);
+        if(!this.props.onScriptMessageHandler) {
+            return;
+        }
+        this.props.onScriptMessageHandler(message);
+    }
+
+    _onError(error) {
+        console.log('_onError -> ', error);
+        if(!this.props.onError) {
+            return;
+        }
+        this.props.onError(error);
     }
 }
