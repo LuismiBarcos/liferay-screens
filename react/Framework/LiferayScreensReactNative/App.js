@@ -35,6 +35,7 @@ import AssetList from './Components/AssetList';
 import AssetDisplay from './Components/AssetDisplay';
 import WebContentList from './Components/WebContentList';
 import BlogsEntryDisplay from './Components/BlogsEntryDisplay';
+import DDLList from './Components/DDLList'
 
 const ScreenletsStack = StackNavigator({
   HomeScreen:{ screen: HomeScreen },
@@ -55,7 +56,8 @@ const ScreenletsStack = StackNavigator({
   AssetList: { screen: AssetList},
   AssetDisplay: { screen: AssetDisplay},
   WebContentList: { screen: WebContentList},
-  BlogsEntryDisplay: { screen: BlogsEntryDisplay}
+  BlogsEntryDisplay: { screen: BlogsEntryDisplay},
+  DDLList: { screen: DDLList}
 });
 
 export default class App extends Component {

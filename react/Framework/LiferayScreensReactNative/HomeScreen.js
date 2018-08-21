@@ -148,6 +148,12 @@ export default class HomeScreen extends Component {
                                 title="Blogs Entry Display"
                             />
                         </View>
+                        <View style={styles.button}>
+                            <Button style={styles.button}
+                                onPress={() => navigate('DDLList')}
+                                title="DDL list"
+                            />
+                        </View>
                     </View>
                 </ScrollView>
             );
