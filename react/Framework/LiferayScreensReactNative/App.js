@@ -33,7 +33,8 @@ import CommentAdd from './Components/CommentAdd';
 import PdfDisplay from './Components/PdfDisplay';
 import AssetList from './Components/AssetList';
 import AssetDisplay from './Components/AssetDisplay';
-import WebContentList from './Components/WebContentList'
+import WebContentList from './Components/WebContentList';
+import BlogsEntryDisplay from './Components/BlogsEntryDisplay';
 
 const ScreenletsStack = StackNavigator({
   HomeScreen:{ screen: HomeScreen },
@@ -53,7 +54,8 @@ const ScreenletsStack = StackNavigator({
   PdfDisplay: { screen: PdfDisplay},
   AssetList: { screen: AssetList},
   AssetDisplay: { screen: AssetDisplay},
-  WebContentList: { screen: WebContentList}
+  WebContentList: { screen: WebContentList},
+  BlogsEntryDisplay: { screen: BlogsEntryDisplay}
 });
 
 export default class App extends Component {

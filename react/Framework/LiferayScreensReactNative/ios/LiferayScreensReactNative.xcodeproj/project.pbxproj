@@ -94,6 +94,9 @@
 		A6EAFD89212B1CA20072D7C8 /* WebContentListScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EAFD88212B1CA20072D7C8 /* WebContentListScreenletManager.swift */; };
 		A6EAFD8B212B1CD30072D7C8 /* WebContentListScreenletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EAFD8A212B1CD30072D7C8 /* WebContentListScreenletView.swift */; };
 		A6EAFD8D212B1EE80072D7C8 /* WebContentListScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EAFD8C212B1EE80072D7C8 /* WebContentListScreenletModule.m */; };
+		A6EAFD90212C03D30072D7C8 /* BlogsEntryDisplayScreenletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EAFD8F212C03D30072D7C8 /* BlogsEntryDisplayScreenletView.swift */; };
+		A6EAFD92212C076E0072D7C8 /* BlogsEntryDisplayScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EAFD91212C076E0072D7C8 /* BlogsEntryDisplayScreenletManager.swift */; };
+		A6EAFD94212C07EA0072D7C8 /* BlogsEntryDisplayScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A6EAFD93212C07EA0072D7C8 /* BlogsEntryDisplayScreenletModule.m */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		D08BFC75B4C7DDE5C348C890 /* Pods_LiferayScreensReactNative.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2C9DC2BB322CA17601E395A /* Pods_LiferayScreensReactNative.framework */; };
 /* End PBXBuildFile section */
@@ -459,6 +462,9 @@
 		A6EAFD88212B1CA20072D7C8 /* WebContentListScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebContentListScreenletManager.swift; sourceTree = "<group>"; };
 		A6EAFD8A212B1CD30072D7C8 /* WebContentListScreenletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebContentListScreenletView.swift; sourceTree = "<group>"; };
 		A6EAFD8C212B1EE80072D7C8 /* WebContentListScreenletModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebContentListScreenletModule.m; sourceTree = "<group>"; };
+		A6EAFD8F212C03D30072D7C8 /* BlogsEntryDisplayScreenletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogsEntryDisplayScreenletView.swift; sourceTree = "<group>"; };
+		A6EAFD91212C076E0072D7C8 /* BlogsEntryDisplayScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogsEntryDisplayScreenletManager.swift; sourceTree = "<group>"; };
+		A6EAFD93212C07EA0072D7C8 /* BlogsEntryDisplayScreenletModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlogsEntryDisplayScreenletModule.m; sourceTree = "<group>"; };
 		AB1ED82B7B85E932D100FADB /* Pods-LiferayScreensReactNative.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiferayScreensReactNative.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiferayScreensReactNative/Pods-LiferayScreensReactNative.debug.xcconfig"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		D2C9DC2BB322CA17601E395A /* Pods_LiferayScreensReactNative.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiferayScreensReactNative.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -867,6 +873,7 @@
 		A678B5C9210B01180008EB10 /* LiferayScreenlets */ = {
 			isa = PBXGroup;
 			children = (
+				A6EAFD8E212C03B20072D7C8 /* Blogs */,
 				A6051B68212AD5EB00897387 /* Asset */,
 				A63B0E1721231B15003000F9 /* FileDisplay */,
 				A63B0DE92122D248003000F9 /* WebContent */,
@@ -958,6 +965,16 @@
 				A6EAFD8C212B1EE80072D7C8 /* WebContentListScreenletModule.m */,
 			);
 			path = List;
+			sourceTree = "<group>";
+		};
+		A6EAFD8E212C03B20072D7C8 /* Blogs */ = {
+			isa = PBXGroup;
+			children = (
+				A6EAFD8F212C03D30072D7C8 /* BlogsEntryDisplayScreenletView.swift */,
+				A6EAFD91212C076E0072D7C8 /* BlogsEntryDisplayScreenletManager.swift */,
+				A6EAFD93212C07EA0072D7C8 /* BlogsEntryDisplayScreenletModule.m */,
+			);
+			path = Blogs;
 			sourceTree = "<group>";
 		};
 		ADBDB9201DFEBF0600ED6528 /* Products */ = {
@@ -1552,11 +1569,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A614515521217AAA001335C5 /* RatingScreenletManager.swift in Sources */,
+				A6EAFD92212C076E0072D7C8 /* BlogsEntryDisplayScreenletManager.swift in Sources */,
 				A6051B0F21258D1800897387 /* CommentDisplayScreenletModule.m in Sources */,
 				A6051B6D212AE69300897387 /* AssetListScreenletManager.swift in Sources */,
 				A678B60D210F03760008EB10 /* ImageGalleryScreenletManager.swift in Sources */,
 				A68F8E5621219F8B0082A85C /* DDLFormScreenletModule.m in Sources */,
 				A614515C21218A9A001335C5 /* ForgotPasswordScreenletManager.swift in Sources */,
+				A6EAFD90212C03D30072D7C8 /* BlogsEntryDisplayScreenletView.swift in Sources */,
 				A614514B211B1FAE001335C5 /* CommentListScreenletModule.m in Sources */,
 				A68F8E5421219F770082A85C /* DDLFormScreenletView.swift in Sources */,
 				A6145149211B19EE001335C5 /* CommentListScreenletView.swift in Sources */,
@@ -1577,6 +1596,7 @@
 				A63B0E162122D4BF003000F9 /* WebContentDisplayScreenletModule.m in Sources */,
 				A6145147211B19AF001335C5 /* CommentListScreenletManager.swift in Sources */,
 				A63B0E1D21231E46003000F9 /* ImageDisplayScreenletModule.m in Sources */,
+				A6EAFD94212C07EA0072D7C8 /* BlogsEntryDisplayScreenletModule.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				A6EAFD8B212B1CD30072D7C8 /* WebContentListScreenletView.swift in Sources */,
 				A6051B6B212AD61900897387 /* AssetListScreenletView.swift in Sources */,
