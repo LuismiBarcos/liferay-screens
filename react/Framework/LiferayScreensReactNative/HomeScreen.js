@@ -154,6 +154,12 @@ export default class HomeScreen extends Component {
                                 title="DDL list"
                             />
                         </View>
+                        <View style={styles.button}>
+                            <Button style={styles.button}
+                                onPress={() => navigate('FileDisplay')}
+                                title="File Display"
+                            />
+                        </View>
                     </View>
                 </ScrollView>
             );
