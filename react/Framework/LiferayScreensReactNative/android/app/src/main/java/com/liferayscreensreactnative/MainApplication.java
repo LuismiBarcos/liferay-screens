@@ -16,6 +16,7 @@ import LiferayScreenlets.Asset.List.AssetListScreenletPackage;
 import LiferayScreenlets.Auth.ForgotPassword.ForgotPasswordPackage;
 import LiferayScreenlets.Auth.Login.LoginScreenletPackage;
 import LiferayScreenlets.Auth.SignUp.SignUpScreenletPackage;
+import LiferayScreenlets.Blogs.BlogsEntryDisplayScreenletPackage;
 import LiferayScreenlets.Comment.Add.CommentAddScreenletPackage;
 import LiferayScreenlets.Comment.Display.CommentDisplayScreenletPackage;
 import LiferayScreenlets.Comment.List.CommnentListScreenletPackage;
@@ -61,7 +62,8 @@ public class MainApplication extends Application implements ReactApplication {
             new PdfDisplayScreenletPackage(),
             new AssetListScreenletPackage(),
             new AssetDisplayScreenletPackage(),
-            new WebContentListScreenletPackage()
+            new WebContentListScreenletPackage(),
+            new BlogsEntryDisplayScreenletPackage()
       );
     }
 

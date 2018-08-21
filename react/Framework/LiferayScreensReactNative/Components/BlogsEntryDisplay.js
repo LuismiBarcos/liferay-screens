@@ -15,7 +15,9 @@ export default class BlogsEntryDisplay extends Component {
             <BlogsEntryDisplayScreenlet 
                 {...this.props}
                 style={styles.blogs}
-                assetEntryId={40516}
+                // assetEntryId={40516}
+                classPK={40515}
+                className={"com.liferay.blogs.kernel.model.BlogsEntry"} // -> Only for android
             />
         );
     }

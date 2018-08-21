@@ -16,6 +16,9 @@ export default class BlogsEntryDisplayScreenlet extends Component {
                 //iOS events
                 onBlogEntryResponse={this._onBlogEntryResponse.bind(this)}
                 onBlogEntryError={this._onBlogEntryError.bind(this)}
+                // Android events
+                onRetrieveAssetSuccess = {this._onRetrieveAssetSuccess.bind(this)}
+                onError = {this._onError.bind(this)}
             />
         );
     }
@@ -35,5 +38,22 @@ export default class BlogsEntryDisplayScreenlet extends Component {
             return;
         }
         this.props.onBlogEntryError(error);
+    }
+
+    // Android events
+    _onRetrieveAssetSuccess(assetEntry) {
+        console.log('_onRetrieveAssetSuccess -> ', assetEntry);
+        if(!this.props.onRetrieveAssetSuccess) {
+            return;
+        }
+        this.props.onRetrieveAssetSuccess(assetEntry);
+    }
+
+    _onError(error) {
+        console.log('_onError -> ', error);
+        if(!this.props.onError) {
+            return;
+        }
+        this.props.onError(error);
     }
 }
