@@ -22,6 +22,7 @@ import LiferayScreenlets.Comment.Display.CommentDisplayScreenletPackage;
 import LiferayScreenlets.Comment.List.CommnentListScreenletPackage;
 import LiferayScreenlets.Context.SessionContextPackage;
 import LiferayScreenlets.DDL.Form.DDLFormScreenletPackage;
+import LiferayScreenlets.DDL.List.DDLListScreenletPackage;
 import LiferayScreenlets.FileDisplay.AudioDisplayScreenletPackage;
 import LiferayScreenlets.FileDisplay.ImageDisplayScreenletPackage;
 import LiferayScreenlets.FileDisplay.PdfDisplayScreenletPackage;
@@ -63,7 +64,8 @@ public class MainApplication extends Application implements ReactApplication {
             new AssetListScreenletPackage(),
             new AssetDisplayScreenletPackage(),
             new WebContentListScreenletPackage(),
-            new BlogsEntryDisplayScreenletPackage()
+            new BlogsEntryDisplayScreenletPackage(),
+            new DDLListScreenletPackage()
       );
     }
 
