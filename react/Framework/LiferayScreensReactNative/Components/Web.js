@@ -16,7 +16,8 @@ export default class Web extends Component {
             <WebScreenlet 
                 {...this.props}
                 style={styles.web}
-
+                // URL={"https://www.andorratelecom.ad/"}
+                URL={"/web/guest/"}
             />
         );
     }

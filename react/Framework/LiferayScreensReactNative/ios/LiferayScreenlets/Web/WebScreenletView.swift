@@ -12,6 +12,41 @@ class WebScreenletView: RCTView, WebScreenletDelegate {
   // Variables
   var screenlet: WebScreenlet!
   
+  var url: String = ""
+  var URL: String {
+    get {
+      return url
+    }
+    set {
+      url = newValue
+      self.screenlet.configuration = self.createConfiguration(url)
+      self.screenlet.load()
+    }
+  }
+  
+  private func createConfiguration(_ url: String) -> WebScreenletConfiguration {
+    return isLiferayPortalPage(url)
+            ? getWebScreenletConfigurationDefault(url)
+            : getWebScreenletConfigurationOther(url)
+  }
+  
+  private func isLiferayPortalPage(_ url: String) -> Bool {
+    let regex = try? NSRegularExpression(pattern: "https://", options: .ignoreMetacharacters)
+    return regex?.numberOfCaptureGroups == 0
+            ? true
+            : false
+  }
+  
+  private func getWebScreenletConfigurationDefault(_ url: String) -> WebScreenletConfiguration {
+    return WebScreenletConfigurationBuilder(url: url).load()
+  }
+  
+  private func getWebScreenletConfigurationOther(_ url: String) -> WebScreenletConfiguration {
+    return WebScreenletConfigurationBuilder(url: url)
+      .set(webType: WebType.other)
+      .load()
+  }
+  
   // MARK: Events
   var onPageLoaded: RCTBubblingEventBlock?
   var onWebError: RCTBubblingEventBlock?
@@ -21,10 +56,10 @@ class WebScreenletView: RCTView, WebScreenletDelegate {
     super.init(frame: frame)
     self.screenlet = WebScreenlet(frame: frame, themeName: "default")
     self.screenlet.delegate = self
-    self.screenlet.configuration = WebScreenletConfigurationBuilder(url: "https://www.andorratelecom.ad/")
-                                  .set(webType: WebType.other)
-                                  .load()
-    self.screenlet.load()
+//    self.screenlet.configuration = WebScreenletConfigurationBuilder(url: "https://www.andorratelecom.ad/")
+//                                  .set(webType: WebType.other)
+//                                  .load()
+//    self.screenlet.load()
     self.addSubview(self.screenlet)
     
     self.screenlet.translatesAutoresizingMaskIntoConstraints = false
