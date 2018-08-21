@@ -15,6 +15,7 @@ export default class WebContentList extends Component {
                 {...this.props}
                 style={styles.content}
                 folderId={0}
+                labelFields={"description"}
             />
         );
     }

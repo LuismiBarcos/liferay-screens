@@ -17,6 +17,11 @@ export default class WebContentListScreenlet extends Component {
                 onWebContentListResponse={this._onWebContentListResponse.bind(this)}
                 onWebContentListError={this._onWebContentListError.bind(this)}
                 onWebContentSelected={this._onWebContentSelected.bind(this)}
+                // Android events
+                onListPageFailed = {this._onListPageFailed.bind(this)}
+                onListPageReceived = {this._onListPageReceived.bind(this)}
+                onListItemSelected = {this._onListItemSelected.bind(this)}
+                onError = {this._onError.bind(this)}
             />
         );
     }
@@ -44,5 +49,38 @@ export default class WebContentListScreenlet extends Component {
             return;
         }
         this.props.onWebContentSelected(content);
+    }
+
+    // Android events
+    _onListPageFailed(pageNumber, error) {
+        console.log('_onListPageFailed -> ', pageNumber, error);
+        if(!this.props.onListPageFailed) {
+            return;
+        }
+        this.props.onListPageFailed(pageNumber, error);
+    }
+
+    _onListPageReceived(list) {
+        console.log('_onListPageReceived -> ', list)
+        if(!this.props.onListPageReceived) {
+            return;
+        }
+        this.props.onListPageReceived(list);
+    }
+
+    _onListItemSelected(itemSelected) {
+        console.log('_onListItemSelected -> ', itemSelected)
+        if(!this.props.onListItemSelected) {
+            return;
+        }
+        this.props.onListItemSelected(itemSelected);
+    }
+
+    _onError(event) {
+        console.log('_onError -> ', error)
+        if(!this.props.onError) {
+            return;
+        }
+        this.props.onError(error);
     }
 }

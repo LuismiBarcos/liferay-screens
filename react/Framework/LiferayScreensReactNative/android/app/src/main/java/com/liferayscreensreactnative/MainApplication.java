@@ -29,6 +29,7 @@ import LiferayScreenlets.ImageGallery.ImageGalleryScreenletPackage;
 import LiferayScreenlets.Rating.RatingScreenletPackage;
 import LiferayScreenlets.UserPortrait.UserPortraitScreenletPackage;
 import LiferayScreenlets.WebContent.Display.WebContentDisplayScreenletPackage;
+import LiferayScreenlets.WebContent.List.WebContentListScreenletPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -59,7 +60,8 @@ public class MainApplication extends Application implements ReactApplication {
             new CommentAddScreenletPackage(),
             new PdfDisplayScreenletPackage(),
             new AssetListScreenletPackage(),
-            new AssetDisplayScreenletPackage()
+            new AssetDisplayScreenletPackage(),
+            new WebContentListScreenletPackage()
       );
     }
 
