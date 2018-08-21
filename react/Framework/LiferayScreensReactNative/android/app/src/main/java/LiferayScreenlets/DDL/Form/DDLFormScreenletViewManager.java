@@ -1,7 +1,10 @@
 package LiferayScreenlets.DDL.Form;
 
+import android.content.Context;
+import android.content.res.TypedArray;
 import android.media.MediaCas;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,17 +65,18 @@ public class DDLFormScreenletViewManager extends SimpleViewManager<DDLFormScreen
         this.screenlet.setRecordId(0);
         this.screenlet.setFolderId(0);
 
-        this.screenlet.setCustomFieldLayoutId(String.valueOf(Field.EditorType.CHECKBOX), com.liferay.mobile.screens.R.styleable.DDLFormScreenlet_checkboxFieldLayoutId);
-        this.screenlet.setCustomFieldLayoutId(String.valueOf(Field.EditorType.DATE), com.liferay.mobile.screens.R.styleable.DDLFormScreenlet_dateFieldLayoutId);
-        this.screenlet.setCustomFieldLayoutId(String.valueOf(Field.EditorType.NUMBER), com.liferay.mobile.screens.R.styleable.DDLFormScreenlet_numberFieldLayoutId);
-        this.screenlet.setCustomFieldLayoutId(String.valueOf(Field.EditorType.INTEGER), com.liferay.mobile.screens.R.styleable.DDLFormScreenlet_numberFieldLayoutId);
-        this.screenlet.setCustomFieldLayoutId(String.valueOf(Field.EditorType.DECIMAL), com.liferay.mobile.screens.R.styleable.DDLFormScreenlet_numberFieldLayoutId);
-        this.screenlet.setCustomFieldLayoutId(String.valueOf(Field.EditorType.RADIO), com.liferay.mobile.screens.R.styleable.DDLFormScreenlet_radioFieldLayoutId);
-        this.screenlet.setCustomFieldLayoutId(String.valueOf(Field.EditorType.SELECT), com.liferay.mobile.screens.R.styleable.DDLFormScreenlet_selectFieldLayoutId);
-        this.screenlet.setCustomFieldLayoutId(String.valueOf(Field.EditorType.TEXT), com.liferay.mobile.screens.R.styleable.DDLFormScreenlet_textFieldLayoutId);
-        this.screenlet.setCustomFieldLayoutId(String.valueOf(Field.EditorType.TEXT_AREA), com.liferay.mobile.screens.R.styleable.DDLFormScreenlet_textAreaFieldLayoutId);
-        this.screenlet.setCustomFieldLayoutId(String.valueOf(Field.EditorType.DOCUMENT), com.liferay.mobile.screens.R.styleable.DDLFormScreenlet_documentFieldLayoutId);
-        this.screenlet.setCustomFieldLayoutId(String.valueOf(Field.EditorType.GEO), com.liferay.mobile.screens.R.styleable.DDLFormScreenlet_geoFieldLayoutId);
+        DDLFormViewModel viewModel = (DDLFormViewModel) this.screenlet.getChildAt(0);
+        viewModel.setFieldLayoutId(Field.EditorType.CHECKBOX, com.liferay.mobile.screens.R.layout.ddlfield_checkbox_default);
+        viewModel.setFieldLayoutId(Field.EditorType.DATE, com.liferay.mobile.screens.R.layout.ddlfield_date_default);
+        viewModel.setFieldLayoutId(Field.EditorType.NUMBER, com.liferay.mobile.screens.R.layout.ddlfield_number_default);
+        viewModel.setFieldLayoutId(Field.EditorType.INTEGER, com.liferay.mobile.screens.R.layout.ddlfield_number_default);
+        viewModel.setFieldLayoutId(Field.EditorType.DECIMAL, com.liferay.mobile.screens.R.layout.ddlfield_number_default);
+        viewModel.setFieldLayoutId(Field.EditorType.RADIO, com.liferay.mobile.screens.R.layout.ddlfield_radio_default);
+        viewModel.setFieldLayoutId(Field.EditorType.SELECT, com.liferay.mobile.screens.R.layout.ddlfield_select_default);
+        viewModel.setFieldLayoutId(Field.EditorType.TEXT, com.liferay.mobile.screens.R.layout.ddlfield_text_default);
+        viewModel.setFieldLayoutId(Field.EditorType.TEXT_AREA, com.liferay.mobile.screens.R.layout.ddlfield_text_area_default);
+        viewModel.setFieldLayoutId(Field.EditorType.DOCUMENT, com.liferay.mobile.screens.R.layout.ddlfield_document_default);
+        viewModel.setFieldLayoutId(Field.EditorType.GEO, com.liferay.mobile.screens.R.layout.ddlfield_geo_default);
     }
 
     @ReactProp(name = "structureId")

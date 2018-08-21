@@ -6,7 +6,7 @@ import {
     requireNativeComponent,
 } from 'react-native'
 
-import NativeFileDisplayScreenlet from './Bridges/FileDisplayScreenlet';
+import NativeFileDisplayScreenlet from './Bridges/FileDisplayScreenlet.ios';
 
 export default class FileDisplayScreenlet extends Component {
     render(){
