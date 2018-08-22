@@ -5,6 +5,7 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
+import com.facebook.react.uimanager.annotations.ReactProp;
 import com.liferay.mobile.screens.web.WebListener;
 import com.liferay.mobile.screens.web.WebScreenlet;
 import com.liferay.mobile.screens.web.WebScreenletConfiguration;
@@ -26,12 +27,33 @@ public class WebScreenletViewManager extends SimpleViewManager<WebScreenlet> imp
         this.screenlet = new WebScreenlet(reactContext);
         this.screenlet.render(com.liferay.mobile.screens.R.layout.web_default);
         this.screenlet.setListener(this);
-        WebScreenletConfiguration configuration = new WebScreenletConfiguration.Builder("https://www.andorratelecom.ad/")
+        return this.screenlet;
+    }
+
+    @ReactProp(name="URL")
+    public void setURL(WebScreenlet screenlet, String url) {
+        this.screenlet.setWebScreenletConfiguration(this.createConfiguration(url));
+        this.screenlet.load();
+    }
+
+    private WebScreenletConfiguration createConfiguration(String url) {
+        return isLiferayPortalPage(url)
+                ? getWebScreenletConfigurationDefault(url)
+                : getWebScreenletConfigurationOther(url);
+    }
+
+    private boolean isLiferayPortalPage(String url) {
+        return url.split("https://|http://", 2).length == 1;
+    }
+
+    private WebScreenletConfiguration getWebScreenletConfigurationOther(String url) {
+        return new WebScreenletConfiguration.Builder(url)
                 .setWebType(WebScreenletConfiguration.WebType.OTHER)
                 .load();
-        this.screenlet.setWebScreenletConfiguration(configuration);
-        this.screenlet.load();
-        return this.screenlet;
+    }
+
+    private WebScreenletConfiguration getWebScreenletConfigurationDefault(String url) {
+        return new WebScreenletConfiguration.Builder(url).load();
     }
 
     // WebListener implementation

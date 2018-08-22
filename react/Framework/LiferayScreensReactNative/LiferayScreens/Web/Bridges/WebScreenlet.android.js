@@ -15,6 +15,8 @@ export default class WebScreenlet extends Component {
     }
 
     componentWillMount() {
+        // DeviceEventEmitter.addListener('onPageLoaded', this.handleListener('onPageLoaded'))
+
         // Events
         DeviceEventEmitter.addListener('onPageLoaded', this._onPageLoaded);
         DeviceEventEmitter.addListener('onScriptMessageHandler', this._onScriptMessageHandler);
@@ -28,6 +30,17 @@ export default class WebScreenlet extends Component {
             />
         );
     }
+
+    // handleListener(methodName) {
+    //     return (...args) => {
+    //         console.log(`${methodName}, ${args}`);
+    //         if (!this.props[methodName]) {
+    //             return;
+    //         }
+    
+    //         this.props[methodName](...args)
+    //     }
+    // }
 
     // Events
 
