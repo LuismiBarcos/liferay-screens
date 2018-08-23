@@ -34,28 +34,45 @@ public class WebScreenletViewManager extends SimpleViewManager<WebScreenlet> imp
     @ReactProp(name = "configuration")
     public void setConfiguation(WebScreenlet screenlet, ReadableMap propsJSON) {
         String url = propsJSON.getString("URL");
-        this.screenlet.setWebScreenletConfiguration(this.createConfiguration(url));
+        String jsFileName = propsJSON.getString("jsFileName");
+        String cssFileName = propsJSON.getString("cssFileName");
+        this.screenlet.setWebScreenletConfiguration(this.createConfiguration(url, jsFileName, cssFileName));
         this.screenlet.load();
     }
 
-    private WebScreenletConfiguration createConfiguration(String url) {
+    private WebScreenletConfiguration createConfiguration(String url, String jsFileName, String cssFileName) {
         return isLiferayPortalPage(url)
-                ? getWebScreenletConfigurationDefault(url)
-                : getWebScreenletConfigurationOther(url);
+                ? getWebScreenletConfigurationDefault(url, jsFileName, cssFileName)
+                : getWebScreenletConfigurationOther(url, jsFileName, cssFileName);
     }
 
     private boolean isLiferayPortalPage(String url) {
         return url.split("https://|http://", 2).length == 1;
     }
 
-    private WebScreenletConfiguration getWebScreenletConfigurationOther(String url) {
-        return new WebScreenletConfiguration.Builder(url)
-                .setWebType(WebScreenletConfiguration.WebType.OTHER)
-                .load();
+    private WebScreenletConfiguration getWebScreenletConfigurationOther(String url, String jsFileName, String cssFileName) {
+        WebScreenletConfiguration.Builder builder = new WebScreenletConfiguration.Builder(url)
+                .setWebType(WebScreenletConfiguration.WebType.OTHER);
+        WebScreenletConfiguration.Builder finalBuilder = addLocalFiles(builder, jsFileName, cssFileName);
+        return finalBuilder.load();
     }
 
-    private WebScreenletConfiguration getWebScreenletConfigurationDefault(String url) {
-        return new WebScreenletConfiguration.Builder(url).load();
+    private WebScreenletConfiguration getWebScreenletConfigurationDefault(String url, String jsFileName, String cssFileName) {
+        WebScreenletConfiguration.Builder builder = new WebScreenletConfiguration.Builder(url);
+        WebScreenletConfiguration.Builder finalBuilder = addLocalFiles(builder, jsFileName, cssFileName);
+        return finalBuilder.load();
+    }
+
+    private WebScreenletConfiguration.Builder addLocalFiles(WebScreenletConfiguration.Builder builder,
+                                                            String jsFileName,
+                                                            String cssFileName) {
+        if(!jsFileName.equals("")) {
+            builder.addLocalJs(jsFileName);
+        }
+        if(!cssFileName.equals("")) {
+            builder.addLocalCss(cssFileName);
+        }
+        return builder;
     }
 
     // WebListener implementation

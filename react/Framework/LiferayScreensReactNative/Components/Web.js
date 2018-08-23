@@ -17,6 +17,8 @@ export default class Web extends Component {
                 {...this.props}
                 style={styles.web}
                 URL={"https://www.andorratelecom.ad/"}
+                jsFileName={"MyJs"}
+                cssFileName={"MyCss"}
                 // URL={"/web/guest/"}
             />
         );

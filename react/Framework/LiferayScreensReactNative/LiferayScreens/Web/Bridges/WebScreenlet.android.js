@@ -11,7 +11,9 @@ export default class WebScreenlet extends Component {
         super(props);
 
         this.state = {
-            URL: props.URL || ""
+            URL: props.URL || "",
+            jsFileName: props.jsFileName || "",
+            cssFileName: props.cssFileName || ""
         }
 
         this._onPageLoaded = this._onPageLoaded.bind(this);
@@ -58,10 +60,10 @@ export default class WebScreenlet extends Component {
     // Events
 
     _onPageLoaded(event) {
-        if(!this.props.onWebContentReceived) {
+        if(!this.props.onPageLoaded) {
             return;
         }
-        this.props.onWebContentReceived(event.page);
+        this.props.onPageLoaded(event.page);
     }
 
     _onScriptMessageHandler(event) {
