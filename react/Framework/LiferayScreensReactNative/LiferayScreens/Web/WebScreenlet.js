@@ -14,18 +14,19 @@ export default class WebScreenlet extends Component {
             <NativeWebScreenlet 
                 {...this.props}
                 // iOS Events
-                onPageLoaded={this._onPageLoaded.bind(this)}
                 onWebError={this._onWebError.bind(this)}
                 onNotify={this._onNotify.bind(this)}
                 // android events
-                onPageLoaded = {this._onPageLoaded.bind(this)}
                 onScriptMessageHandler = {this._onScriptMessageHandler.bind(this)}
                 onError = {this._onError.bind(this)}
+                // Common events
+                onPageLoaded = {this._onPageLoaded.bind(this)}
             />
         );
     }
 
-    // iOS events
+
+    // Common events
     _onPageLoaded(url) {
         console.log('_onPageLoaded -> ', url)
         if(!this.props.onPageLoaded){
@@ -34,6 +35,7 @@ export default class WebScreenlet extends Component {
         this.props.onPageLoaded(url)
     }
 
+    // iOS events
     _onWebError(error) {
         console.log('_onWebError -> ', error)
         if(!this.props.onWebError){
@@ -51,14 +53,6 @@ export default class WebScreenlet extends Component {
     }
 
     // Android events
-    _onPageLoaded(page) {
-        console.log('_onPageLoaded -> ', page);
-        if(!this.props.onPageLoaded) {
-            return;
-        }
-        this.props.onPageLoaded(page);
-    }
-
     _onScriptMessageHandler(message) {
         console.log('_onScriptMessageHandler -> ', message);
         if(!this.props.onScriptMessageHandler) {

@@ -17,12 +17,12 @@ export default class WebContentDisplayScreenlet extends Component {
                 onWebContentResponse={this._onWebContentResponse.bind(this)}
                 onRecordContentResponse={this._onRecordContentResponse.bind(this)}
                 onWebContentError={this._onWebContentError.bind(this)}
-                onUrlClicked={this._onUrlClicked.bind(this)}
                 //Android
                 onWebContentReceived = {this._onWebContentReceived.bind(this)}
-                onUrlClicked = {this._onUrlClicked.bind(this)}
                 onWebContentTouched = {this._onWebContentTouched.bind(this)}
                 onError = {this._onError.bind(this)}
+                // Common events
+                onUrlClicked={this._onUrlClicked.bind(this)}
             />
         );
     }
