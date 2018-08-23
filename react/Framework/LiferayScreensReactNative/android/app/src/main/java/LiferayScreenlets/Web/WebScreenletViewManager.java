@@ -1,6 +1,7 @@
 package LiferayScreenlets.Web;
 
 import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.SimpleViewManager;
@@ -30,8 +31,9 @@ public class WebScreenletViewManager extends SimpleViewManager<WebScreenlet> imp
         return this.screenlet;
     }
 
-    @ReactProp(name="URL")
-    public void setURL(WebScreenlet screenlet, String url) {
+    @ReactProp(name = "configuration")
+    public void setConfiguation(WebScreenlet screenlet, ReadableMap propsJSON) {
+        String url = propsJSON.getString("URL");
         this.screenlet.setWebScreenletConfiguration(this.createConfiguration(url));
         this.screenlet.load();
     }

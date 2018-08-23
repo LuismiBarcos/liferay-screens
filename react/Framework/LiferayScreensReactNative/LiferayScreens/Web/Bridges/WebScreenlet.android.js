@@ -4,10 +4,15 @@ import { NativeModules, requireNativeComponent, View } from 'react-native';
 import { DeviceEventEmitter } from 'react-native';
 
 const NativeWebScreenlet = requireNativeComponent('WebScreenlet');
+const Module = NativeModules.WebScreenlet;
 
 export default class WebScreenlet extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            URL: props.URL || ""
+        }
 
         this._onPageLoaded = this._onPageLoaded.bind(this);
         this._onScriptMessageHandler = this._onScriptMessageHandler.bind(this);
@@ -16,17 +21,25 @@ export default class WebScreenlet extends Component {
 
     componentWillMount() {
         // DeviceEventEmitter.addListener('onPageLoaded', this.handleListener('onPageLoaded'))
-
+        
         // Events
         DeviceEventEmitter.addListener('onPageLoaded', this._onPageLoaded);
         DeviceEventEmitter.addListener('onScriptMessageHandler', this._onScriptMessageHandler);
         DeviceEventEmitter.addListener('onError', this._onError);
     }
 
+    componentDidMount() {
+        
+        // Module.test(JSON.stringify(this.props));
+    }
+
     render() {
         return(
             <NativeWebScreenlet 
                 {...this.props}
+                // ref={(ref) => this.test = ref }
+                // configuration={JSON.stringify(this.props)}
+                configuration={this.state}
             />
         );
     }

@@ -11,7 +11,9 @@ import java.util.List;
 public class WebScreenletPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-        return Collections.emptyList();
+        return Collections.<NativeModule>singletonList(
+                new WebScreenletModule(reactContext)
+        );
     }
 
     @Override
