@@ -53,10 +53,10 @@ export default class WebScreenlet extends Component {
     // Android events
     _onPageLoaded(page) {
         console.log('_onPageLoaded -> ', page);
-        if(!this.props.onWebContentReceived) {
+        if(!this.props.onPageLoaded) {
             return;
         }
-        this.props.onWebContentReceived(page);
+        this.props.onPageLoaded(page);
     }
 
     _onScriptMessageHandler(message) {

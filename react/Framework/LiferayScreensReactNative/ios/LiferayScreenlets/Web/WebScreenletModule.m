@@ -19,6 +19,6 @@ RCT_EXPORT_VIEW_PROPERTY(onWebError, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onNotify, RCTBubblingEventBlock)
 
 // Properties
-RCT_EXPORT_VIEW_PROPERTY(URL, NSString)
+RCT_EXPORT_VIEW_PROPERTY(screenletAttributes, NSDictionary)
 
 @end

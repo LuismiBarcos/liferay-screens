@@ -12,22 +12,29 @@ class WebScreenletView: RCTView, WebScreenletDelegate {
   // Variables
   var screenlet: WebScreenlet!
   
-  var url: String = ""
-  var URL: String {
+  var _screenletAttributes: NSDictionary = NSDictionary()
+  var screenletAttributes: NSDictionary {
     get {
-      return url
+      return _screenletAttributes
     }
-    set {
-      url = newValue
-      self.screenlet.configuration = self.createConfiguration(url)
-      self.screenlet.load()
+    set{
+      _screenletAttributes = newValue
+      self.setConfiguration(_screenletAttributes)
     }
   }
   
-  private func createConfiguration(_ url: String) -> WebScreenletConfiguration {
+  private func setConfiguration(_ screenletAttributes: NSDictionary) {
+    let url = screenletAttributes["URL"]! as! String
+    let jsFileName = screenletAttributes["jsFileName"]! as! String
+    let cssFileName = screenletAttributes["cssFileName"]! as! String
+    self.screenlet.configuration = self.createConfiguration(url: url, jsFileName: jsFileName, cssFileName: cssFileName)
+    self.screenlet.load()
+  }
+  
+  private func createConfiguration(url: String, jsFileName: String, cssFileName: String) -> WebScreenletConfiguration {
     return isLiferayPortalPage(url)
-            ? getWebScreenletConfigurationDefault(url)
-            : getWebScreenletConfigurationOther(url)
+            ? getWebScreenletConfigurationDefault(url: url, jsFileName: jsFileName, cssFileName: cssFileName)
+            : getWebScreenletConfigurationOther(url: url, jsFileName: jsFileName, cssFileName: cssFileName)
   }
   
   private func isLiferayPortalPage(_ url: String) -> Bool {
@@ -37,14 +44,32 @@ class WebScreenletView: RCTView, WebScreenletDelegate {
             : false
   }
   
-  private func getWebScreenletConfigurationDefault(_ url: String) -> WebScreenletConfiguration {
-    return WebScreenletConfigurationBuilder(url: url).load()
+  private func getWebScreenletConfigurationDefault(url: String,
+                                                   jsFileName: String,
+                                                   cssFileName: String) -> WebScreenletConfiguration {
+    let builder = WebScreenletConfigurationBuilder(url: url)
+    let finalBuilder = addLocalFiles(builder: builder, jsFileName: jsFileName, cssFileName: cssFileName)
+    return finalBuilder.load()
   }
   
-  private func getWebScreenletConfigurationOther(_ url: String) -> WebScreenletConfiguration {
-    return WebScreenletConfigurationBuilder(url: url)
-      .set(webType: WebType.other)
-      .load()
+  private func getWebScreenletConfigurationOther(url: String,
+                                                 jsFileName: String,
+                                                 cssFileName: String) -> WebScreenletConfiguration {
+    let builder = WebScreenletConfigurationBuilder(url: url).set(webType: WebType.other)
+    let finalBuilder = addLocalFiles(builder: builder, jsFileName: jsFileName, cssFileName: cssFileName)
+    return finalBuilder.load()
+  }
+  
+  private func addLocalFiles(builder: WebScreenletConfigurationBuilder,
+                             jsFileName: String,
+                             cssFileName: String) -> WebScreenletConfigurationBuilder {
+    if(jsFileName != "") {
+      builder.addJs(localFile: jsFileName)
+    }
+    if(cssFileName != "") {
+      builder.addCss(localFile: cssFileName)
+    }
+    return builder
   }
   
   // MARK: Events
@@ -56,10 +81,6 @@ class WebScreenletView: RCTView, WebScreenletDelegate {
     super.init(frame: frame)
     self.screenlet = WebScreenlet(frame: frame, themeName: "default")
     self.screenlet.delegate = self
-//    self.screenlet.configuration = WebScreenletConfigurationBuilder(url: "https://www.andorratelecom.ad/")
-//                                  .set(webType: WebType.other)
-//                                  .load()
-//    self.screenlet.load()
     self.addSubview(self.screenlet)
     
     self.screenlet.translatesAutoresizingMaskIntoConstraints = false

@@ -9,10 +9,19 @@ import {
 const NativeWebScreenlet = requireNativeComponent('WebScreenlet');
 
 export default class WebScreenlet extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            URL: props.URL || "",
+            jsFileName: props.jsFileName || "",
+            cssFileName: props.cssFileName || ""
+        }
+    }
     render(){
         return(
             <NativeWebScreenlet 
                 {...this.props}
+                screenletAttributes={this.state}
                 onPageLoaded={this._onPageLoaded.bind(this)}
                 onWebError={this._onWebError.bind(this)}
                 onNotify={this._onNotify.bind(this)}
