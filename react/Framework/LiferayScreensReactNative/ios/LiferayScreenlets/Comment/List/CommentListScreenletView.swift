@@ -11,25 +11,15 @@ import LiferayScreens
 class CommentListScreenletView: RCTView, CommentListScreenletDelegate {
   // Variables
   var screenlet: CommentListScreenlet!
-  private var className: String = ""
-  var ClassName : String {
-    get {
-      return className
-    }
-    set {
-      className = newValue
-      screenlet.className = className
-    }
-  }
   
-  private var classPK: NSNumber = 0
-  var ClassPK: NSNumber {
-    get{
-      return classPK
+  var _screenletAttributes: NSDictionary = NSDictionary()
+  var screenletAttributes: NSDictionary {
+    get {
+      return _screenletAttributes
     }
-    set {
-      classPK = newValue
-      self.screenlet.classPK = classPK.int64Value
+    set{
+      _screenletAttributes = newValue
+      self.setConfiguration(_screenletAttributes)
     }
   }
   
@@ -46,18 +36,26 @@ class CommentListScreenletView: RCTView, CommentListScreenletDelegate {
     super.init(frame: frame)
     self.screenlet = CommentListScreenlet(frame: frame, themeName: "default")
     self.screenlet.delegate = self
-    self.addSubview(self.screenlet)
-    
-    self.screenlet.translatesAutoresizingMaskIntoConstraints = false
-    
-    self.screenlet.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-    self.screenlet.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-    self.screenlet.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-    self.screenlet.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+    self.updateViewConstraints(screenlet: self.screenlet)
   }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  private func setConfiguration(_ screenletConfiguration: NSDictionary) {
+    let className = screenletAttributes["className"]! as! String
+    let classPK = screenletAttributes["classPK"]! as! NSNumber
+    let autoLoad = screenletAttributes["autoLoad"]! as! Bool
+    let refreshControl = screenletAttributes["refreshControl"]! as! Bool
+    let firstPageSize = screenletAttributes["firstPageSize"]! as! NSNumber
+    let pageSize = screenletAttributes["pageSize"]! as! NSNumber
+    self.screenlet.className = className
+    self.screenlet.classPK = classPK.int64Value
+    self.screenlet.autoLoad = autoLoad
+    self.screenlet.refreshControl = refreshControl
+    self.screenlet.firstPageSize = firstPageSize.intValue
+    self.screenlet.pageSize = pageSize.intValue
   }
   
   // MARK: CommentListScreenletDelegate methods
@@ -66,34 +64,22 @@ class CommentListScreenletView: RCTView, CommentListScreenletDelegate {
     let commentsAttributes = comments.map{
       $0.attributes
     }
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "comments": commentsAttributes
-    ]
+    let event = self.createEvent(attributeName: "comments", attribute: commentsAttributes)
     self.onListResponseComments?(event)
   }
 
   func screenlet(_ screenlet: CommentListScreenlet, onCommentListError error: NSError) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "error": error.description
-    ]
+    let event = self.createEvent(attributeName: "error", attribute: error.description)
     self.onCommentListError?(event)
   }
   
   func screenlet(_ screenlet: CommentListScreenlet, onSelectedComment comment: Comment) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "comment": comment.attributes
-    ]
+    let event = self.createEvent(attributeName: "comment", attribute: comment.attributes)
     self.onSelectedComment?(event)
   }
   
   func screenlet(_ screenlet: CommentListScreenlet, onDeletedComment comment: Comment) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "comment": comment.attributes
-    ]
+    let event = self.createEvent(attributeName: "comment", attribute: comment.attributes)
     self.onDeletedComment?(event)
   }
   
@@ -109,10 +95,7 @@ class CommentListScreenletView: RCTView, CommentListScreenletDelegate {
   }
   
   func screenlet(_ screenlet: CommentListScreenlet, onUpdatedComment comment: Comment) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "comment": comment.attributes
-    ]
+    let event = self.createEvent(attributeName: "comment", attribute: comment.attributes)
     self.onUpdatedComment?(event)
   }
   

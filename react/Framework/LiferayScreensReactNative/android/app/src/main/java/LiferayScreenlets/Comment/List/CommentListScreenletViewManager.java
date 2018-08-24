@@ -1,22 +1,27 @@
 package LiferayScreenlets.Comment.List;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
+import com.facebook.react.uimanager.annotations.ReactProp;
 import com.liferay.mobile.screens.comment.CommentEntry;
 import com.liferay.mobile.screens.comment.list.CommentListListener;
 import com.liferay.mobile.screens.comment.list.CommentListScreenlet;
 import com.liferay.mobile.screens.util.LiferayLocale;
-import com.liferayscreensreactnative.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 import java.util.Locale;
+
+import LiferayScreenlets.Base.EventEmitter;
 
 public class CommentListScreenletViewManager extends SimpleViewManager<CommentListScreenlet> implements CommentListListener{
 
@@ -35,13 +40,17 @@ public class CommentListScreenletViewManager extends SimpleViewManager<CommentLi
         this.screenlet = new CommentListScreenlet(reactContext);
         this.screenlet.render(com.liferay.mobile.screens.R.layout.comment_list_default);
         this.screenlet.setListener(this);
-        this.screenlet.setClassName("com.liferay.document.library.kernel.model.DLFileEntry");
-        this.screenlet.setClassPK(74606);
-        this.screenlet.setAutoLoad(true);
-        this.screenlet.setFirstPageSize(50);
-        this.screenlet.setPageSize(25);
         this.screenlet.setLocale(new Locale(LiferayLocale.getDefaultSupportedLocale()));
         return this.screenlet;
+    }
+
+    @ReactProp(name="screenletAttributes")
+    public void setConfiguration(CommentListScreenlet screenlet, ReadableMap screenletAttributes) {
+        this.screenlet.setAutoLoad(screenletAttributes.getBoolean("autoLoad"));
+        this.screenlet.setClassName(screenletAttributes.getString("className"));
+        this.screenlet.setClassPK(screenletAttributes.getInt("classPK"));
+        this.screenlet.setFirstPageSize(screenletAttributes.getInt("firstPageSize"));
+        this.screenlet.setFirstPageSize(screenletAttributes.getInt("pageSize"));
     }
 
     // CommentListListener methods
@@ -49,52 +58,52 @@ public class CommentListScreenletViewManager extends SimpleViewManager<CommentLi
     @Override
     public void onDeleteCommentSuccess(CommentEntry commentEntry) {
         WritableMap event = Arguments.createMap();
-        event.putInt("image", 3);
-        this.sendEvent("test", event);
+        event.putString("commentEntry", new JSONObject(commentEntry.getValues()).toString());
+        EventEmitter.sendEvent(this.reactContext,"onDeleteCommentSuccess", event);
     }
 
     @Override
     public void onUpdateCommentSuccess(CommentEntry commentEntry) {
         WritableMap event = Arguments.createMap();
-        event.putInt("image", 3);
-        this.sendEvent("test", event);
+        event.putString("commentEntry", new JSONObject(commentEntry.getValues()).toString());
+        EventEmitter.sendEvent(this.reactContext,"onUpdateCommentSuccess", event);
     }
 
     @Override
     public void onListPageFailed(int i, Exception e) {
         WritableMap event = Arguments.createMap();
-        event.putInt("image", 3);
-        this.sendEvent("test", event);
+        event.putString("error", e.getMessage());
+        EventEmitter.sendEvent(this.reactContext,"onListPageFailed", event);
     }
 
     @Override
     public void onListPageReceived(int i, int i1, List<CommentEntry> list, int i2) {
         WritableMap event = Arguments.createMap();
-        event.putInt("image", 3);
-        this.sendEvent("test", event);
-
-        RecyclerView recyclerView = (RecyclerView) this.screenlet.findViewById(R.id.liferay_recycler_list);
-        recyclerView.getAdapter().notifyDataSetChanged();
-        recyclerView.getAdapter().notifyItemInserted(0);
-
+        JSONArray jsonArray = new JSONArray();
+        for (CommentEntry comment: list) {
+            jsonArray.put(comment.getValues());
+        }
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("comments", jsonArray);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        event.putString("comments", jsonObject.toString());
+        EventEmitter.sendEvent(this.reactContext,"onListPageReceived", event);
     }
 
     @Override
     public void onListItemSelected(CommentEntry commentEntry, View view) {
         WritableMap event = Arguments.createMap();
-        event.putInt("image", 3);
-        this.sendEvent("test", event);
+        event.putString("commentEntry", new JSONObject(commentEntry.getValues()).toString());
+        EventEmitter.sendEvent(this.reactContext,"onListItemSelected", event);
     }
 
     @Override
     public void error(Exception e, String s) {
         WritableMap event = Arguments.createMap();
-        event.putInt("image", 3);
-        this.sendEvent("test", event);
-    }
-
-    private void sendEvent(String eventName ,WritableMap event ){
-        this.reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit(eventName, event);
+        event.putString("error", e.getMessage());
+        EventEmitter.sendEvent(this.reactContext,"onError", event);
     }
 }

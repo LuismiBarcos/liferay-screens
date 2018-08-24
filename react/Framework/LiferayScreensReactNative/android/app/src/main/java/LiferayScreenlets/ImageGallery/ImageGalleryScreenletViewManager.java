@@ -7,7 +7,6 @@ import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
@@ -22,7 +21,6 @@ import org.json.JSONObject;
 
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import LiferayScreenlets.Base.EventEmitter;
 
