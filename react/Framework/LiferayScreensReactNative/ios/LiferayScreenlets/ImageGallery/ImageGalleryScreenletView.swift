@@ -11,105 +11,116 @@ import LiferayScreens
 class ImageGalleryScreenletView: RCTView, ImageGalleryScreenletDelegate {
   // Variables
   var screenlet: ImageGalleryScreenlet!
-  private var folderId: NSNumber = 0  //For test 72155
-  var FolderId: NSNumber {
-    get{
-      return folderId
+  
+  var _screenletAttributes: NSDictionary = NSDictionary()
+  var screenletAttributes: NSDictionary {
+    get {
+      return _screenletAttributes
     }
-    set {
-      folderId = newValue
-      self.screenlet.folderId = folderId.int64Value
+    set{
+      _screenletAttributes = newValue
+      self.setConfiguration(_screenletAttributes)
     }
   }
   
-  private var repositoryId: NSNumber = 0  // For test 20143
-  var RepositoryId: NSNumber {
-    get{
-      return repositoryId
-    }
-    set {
-      repositoryId = newValue
-      self.screenlet.repositoryId = repositoryId.int64Value
-    }
-  }
-  
-  // Events
+  // MARK: Events
   var onContentsReceived: RCTBubblingEventBlock?
   var onGalleryError: RCTBubblingEventBlock?
   var onItemSelected: RCTBubblingEventBlock?
+  var onImageEntryDeleted: RCTBubblingEventBlock?
+  var onImageEntryDeleteError: RCTBubblingEventBlock?
+  var onImageUploadStart: RCTBubblingEventBlock?
+  var onImageUploadProgress: RCTBubblingEventBlock?
+  var onImageUploadError: RCTBubblingEventBlock?
+  var onImageUploaded: RCTBubblingEventBlock?
+  var onImageUploadDetailViewCreated: RCTBubblingEventBlock?
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.screenlet = ImageGalleryScreenlet(frame: frame, themeName: "default")
     self.screenlet.delegate = self
-    self.addSubview(self.screenlet)
-    
-    self.screenlet.translatesAutoresizingMaskIntoConstraints = false
-    
-    self.screenlet.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-    self.screenlet.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-    self.screenlet.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-    self.screenlet.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+    self.updateViewConstraints(screenlet: self.screenlet)
   }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
+  private func setConfiguration(_ screenletConfiguration: NSDictionary) {
+    let repositoryId = screenletAttributes["repositoryId"]! as! NSNumber
+    let folderId = screenletAttributes["folderId"]! as! NSNumber
+    let autoLoad = screenletAttributes["autoLoad"]! as! Bool
+    let refreshControl = screenletAttributes["refreshControl"]! as! Bool
+    let firstPageSize = screenletAttributes["firstPageSize"]! as! NSNumber
+    let pageSize = screenletAttributes["pageSize"]! as! NSNumber
+    self.screenlet.repositoryId = repositoryId.int64Value
+    self.screenlet.folderId = folderId.int64Value
+    self.screenlet.autoLoad = autoLoad
+    self.screenlet.refreshControl = refreshControl
+    self.screenlet.firstPageSize = firstPageSize.intValue
+    self.screenlet.pageSize = pageSize.intValue
+  }
+  
   // MARK: ImageGalleryScreenletDelegate methods
   
   func screenlet(_ screenlet: ImageGalleryScreenlet, onImageEntriesResponse imageEntries: [ImageEntry]) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "images": imageEntries
-    ]
+    let imagesAttributes = imageEntries.map {
+      $0.attributes
+    }
+    let event = self.createEvent(attributeName: "images", attribute: imagesAttributes)
     self.onContentsReceived?(event)
   }
   
   func screenlet(_ screenlet: ImageGalleryScreenlet, onImageEntriesError error: NSError) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "error": error.description
-    ]
+    let event = self.createEvent(attributeName: "error", attribute: error.description)
     self.onGalleryError?(event)
   }
   
   func screenlet(_ screenlet: ImageGalleryScreenlet, onImageEntrySelected imageEntry: ImageEntry) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "image": imageEntry.attributes
-    ]
+    let event = self.createEvent(attributeName: "image", attribute: imageEntry.attributes)
     self.onItemSelected?(event)
   }
   
   func screenlet(_ screenlet: ImageGalleryScreenlet, onImageEntryDeleted imageEntry: ImageEntry) {
-    //TODO: send event to notify about the image deleted
+    let event = self.createEvent(attributeName: "image", attribute: imageEntry.attributes)
+    self.onImageEntryDeleted?(event)
   }
   
   func screenlet(_ screenlet: ImageGalleryScreenlet, onImageEntryDeleteError error: NSError) {
-    //TODO: send event to notify about the error during image file deletion
+    let event = self.createEvent(attributeName: "error", attribute: error.description)
+    self.onImageEntryDeleteError?(event)
   }
   
   func screenlet(_ screenlet: ImageGalleryScreenlet, onImageUploadStart imageEntryUpload: ImageEntryUpload) {
-    //TODO: send event to notify that an image is prepared for upload
+    let event = self.createEvent(attributeName: "image", attribute: imageEntryUpload.title)
+    self.onImageUploadStart?(event)
   }
   
   func screenlet(_ screenlet: ImageGalleryScreenlet,
                                 onImageUploadProgress imageEntryUpload: ImageEntryUpload,
                                 totalBytesSent: UInt64,
                                 totalBytesToSend: UInt64) {
-    //TODO: send event to notify that upload progress changes
+    let event: [String: Any] = [
+      "target": self.reactTag,
+      "totalBytesSent": totalBytesSent,
+      "totalBytesToSend": totalBytesToSend
+    ]
+    self.onImageUploadProgress?(event)
   }
   
   func screenlet(_ screenlet: ImageGalleryScreenlet, onImageUploadError error: NSError) {
-    //TODO: send event to notify about the error in he image upload progress
+    let event = self.createEvent(attributeName: "error", attribute: error.description)
+    self.onImageUploadError?(event)
   }
   
   func screenlet(_ screenlet: ImageGalleryScreenlet, onImageUploaded image: ImageEntry) {
-    //TODO: send event to notify that the image upload finishes
+    let event = self.createEvent(attributeName: "image", attribute: image.attributes)
+    self.onImageUploaded?(event)
   }
   
   func screenlet(_ screenlet: ImageGalleryScreenlet, onImageUploadDetailViewCreated view: ImageUploadDetailViewBase) -> Bool {
+    let event = self.createEvent(attributeName: "view", attribute: view.imageTitle ?? "")
+    self.onImageUploadDetailViewCreated?(event)
     return true
   }
 }

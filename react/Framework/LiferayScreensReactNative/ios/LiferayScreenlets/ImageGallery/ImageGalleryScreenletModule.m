@@ -18,8 +18,15 @@ RCT_EXPORT_VIEW_PROPERTY(onContentsReceived, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onGalleryError, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onItemSelected, RCTBubblingEventBlock)
 
+RCT_EXPORT_VIEW_PROPERTY(onImageEntryDeleted, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onImageEntryDeleteError, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onImageUploadStart, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onImageUploadProgress, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onImageUploadError, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onImageUploaded, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onImageUploadDetailViewCreated, RCTBubblingEventBlock)
+
 // Properties
-RCT_EXPORT_VIEW_PROPERTY(folderId, NSNumber)
-RCT_EXPORT_VIEW_PROPERTY(repositoryId, NSNumber)
+RCT_EXPORT_VIEW_PROPERTY(screenletAttributes, NSDictionary)
 
 @end

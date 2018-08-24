@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.SimpleViewManager;
@@ -23,6 +24,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import LiferayScreenlets.Base.EventEmitter;
+
 public class ImageGalleryScreenletViewManager extends SimpleViewManager<ImageGalleryScreenlet> implements ImageGalleryListener{
 
     private final String NAME = "ImageGalleryScreenlet";
@@ -37,64 +40,62 @@ public class ImageGalleryScreenletViewManager extends SimpleViewManager<ImageGal
     @Override
     protected ImageGalleryScreenlet createViewInstance(ThemedReactContext reactContext) {
         this.reactContext = reactContext;
-//        this.screenlet = new ImageGalleryScreenlet(reactContext);
-//        this.screenlet.render(com.liferay.mobile.screens.R.layout.gallery_default);
-//        this.screenlet.setListener(this);
-//        this.screenlet.setFirstPageSize(50);
-//        this.screenlet.setPageSize(25);
-//        this.screenlet.setLocale(new Locale(LiferayLocale.getDefaultSupportedLocale()));
         this.screenlet= new ImageGalleryScreenlet(reactContext);
         this.screenlet.render(com.liferay.mobile.screens.R.layout.gallery_default);
-        this.screenlet.setRepositoryId(20143);
-        this.screenlet.setFolderId(72155);
         this.screenlet.setListener(this);
-        this.screenlet.setFirstPageSize(50);
-        this.screenlet.setPageSize(25);
         this.screenlet.setLocale(new Locale(LiferayLocale.getDefaultSupportedLocale()));
-        this.screenlet.load();
         return this.screenlet;
     }
 
-    @ReactProp(name="folderId")
-    public void setFolderId(ImageGalleryScreenlet screenlet, double folderId) {
-        this.screenlet.setFolderId((long) folderId);
-        if(this.screenlet.getRepositoryId() != 0) {
-            this.screenlet.load();
-        }
-    }
-
-    @ReactProp(name="repositoryId")
-    public void setRepositoryId(ImageGalleryScreenlet screenlet, double repositoryId) {
-        this.screenlet.setRepositoryId((long) repositoryId);
-        if(this.screenlet.getFolderId() != 0) {
-            this.screenlet.load();
-        }
+    @ReactProp(name="screenletAttributes")
+    public void setConfiguration(ImageGalleryScreenlet screenlet, ReadableMap screenletAttributes) {
+        this.screenlet.setRepositoryId(screenletAttributes.getInt("repositoryId"));
+        this.screenlet.setFolderId(screenletAttributes.getInt("folderId"));
+        this.screenlet.setAutoLoad(screenletAttributes.getBoolean("autoLoad"));
+        this.screenlet.setFirstPageSize(screenletAttributes.getInt("firstPageSize"));
+        this.screenlet.setPageSize(screenletAttributes.getInt("pageSize"));
+        this.screenlet.load();
     }
 
     // ImageGalleryListener methods
 
     @Override
     public void onImageEntryDeleted(long l) {
-
+        WritableMap event = Arguments.createMap();
+        event.putInt("l", (int) l);
+        EventEmitter.sendEvent(this.reactContext,"onImageEntryDeleted", event);
     }
 
     @Override
     public void onImageUploadStarted(Uri uri, String s, String s1, String s2) {
-
+        WritableMap event = Arguments.createMap();
+        event.putString("uri", uri.getPath());
+        event.putString("s", s);
+        event.putString("s1", s1);
+        event.putString("s2", s2);
+        EventEmitter.sendEvent(this.reactContext,"onImageUploadStarted", event);
     }
 
     @Override
     public void onImageUploadProgress(int i, int i1) {
-
+        WritableMap event = Arguments.createMap();
+        event.putInt("i", i);
+        event.putInt("i1", i1);
+        EventEmitter.sendEvent(this.reactContext,"onImageUploadProgress", event);
     }
 
     @Override
     public void onImageUploadEnd(ImageEntry imageEntry) {
-
+        WritableMap event = Arguments.createMap();
+        event.putString("imageEntry", new JSONObject(imageEntry.getValues()).toString());
+        EventEmitter.sendEvent(this.reactContext,"onImageUploadEnd", event);
     }
 
     @Override
     public boolean showUploadImageView(String s, Uri uri, int i) {
+        WritableMap event = Arguments.createMap();
+        event.putString("imageView", s);
+        EventEmitter.sendEvent(this.reactContext,"onShowUploadImageView", event);
         return false;
     }
 
@@ -107,15 +108,14 @@ public class ImageGalleryScreenletViewManager extends SimpleViewManager<ImageGal
     public void onListPageFailed(int i, Exception e) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.toString());
-        this.sendEvent("onListPageFailed", event);
+        EventEmitter.sendEvent(this.reactContext,"onListPageFailed", event);
     }
 
     @Override
     public void onListPageReceived(int i, int i1, List<ImageEntry> list, int i2) {
         WritableMap event = Arguments.createMap();
         JSONArray jsonArray = new JSONArray();
-        for (ImageEntry image:
-                list) {
+        for (ImageEntry image : list) {
             jsonArray.put(image.getValues());
         }
         JSONObject jsonObject = new JSONObject();
@@ -125,25 +125,20 @@ public class ImageGalleryScreenletViewManager extends SimpleViewManager<ImageGal
             e.printStackTrace();
         }
         event.putString("images", jsonObject.toString());
-        this.sendEvent("onListPageReceived", event);
+        EventEmitter.sendEvent(this.reactContext,"onListPageReceived", event);
     }
 
     @Override
     public void onListItemSelected(ImageEntry imageEntry, View view) {
         WritableMap event = Arguments.createMap();
         event.putString("item", new JSONObject(imageEntry.getValues()).toString());
-        this.sendEvent("onItemSelected", event);
+        EventEmitter.sendEvent(this.reactContext,"onItemSelected", event);
     }
 
     @Override
     public void error(Exception e, String s) {
         WritableMap event = Arguments.createMap();
         event.putString("error", s);
-        this.sendEvent("onImageGalleryError", event);
-    }
-
-    private void sendEvent(String eventName ,WritableMap event ){
-        this.reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit(eventName, event);
+        EventEmitter.sendEvent(this.reactContext,"onImageGalleryError", event);
     }
 }

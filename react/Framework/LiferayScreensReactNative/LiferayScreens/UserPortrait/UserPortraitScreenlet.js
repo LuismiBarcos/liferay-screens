@@ -7,9 +7,6 @@ import {
 } from 'react-native'
 
 import NativeUserPortraitScreenlet from './Bridges/UserPortraitScreenlet'
-import EventsHandler from '../Base/EventsHandler';
-
-const eventHandler = new EventsHandler;
 
 export default class UserPortraitScreenlet extends Component {
     render() {

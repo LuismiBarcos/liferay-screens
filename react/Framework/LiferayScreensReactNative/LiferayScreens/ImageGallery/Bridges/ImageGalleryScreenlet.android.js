@@ -9,6 +9,19 @@ export default class ImageGalleryScreenlet extends Component {
     constructor(props){
         super(props);
 
+        this.state = {
+            repositoryId: props.repositoryId || 0,
+            folderId: props.folderId || 0,
+            autoLoad: props.autoLoad || true,
+            firstPageSize: props.firstPageSize || 50,
+            pageSize: props.pageSize || 25
+        }
+
+        this._onImageEntryDeleted = this._onImageEntryDeleted.bind(this);
+        this._onImageUploadStarted = this._onImageUploadStarted.bind(this);
+        this._onImageUploadProgress = this._onImageUploadProgress.bind(this);
+        this._onImageUploadEnd = this._onImageUploadEnd.bind(this);
+        this._onShowUploadImageView = this._onShowUploadImageView.bind(this);
         this._onListPageFailed = this._onListPageFailed.bind(this);
         this._onListPageReceived = this._onListPageReceived.bind(this);
         this._onItemSelected = this._onItemSelected.bind(this);
@@ -17,6 +30,11 @@ export default class ImageGalleryScreenlet extends Component {
     
     componentWillMount() {
         // Events
+        DeviceEventEmitter.addListener('onImageEntryDeleted', this._onImageEntryDeleted);
+        DeviceEventEmitter.addListener('onImageUploadStarted', this._onImageUploadStarted);
+        DeviceEventEmitter.addListener('onImageUploadProgress', this._onImageUploadProgress);
+        DeviceEventEmitter.addListener('onImageUploadEnd', this._onImageUploadEnd);
+        DeviceEventEmitter.addListener('onShowUploadImageView', this._onShowUploadImageView);
         DeviceEventEmitter.addListener('onListPageFailed', this._onListPageFailed);
         DeviceEventEmitter.addListener('onListPageReceived', this._onListPageReceived);
         DeviceEventEmitter.addListener('onItemSelected', this._onItemSelected);
@@ -27,12 +45,48 @@ export default class ImageGalleryScreenlet extends Component {
         return(
             <NativeImageGalleryScreenlet 
                 {...this.props}
+                screenletAttributes={this.state}
             />
         );
     }
 
+    // Events
+    _onImageEntryDeleted(event) {
+        if(!this.props.onImageEntryDeleted) {
+            return;
+        }
+        this.props.onImageEntryDeleted(event.l);
+    }
+
+    _onImageUploadStarted(event) {
+        if(!this.props.onImageUploadStarted) {
+            return;
+        }
+        this.props.onImageUploadStarted(event.uri, event.s, event.s1, event.s2);
+    }
+
+    _onImageUploadProgress(event) {
+        if(!this.props.onImageUploadProgress) {
+            return;
+        }
+        this.props.onImageUploadProgress(event.i, event.i1);
+    }
+
+    _onImageUploadEnd(event) {
+        if(!this.props.onImageUploadEnd) {
+            return;
+        }
+        this.props.onImageUploadEnd(event.imageEntry);
+    }
+
+    _onShowUploadImageView(event) {
+        if(!this.props.onShowUploadImageView) {
+            return;
+        }
+        this.props.onShowUploadImageView(event.imageView);
+    }
+
     _onListPageFailed(event) {
-        console.log('onListPageFailed android.js', event.error);
         if(!this.props.onListPageFailed) {
             return;
         }
@@ -40,29 +94,23 @@ export default class ImageGalleryScreenlet extends Component {
     }
 
     _onListPageReceived(event) {
-        console.log('Content received');
-        debugger;
         if(!this.props.onListPageReceived) {
             return;
         }
-        this.props.onListPageReceived(event.imageLoaded);
+        this.props.onListPageReceived(JSON.parse(event.images));
     }
 
     _onItemSelected(event) {
-        console.log('Item selected');
-        debugger;
         if(!this.props.onItemSelected) {
             return;
         }
-        this.props.onItemSelected(event.imageLoaded);
+        this.props.onItemSelected(JSON.parse(event.item));
     }
 
     _onImageGalleryError(event) {
-        console.log('onImageGalleryError android.js');
-        debugger;
         if(!this.props.onImageGalleryError) {
             return;
         }
-        this.props.onImageGalleryError(event.imageLoaded);
+        this.props.onImageGalleryError(event.error);
     }
 }
