@@ -1,6 +1,6 @@
 'use strict'
 import React, {Component} from 'react';
-import { NativeModules, requireNativeComponent, View } from 'react-native';
+import { requireNativeComponent} from 'react-native';
 import { DeviceEventEmitter } from 'react-native';
 
 const NativeUserPortraitScreenlet = requireNativeComponent('UserPortraitScreenlet');
@@ -8,6 +8,14 @@ const NativeUserPortraitScreenlet = requireNativeComponent('UserPortraitScreenle
 export default class UserPortraitScreenlet extends Component {
     constructor(props){
         super(props);
+        this.state = {
+            autoLoad: props.autoLoad || true,
+            userId: props.userId || 0,
+            male: props.male || true,
+            portraitId: props.portraitId || 0,
+            uuid: props.uuid || "",
+            editable: props.editable || false
+        }
 
         this._onUserPortraitLoadReceived = this._onUserPortraitLoadReceived.bind(this);
         this._onUserPortraitUploaded = this._onUserPortraitUploaded.bind(this);
@@ -25,20 +33,19 @@ export default class UserPortraitScreenlet extends Component {
         return(
             <NativeUserPortraitScreenlet 
                 {...this.props}
+                screenletAttributes={this.state}
             />
         );
     }
 
     _onUserPortraitLoadReceived(event) {
-        console.log('Image loaded!');
         if(!this.props.onUserPortraitLoadReceived) {
             return;
         }
-        this.props.onUserPortraitLoadReceived(event.imageLoaded);
+        this.props.onUserPortraitLoadReceived(event.image);
     }
 
     _onUserPortraitUploaded(event) {
-        console.log('Image uploaded!');
         if(!this.props.onUserPortraitUploaded) {
             return;
         }
@@ -46,7 +53,6 @@ export default class UserPortraitScreenlet extends Component {
     }
 
     _onUserPortraitError(event) {
-        console.log('Error!!');
         if(!this.props.onUserPortraitError) {
             return;
         }

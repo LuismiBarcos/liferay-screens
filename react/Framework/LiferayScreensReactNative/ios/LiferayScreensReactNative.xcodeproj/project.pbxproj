@@ -54,6 +54,7 @@
 		A606391F212C4C0C00E78951 /* WebScreenletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A606391E212C4C0C00E78951 /* WebScreenletView.swift */; };
 		A6063921212C4D8700E78951 /* WebScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6063920212C4D8700E78951 /* WebScreenletManager.swift */; };
 		A6063926212C50FE00E78951 /* WebScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A6063925212C50FE00E78951 /* WebScreenletModule.m */; };
+		A606392921300B5800E78951 /* RCTViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A606392821300B5800E78951 /* RCTViewExtension.swift */; };
 		A60D405A210F35E500AB71D6 /* SessionContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60D4059210F35E500AB71D6 /* SessionContextManager.swift */; };
 		A60D405C210F386800AB71D6 /* SessionContextModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A60D405B210F386800AB71D6 /* SessionContextModule.m */; };
 		A6145147211B19AF001335C5 /* CommentListScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6145146211B19AF001335C5 /* CommentListScreenletManager.swift */; };
@@ -430,6 +431,7 @@
 		A606391E212C4C0C00E78951 /* WebScreenletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebScreenletView.swift; sourceTree = "<group>"; };
 		A6063920212C4D8700E78951 /* WebScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebScreenletManager.swift; sourceTree = "<group>"; };
 		A6063925212C50FE00E78951 /* WebScreenletModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebScreenletModule.m; sourceTree = "<group>"; };
+		A606392821300B5800E78951 /* RCTViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTViewExtension.swift; sourceTree = "<group>"; };
 		A60D4059210F35E500AB71D6 /* SessionContextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionContextManager.swift; sourceTree = "<group>"; };
 		A60D405B210F386800AB71D6 /* SessionContextModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionContextModule.m; sourceTree = "<group>"; };
 		A6145146211B19AF001335C5 /* CommentListScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentListScreenletManager.swift; sourceTree = "<group>"; };
@@ -791,6 +793,14 @@
 			path = Web;
 			sourceTree = "<group>";
 		};
+		A606392721300B2800E78951 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A606392821300B5800E78951 /* RCTViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A60D4033210F35C500AB71D6 /* Context */ = {
 			isa = PBXGroup;
 			children = (
@@ -904,6 +914,7 @@
 		A678B5C9210B01180008EB10 /* LiferayScreenlets */ = {
 			isa = PBXGroup;
 			children = (
+				A606392721300B2800E78951 /* Extensions */,
 				A606391D212C4BF700E78951 /* Web */,
 				A6EAFD8E212C03B20072D7C8 /* Blogs */,
 				A6051B68212AD5EB00897387 /* Asset */,
@@ -1678,6 +1689,7 @@
 				A6051B122125A15900897387 /* CommentAddScreenletView.swift in Sources */,
 				A63B0E2321256CA3003000F9 /* VideoDisplayScreenletModule.m in Sources */,
 				A6EAFD89212B1CA20072D7C8 /* WebContentListScreenletManager.swift in Sources */,
+				A606392921300B5800E78951 /* RCTViewExtension.swift in Sources */,
 				A6145152211C5218001335C5 /* SignUpScreenletModule.m in Sources */,
 				A6051B142125A2D500897387 /* CommentAddScreenletManager.swift in Sources */,
 				A63B0E2121256C8A003000F9 /* VideoDisplayScreenletView.swift in Sources */,

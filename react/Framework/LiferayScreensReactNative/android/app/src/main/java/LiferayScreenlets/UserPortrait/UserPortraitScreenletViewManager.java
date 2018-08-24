@@ -4,16 +4,15 @@ import android.graphics.Bitmap;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.liferay.mobile.screens.context.User;
 import com.liferay.mobile.screens.userportrait.UserPortraitListener;
 import com.liferay.mobile.screens.userportrait.UserPortraitScreenlet;
 
-import org.json.JSONObject;
+import LiferayScreenlets.Base.EventEmitter;
 
 public class UserPortraitScreenletViewManager extends SimpleViewManager<UserPortraitScreenlet> implements UserPortraitListener{
 
@@ -32,19 +31,17 @@ public class UserPortraitScreenletViewManager extends SimpleViewManager<UserPort
         this.screenlet = new UserPortraitScreenlet(reactContext);
         this.screenlet.render(com.liferay.mobile.screens.R.layout.userportrait_default);
         this.screenlet.setListener(this);
-        this.screenlet.load();
         return this.screenlet;
     }
 
-    @ReactProp(name="editable")
-    public void setEditable(UserPortraitScreenlet screenlet, boolean editable){
-        this.screenlet.setEditable(editable);
-//        this.screenlet.load();
-    }
-
-    @ReactProp(name="userId")
-    public void setUserId(UserPortraitScreenlet screenlet, double userId) {
-        this.screenlet.setUserId((long) userId);
+    @ReactProp(name = "screenletAttributes")
+    public void setConfiguation(UserPortraitScreenlet screenlet, ReadableMap attributes) {
+        this.screenlet.setAutoLoad(attributes.getBoolean("autoLoad"));
+        this.screenlet.setUserId(attributes.getInt("userId"));
+        this.screenlet.setMale(attributes.getBoolean("male"));
+        this.screenlet.setPortraitId(attributes.getInt("portraitId"));
+        this.screenlet.setUuid(attributes.getString("uuid"));
+        this.screenlet.setEditable(attributes.getBoolean("editable"));
         this.screenlet.load();
     }
 
@@ -54,7 +51,7 @@ public class UserPortraitScreenletViewManager extends SimpleViewManager<UserPort
         WritableMap event = Arguments.createMap();
         int imageSize = bitmap.getRowBytes() * bitmap.getHeight();
         event.putInt("image", imageSize);
-        this.sendEvent("onUserPortraitLoadReceived", event);
+        EventEmitter.sendEvent(this.reactContext, "onUserPortraitLoadReceived", event);
         return bitmap;
     }
 
@@ -62,18 +59,13 @@ public class UserPortraitScreenletViewManager extends SimpleViewManager<UserPort
     public void onUserPortraitUploaded() {
         WritableMap event = Arguments.createMap();
         event.putBoolean("userPortraitLoadReceived", true);
-        this.sendEvent("onUserPortraitUploaded", event);
+        EventEmitter.sendEvent(this.reactContext, "onUserPortraitUploaded", event);
     }
 
     @Override
     public void error(Exception e, String s) {
         WritableMap event = Arguments.createMap();
         event.putString("error", s);
-        this.sendEvent("onUserPortraitError", event);
-    }
-
-    private void sendEvent(String eventName ,WritableMap event ){
-        this.reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit(eventName, event);
+        EventEmitter.sendEvent(this.reactContext, "onUserPortraitError", event);
     }
 }
