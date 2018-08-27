@@ -1,6 +1,6 @@
 'use strict'
 import React, {Component} from 'react';
-import { NativeModules, requireNativeComponent, View } from 'react-native';
+import { requireNativeComponent } from 'react-native';
 import { DeviceEventEmitter } from 'react-native';
 
 const NativeDDLFormScreenlet = requireNativeComponent('DDLFormScreenlet');
@@ -8,6 +8,17 @@ const NativeDDLFormScreenlet = requireNativeComponent('DDLFormScreenlet');
 export default class DDLFormScreenlet extends Component {
     constructor(props){
         super(props);
+
+        this.state = {
+            structureId: props.structureId || 0,
+            groupId: props.groupId || 0,
+            recordSetId: props.recordSetId || 0,
+            recordId: props.recordId || 0,
+            repositoryId: props.repositoryId || 0,
+            folderId: props.folderId || 0,
+            autoLoad: props.autoLoad || true,
+            autoscrollOnValidation: props.autoscrollOnValidation || true
+        }
 
         this._onDDLFormLoaded = this._onDDLFormLoaded.bind(this);
         this._onDDLFormRecordLoaded = this._onDDLFormRecordLoaded.bind(this);
@@ -33,6 +44,7 @@ export default class DDLFormScreenlet extends Component {
         return(
             <NativeDDLFormScreenlet 
                 {...this.props}
+                screenletAttributes={this.state}
             />
         );
     }

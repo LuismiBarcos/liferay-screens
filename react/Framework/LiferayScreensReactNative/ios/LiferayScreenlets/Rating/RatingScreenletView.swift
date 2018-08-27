@@ -22,17 +22,6 @@ class RatingScreenletView: RCTView, RatingScreenletDelegate {
     }
   }
   
-  private var classPK: NSNumber = 0
-  var ClassPK: NSNumber {
-    get{
-      return classPK
-    }
-    set {
-      classPK = newValue
-      self.screenlet.classPK = classPK.int64Value
-    }
-  }
-  
   // MARK: Events
   var onRatingRetrieve: RCTBubblingEventBlock?
   var onRatingDeleted: RCTBubblingEventBlock?

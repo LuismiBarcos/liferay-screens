@@ -21,6 +21,7 @@ export default class RatingScreenlet extends Component {
         return(
             <NativeRatingScreenlet 
                 {...this.props}
+                screenletAttributes={this.state}
                 onRatingRetrieve={this._onRatingRetrieve.bind(this)}
                 onRatingDeleted={this._onRatingDeleted.bind(this)}
                 onRatingUpdated={this._onRatingUpdated.bind(this)}

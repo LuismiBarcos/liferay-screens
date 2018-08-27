@@ -26,7 +26,6 @@ RCT_EXPORT_VIEW_PROPERTY(onUploadFinished, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onUploadError, RCTBubblingEventBlock)
 
 // Properties
-RCT_EXPORT_VIEW_PROPERTY(structureId, NSNumber)
-RCT_EXPORT_VIEW_PROPERTY(recordSetId, NSNumber)
+RCT_EXPORT_VIEW_PROPERTY(screenletAttributes, NSDictionary)
 
 @end
