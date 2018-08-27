@@ -54,18 +54,12 @@ class SignUpScreenletView: RCTView, SignUpScreenletDelegate {
   // MARK: SignUpScreenletDelegate methods
 
   func screenlet(_ screenlet: SignUpScreenlet, onSignUpResponseUserAttributes attributes: [String: AnyObject]) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "user": attributes
-    ]
+    let event = self.createEvent(attributeName: "user", attribute: attributes)
     self.onSignUpResponseUserAttributes?(event)
   }
   
   func screenlet(_ screenlet: SignUpScreenlet, onSignUpError error: NSError){
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "error": error.description
-    ]
+    let event = self.createEvent(attributeName: "error", attribute: error.description)
     self.onSignUpError?(event)
   }
 }

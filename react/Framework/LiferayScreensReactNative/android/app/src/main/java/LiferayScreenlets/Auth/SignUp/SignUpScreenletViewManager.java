@@ -4,7 +4,6 @@ import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
@@ -12,12 +11,15 @@ import com.liferay.mobile.screens.auth.BasicAuthMethod;
 import com.liferay.mobile.screens.auth.signup.SignUpListener;
 import com.liferay.mobile.screens.auth.signup.SignUpScreenlet;
 import com.liferay.mobile.screens.context.LiferayServerContext;
+import com.liferay.mobile.screens.context.SessionContext;
 import com.liferay.mobile.screens.context.User;
 import com.liferay.mobile.screens.context.storage.CredentialsStorageBuilder;
-import com.liferay.mobile.screens.imagegallery.ImageGalleryScreenlet;
+import com.liferay.mobile.screens.util.LiferayLocale;
 import com.liferayscreensreactnative.R;
 
 import org.json.JSONObject;
+
+import LiferayScreenlets.Base.EventEmitter;
 
 public class SignUpScreenletViewManager extends SimpleViewManager<SignUpScreenlet> implements SignUpListener{
 
@@ -44,7 +46,10 @@ public class SignUpScreenletViewManager extends SimpleViewManager<SignUpScreenle
     public void setConfiguration(SignUpScreenlet screenlet, ReadableMap screenletAttributes) {
         this.screenlet.setAnonymousApiUserName(screenletAttributes.getString("anonymousApiUserName"));
         this.screenlet.setAnonymousApiPassword(screenletAttributes.getString("anonymousApiPassword"));
-        this.screenlet.setCompanyId(screenletAttributes.getInt("companyId"));
+        long companyId = screenletAttributes.getInt("companyId") == 0
+                ? LiferayServerContext.getCompanyId()
+                : screenletAttributes.getInt("companyId");
+        this.screenlet.setCompanyId(companyId);
         this.screenlet.setAutoLogin(screenletAttributes.getBoolean("autoLogin"));
         this.screenlet.setCredentialsStorage(CredentialsStorageBuilder.StorageType.NONE);
         this.screenlet.setBasicAuthMethod(BasicAuthMethod.EMAIL);
@@ -56,7 +61,7 @@ public class SignUpScreenletViewManager extends SimpleViewManager<SignUpScreenle
     public void onSignUpFailure(Exception e) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.getMessage());
-        this.sendEvent("onSignUpFailure", event);
+        EventEmitter.sendEvent(this.reactContext,"onSignUpFailure", event);
     }
 
     @Override
@@ -66,11 +71,6 @@ public class SignUpScreenletViewManager extends SimpleViewManager<SignUpScreenle
         WritableMap event = Arguments.createMap();
         // Put data to map
         event.putString("user", jsonObject.toString());
-        this.sendEvent("onSignUpSuccess", event);
-    }
-
-    private void sendEvent(String eventName ,WritableMap event ){
-        this.reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit(eventName, event);
+        EventEmitter.sendEvent(this.reactContext,"onSignUpSuccess", event);
     }
 }
