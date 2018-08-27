@@ -1,8 +1,8 @@
 package LiferayScreenlets.FileDisplay;
 
 import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
@@ -11,6 +11,8 @@ import com.liferay.mobile.screens.asset.display.AssetDisplayListener;
 import com.liferay.mobile.screens.dlfile.display.image.ImageDisplayScreenlet;
 
 import org.json.JSONObject;
+
+import LiferayScreenlets.Base.EventEmitter;
 
 public class ImageDisplayScreenletViewManager extends SimpleViewManager<ImageDisplayScreenlet> implements AssetDisplayListener{
 
@@ -32,22 +34,13 @@ public class ImageDisplayScreenletViewManager extends SimpleViewManager<ImageDis
         return this.screenlet;
     }
 
-    // ClassName is not necessary because is set by default in BaseFileDisplayScreenlet
-
-//    @ReactProp(name = "className")
-//    public void setClassName(ImageDisplayScreenlet screenlet, String className) {
-//        this.screenlet.setClassName(className);
-//        if(this.screenlet.getClassPK() != 0){
-//            this.screenlet.load();
-//        }
-//    }
-
-    @ReactProp(name = "classPK")
-    public void setClassPK(ImageDisplayScreenlet screenlet, int classPK) {
-        this.screenlet.setClassPK(classPK);
-        if(this.screenlet.getClassName() != null){
-            this.screenlet.load();
-        }
+    @ReactProp(name="screenletAttributes")
+    public void setConfiguration(ImageDisplayScreenlet screenlet, ReadableMap screenletAttributes) {
+        this.screenlet.setAutoLoad(screenletAttributes.getBoolean("autoLoad"));
+        this.screenlet.setEntryId(screenletAttributes.getInt("entryId"));
+        this.screenlet.setClassName(screenletAttributes.getString("className"));
+        this.screenlet.setClassPK(screenletAttributes.getInt("classPK"));
+        this.screenlet.load();
     }
 
     // AssetDisplayListener implementation
@@ -57,18 +50,13 @@ public class ImageDisplayScreenletViewManager extends SimpleViewManager<ImageDis
         JSONObject jsonObject = new JSONObject(assetEntry.getValues());
         WritableMap event = Arguments.createMap();
         event.putString("assetEntry", jsonObject.toString());
-        this.sendEvent("onRetrieveAssetSuccess", event);
+        EventEmitter.sendEvent(this.reactContext,"onRetrieveAssetSuccess", event);
     }
 
     @Override
     public void error(Exception e, String s) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.toString());
-        this.sendEvent("onError", event);
-    }
-
-    private void sendEvent(String eventName ,WritableMap event ){
-        this.reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit(eventName, event);
+        EventEmitter.sendEvent(this.reactContext,"onError", event);
     }
 }
