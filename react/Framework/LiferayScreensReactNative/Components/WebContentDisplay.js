@@ -1,12 +1,6 @@
 'use strict'
 import React, {Component} from 'react';
-import {Platform, 
-  StyleSheet, 
-  Text, 
-  View,
-  Dimensions,
-  NativeModules
-} from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 import WebContentDisplayScreenlet from "./../LiferayScreens/WebContent/Display/WebContentDisplayScreenlet";
 

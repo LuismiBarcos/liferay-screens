@@ -1,6 +1,6 @@
 'use strict'
 import React, {Component} from 'react';
-import { NativeModules, requireNativeComponent, View } from 'react-native';
+import { requireNativeComponent } from 'react-native';
 import { DeviceEventEmitter } from 'react-native';
 
 const NativeWebContentDisplayScreenlet = requireNativeComponent('WebContentDisplayScreenlet');
@@ -8,6 +8,14 @@ const NativeWebContentDisplayScreenlet = requireNativeComponent('WebContentDispl
 export default class WebContentDisplayScreenlet extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            groupId: props.groupId || 0,
+            articleId: props.articleId || "",
+            templateId: props.templateId || 0,
+            structureId: props.structureId || 0,
+            autoLoad: props.autoLoad || true
+        }
 
         this._onWebContentReceived = this._onWebContentReceived.bind(this);
         this._onUrlClicked = this._onUrlClicked.bind(this);
@@ -27,6 +35,7 @@ export default class WebContentDisplayScreenlet extends Component {
         return(
             <NativeWebContentDisplayScreenlet 
                 {...this.props}
+                screenletAttributes={this.state}
             />
         );
     }

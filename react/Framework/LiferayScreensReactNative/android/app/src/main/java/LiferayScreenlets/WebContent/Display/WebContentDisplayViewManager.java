@@ -1,12 +1,11 @@
 package LiferayScreenlets.WebContent.Display;
 
-import android.content.res.TypedArray;
 import android.view.MotionEvent;
 import android.view.View;
 
 import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
@@ -17,9 +16,9 @@ import com.liferay.mobile.screens.webcontent.WebContent;
 import com.liferay.mobile.screens.webcontent.display.WebContentDisplayListener;
 import com.liferay.mobile.screens.webcontent.display.WebContentDisplayScreenlet;
 
-import org.json.JSONObject;
-
 import java.util.Locale;
+
+import LiferayScreenlets.Base.EventEmitter;
 
 public class WebContentDisplayViewManager extends SimpleViewManager<WebContentDisplayScreenlet> implements WebContentDisplayListener{
 
@@ -38,24 +37,24 @@ public class WebContentDisplayViewManager extends SimpleViewManager<WebContentDi
         this.screenlet = new WebContentDisplayScreenlet(reactContext);
         this.screenlet.render(com.liferay.mobile.screens.R.layout.webcontentdisplay_default);
         this.screenlet.setListener(this);
-        initializeDefaultValues();
         return this.screenlet;
     }
 
-    private void initializeDefaultValues() {
-        this.screenlet.setAutoLoad(true);
-        this.screenlet.setStructureId((long) 0);
-        this.screenlet.setLabelFields(String.valueOf(com.liferay.mobile.screens.R.styleable.WebContentDisplayScreenlet_labelFields));
+    @ReactProp(name="screenletAttributes")
+    public void setConfiguration(WebContentDisplayScreenlet screenlet, ReadableMap screenletAttributes) {
         this.screenlet.setLocale(new Locale(LiferayLocale.getDefaultSupportedLocale()));
+        long groupId = screenletAttributes.getInt("groupId") == 0
+                ? LiferayServerContext.getGroupId()
+                : screenletAttributes.getInt("groupId");
+        this.screenlet.setGroupId(groupId);
+        this.screenlet.setLabelFields(String.valueOf(com.liferay.mobile.screens.R.styleable.WebContentDisplayScreenlet_labelFields));
+        this.screenlet.setArticleId(screenletAttributes.getString("articleId"));
+        this.screenlet.setTemplateId((long) screenletAttributes.getInt("templateId"));
+        this.screenlet.setStructureId((long) screenletAttributes.getInt("structureId"));
+        this.screenlet.setAutoLoad(screenletAttributes.getBoolean("autoLoad"));
         this.screenlet.setJavascriptEnabled(false);
-        this.screenlet.setGroupId(LiferayServerContext.getGroupId());
         this.screenlet.setUserId(SessionContext.getUserId());
-    }
-
-    @ReactProp(name = "articleId")
-    public void setArticleId(WebContentDisplayScreenlet screenlet, String articleId){
-        this.screenlet.setArticleId(articleId);
-
+        this.screenlet.load();
     }
 
     // WebContentDisplayListener methods
@@ -66,7 +65,7 @@ public class WebContentDisplayViewManager extends SimpleViewManager<WebContentDi
         WritableMap event = Arguments.createMap();
         // Put data to map
         event.putString("html", webContent.getHtml());
-        this.sendEvent("onWebContentReceived", event);
+        EventEmitter.sendEvent(this.reactContext,"onWebContentReceived", event);
         return webContent;
     }
 
@@ -76,7 +75,7 @@ public class WebContentDisplayViewManager extends SimpleViewManager<WebContentDi
         WritableMap event = Arguments.createMap();
         // Put data to map
         event.putString("url", s);
-        this.sendEvent("onUrlClicked", event);
+        EventEmitter.sendEvent(this.reactContext,"onUrlClicked", event);
         return false;
     }
 
@@ -86,7 +85,7 @@ public class WebContentDisplayViewManager extends SimpleViewManager<WebContentDi
         WritableMap event = Arguments.createMap();
         // Put data to map
         event.putString("touched", motionEvent.toString());
-        this.sendEvent("onWebContentTouched", event);
+        EventEmitter.sendEvent(this.reactContext,"onWebContentTouched", event);
         return false;
     }
 
@@ -96,11 +95,7 @@ public class WebContentDisplayViewManager extends SimpleViewManager<WebContentDi
         WritableMap event = Arguments.createMap();
         // Put data to map
         event.putString("error", e.getMessage());
-        this.sendEvent("onError", event);
+        EventEmitter.sendEvent(this.reactContext,"onError", event);
     }
-
-    private void sendEvent(String eventName ,WritableMap event ){
-        this.reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit(eventName, event);
-    }
+    
 }

@@ -20,7 +20,7 @@ RCT_EXPORT_VIEW_PROPERTY(onWebContentError, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onUrlClicked, RCTBubblingEventBlock)
 
 // Properties
-RCT_EXPORT_VIEW_PROPERTY(articleId, NSString)
+RCT_EXPORT_VIEW_PROPERTY(screenletAttributes, NSDictionary)
 
 @end
 

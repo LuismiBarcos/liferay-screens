@@ -11,14 +11,14 @@ import LiferayScreens
 class WebContentDisplayScreenletView: RCTView, WebContentDisplayScreenletDelegate {
   // Variables
   var screenlet: WebContentDisplayScreenlet!
-  private var articleId: String = ""
-  var ArticleId : String {
+  var _screenletAttributes: NSDictionary = NSDictionary()
+  var screenletAttributes: NSDictionary {
     get {
-      return articleId
+      return _screenletAttributes
     }
-    set {
-      articleId = newValue
-      screenlet.articleId = articleId
+    set{
+      _screenletAttributes = newValue
+      self.setConfiguration(_screenletAttributes)
     }
   }
   
@@ -32,52 +32,46 @@ class WebContentDisplayScreenletView: RCTView, WebContentDisplayScreenletDelegat
     super.init(frame: frame)
     self.screenlet = WebContentDisplayScreenlet(frame: frame, themeName: "default")
     self.screenlet.delegate = self
-    self.addSubview(self.screenlet)
-    
-    self.screenlet.translatesAutoresizingMaskIntoConstraints = false
-    
-    self.screenlet.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-    self.screenlet.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-    self.screenlet.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-    self.screenlet.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+    self.updateViewConstraints(screenlet: self.screenlet)
   }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
+  private func setConfiguration(_ screenletConfiguration: NSDictionary) {
+    let groupId = screenletConfiguration["groupId"]! as! NSNumber
+    let articleId = screenletConfiguration["articleId"]! as! String
+    let templateId = screenletConfiguration["templateId"]! as! NSNumber
+    let structureId = screenletConfiguration["structureId"]! as! NSNumber
+    let autoLoad = screenletConfiguration["autoLoad"]! as! Bool
+    self.screenlet.groupId = groupId.int64Value
+    self.screenlet.articleId = articleId
+    self.screenlet.templateId = templateId.int64Value
+    self.screenlet.structureId = structureId.int64Value
+    self.screenlet.autoLoad = autoLoad
+  }
+  
   // MARK: WebContentDisplayScreenletDelegate methods
   
   func screenlet(_ screenlet: WebContentDisplayScreenlet, onWebContentResponse html: String) -> String? {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "html": html
-    ]
+    let event = self.createEvent(attributeName: "html", attribute: html)
     self.onWebContentResponse?(event)
     return html
   }
   
   func screenlet(_ screenlet: WebContentDisplayScreenlet, onRecordContentResponse record: DDLRecord) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "record": record.attributes
-    ]
+    let event = self.createEvent(attributeName: "record", attribute: record.attributes)
     self.onRecordContentResponse?(event)
   }
   
   func screenlet(_ screenlet: WebContentDisplayScreenlet, onWebContentError error: NSError) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "error": error.description
-    ]
+    let event = self.createEvent(attributeName: "error", attribute: error.description)
     self.onWebContentError?(event)
   }
   
   func screenlet(_ screenlet: WebContentDisplayScreenlet, onUrlClicked url: String) -> Bool {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "url": url
-    ]
+    let event = self.createEvent(attributeName: "url", attribute: url)
     self.onUrlClicked?(event)
     return false
   }
