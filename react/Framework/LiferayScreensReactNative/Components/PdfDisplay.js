@@ -1,12 +1,6 @@
 'use strict'
 import React, {Component} from 'react';
-import {Platform, 
-  StyleSheet, 
-  Dimensions,
-  Text, 
-  View,
-  NativeModules
-} from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import PdfDisplayScreenlet from "./../LiferayScreens/FileDisplay/PdfDisplayScreenlet";
 
 export default class PdfDisplay extends Component {

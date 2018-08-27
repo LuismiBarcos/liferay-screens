@@ -44,7 +44,7 @@
 		A6051B3D2126F94F00897387 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		A6051B62212AA99400897387 /* PdfDisplayScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6051B61212AA99400897387 /* PdfDisplayScreenletManager.swift */; };
 		A6051B64212AA9AF00897387 /* PdfDisplayScreenletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6051B63212AA9AF00897387 /* PdfDisplayScreenletView.swift */; };
-		A6051B67212AAA6C00897387 /* PdfDisplayScreenletManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6051B66212AAA6C00897387 /* PdfDisplayScreenletManager.m */; };
+		A6051B67212AAA6C00897387 /* PdfDisplayScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A6051B66212AAA6C00897387 /* PdfDisplayScreenletModule.m */; };
 		A6051B6B212AD61900897387 /* AssetListScreenletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6051B6A212AD61900897387 /* AssetListScreenletView.swift */; };
 		A6051B6D212AE69300897387 /* AssetListScreenletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6051B6C212AE69300897387 /* AssetListScreenletManager.swift */; };
 		A6051B6F212AE6E400897387 /* AssetListScreenletModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A6051B6E212AE6E400897387 /* AssetListScreenletModule.m */; };
@@ -421,7 +421,7 @@
 		A6051B152125A30700897387 /* CommentAddScreenletModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentAddScreenletModule.m; sourceTree = "<group>"; };
 		A6051B61212AA99400897387 /* PdfDisplayScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfDisplayScreenletManager.swift; sourceTree = "<group>"; };
 		A6051B63212AA9AF00897387 /* PdfDisplayScreenletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PdfDisplayScreenletView.swift; sourceTree = "<group>"; };
-		A6051B66212AAA6C00897387 /* PdfDisplayScreenletManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PdfDisplayScreenletManager.m; sourceTree = "<group>"; };
+		A6051B66212AAA6C00897387 /* PdfDisplayScreenletModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PdfDisplayScreenletModule.m; sourceTree = "<group>"; };
 		A6051B6A212AD61900897387 /* AssetListScreenletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetListScreenletView.swift; sourceTree = "<group>"; };
 		A6051B6C212AE69300897387 /* AssetListScreenletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetListScreenletManager.swift; sourceTree = "<group>"; };
 		A6051B6E212AE6E400897387 /* AssetListScreenletModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetListScreenletModule.m; sourceTree = "<group>"; };
@@ -893,7 +893,7 @@
 				A63B0E2221256CA3003000F9 /* VideoDisplayScreenletModule.m */,
 				A6051B61212AA99400897387 /* PdfDisplayScreenletManager.swift */,
 				A6051B63212AA9AF00897387 /* PdfDisplayScreenletView.swift */,
-				A6051B66212AAA6C00897387 /* PdfDisplayScreenletManager.m */,
+				A6051B66212AAA6C00897387 /* PdfDisplayScreenletModule.m */,
 				A60638F2212C391C00E78951 /* FileDisplayScreenletView.swift */,
 				A6063919212C3ABF00E78951 /* FileDisplayScreenletManager.swift */,
 				A606391B212C3AF900E78951 /* FileDisplayScreenletModule.m */,
@@ -1673,7 +1673,7 @@
 				A678B5F7210B01DF0008EB10 /* LoginScreenletModule.m in Sources */,
 				A6EAFD9B212C1E600072D7C8 /* DDLListScreenletModule.m in Sources */,
 				A68F8E4D21218CE90082A85C /* ForgotPasswordScreenletManager.m in Sources */,
-				A6051B67212AAA6C00897387 /* PdfDisplayScreenletManager.m in Sources */,
+				A6051B67212AAA6C00897387 /* PdfDisplayScreenletModule.m in Sources */,
 				A6145150211C504B001335C5 /* SignUpScreenletView.swift in Sources */,
 				A63B0E142122D2BC003000F9 /* WebContentDisplayScreenletView.swift in Sources */,
 				A60D405A210F35E500AB71D6 /* SessionContextManager.swift in Sources */,
