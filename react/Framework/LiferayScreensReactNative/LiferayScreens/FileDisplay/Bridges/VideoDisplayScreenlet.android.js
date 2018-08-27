@@ -1,6 +1,6 @@
 'use strict'
 import React, {Component} from 'react';
-import { NativeModules, requireNativeComponent, View } from 'react-native';
+import { requireNativeComponent } from 'react-native';
 import { DeviceEventEmitter } from 'react-native';
 
 const NativeVideoDisplayScreenlet = requireNativeComponent('VideoDisplayScreenlet');
@@ -8,7 +8,12 @@ const NativeVideoDisplayScreenlet = requireNativeComponent('VideoDisplayScreenle
 export default class VideoDisplayScreenlet extends Component {
     constructor(props) {
         super(props);
-
+        this.state = {
+            entryId: props.entryId || 0,
+            autoLoad: props.autoLoad || true,
+            className: props.className || "",
+            classPK: props.classPK || 0,
+        }
         this._onVideoPrepared = this._onVideoPrepared.bind(this);
         this._onVideoError = this._onVideoError.bind(this);
         this._onVideoCompleted = this._onVideoCompleted.bind(this);
@@ -28,6 +33,7 @@ export default class VideoDisplayScreenlet extends Component {
         return(
             <NativeVideoDisplayScreenlet 
                 {...this.props}
+                screenletAttributes={this.state}
             />
         );
     }

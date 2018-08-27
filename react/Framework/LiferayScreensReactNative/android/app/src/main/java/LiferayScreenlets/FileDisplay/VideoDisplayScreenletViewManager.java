@@ -1,8 +1,8 @@
 package LiferayScreenlets.FileDisplay;
 
 import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
@@ -11,6 +11,8 @@ import com.liferay.mobile.screens.dlfile.display.video.VideoDisplayListener;
 import com.liferay.mobile.screens.dlfile.display.video.VideoDisplayScreenlet;
 
 import org.json.JSONObject;
+
+import LiferayScreenlets.Base.EventEmitter;
 
 public class VideoDisplayScreenletViewManager extends SimpleViewManager<VideoDisplayScreenlet> implements VideoDisplayListener{
 
@@ -32,22 +34,13 @@ public class VideoDisplayScreenletViewManager extends SimpleViewManager<VideoDis
         return this.screenlet;
     }
 
-    // ClassName is not necessary because is set by default in BaseFileDisplayScreenlet
-
-//    @ReactProp(name = "className")
-//    public void setClassName(ImageDisplayScreenlet screenlet, String className) {
-//        this.screenlet.setClassName(className);
-//        if(this.screenlet.getClassPK() != 0){
-//            this.screenlet.load();
-//        }
-//    }
-
-    @ReactProp(name = "classPK")
-    public void setClassPK(VideoDisplayScreenlet screenlet, int classPK) {
-        this.screenlet.setClassPK(classPK);
-        if(this.screenlet.getClassName() != null){
-            this.screenlet.load();
-        }
+    @ReactProp(name="screenletAttributes")
+    public void setConfiguration(VideoDisplayScreenlet screenlet, ReadableMap screenletAttributes) {
+        this.screenlet.setAutoLoad(screenletAttributes.getBoolean("autoLoad"));
+        this.screenlet.setEntryId(screenletAttributes.getInt("entryId"));
+        this.screenlet.setClassName(screenletAttributes.getString("className"));
+        this.screenlet.setClassPK(screenletAttributes.getInt("classPK"));
+        this.screenlet.load();
     }
 
     // VideoDisplayListener implementation
@@ -56,21 +49,21 @@ public class VideoDisplayScreenletViewManager extends SimpleViewManager<VideoDis
     public void onVideoPrepared() {
         WritableMap event = Arguments.createMap();
         event.putString("status", "video prepared");
-        this.sendEvent("onVideoPrepared", event);
+        EventEmitter.sendEvent(this.reactContext,"onVideoPrepared", event);
     }
 
     @Override
     public void onVideoError(Exception e) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.toString());
-        this.sendEvent("onVideoError", event);
+        EventEmitter.sendEvent(this.reactContext,"onVideoError", event);
     }
 
     @Override
     public void onVideoCompleted() {
         WritableMap event = Arguments.createMap();
         event.putString("status", "video completed");
-        this.sendEvent("onVideoCompleted", event);
+        EventEmitter.sendEvent(this.reactContext,"onVideoCompleted", event);
     }
 
     @Override
@@ -78,18 +71,13 @@ public class VideoDisplayScreenletViewManager extends SimpleViewManager<VideoDis
         JSONObject jsonObject = new JSONObject(assetEntry.getValues());
         WritableMap event = Arguments.createMap();
         event.putString("assetEntry", jsonObject.toString());
-        this.sendEvent("onRetrieveAssetSuccess", event);
+        EventEmitter.sendEvent(this.reactContext,"onRetrieveAssetSuccess", event);
     }
 
     @Override
     public void error(Exception e, String s) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.toString());
-        this.sendEvent("onError", event);
-    }
-
-    private void sendEvent(String eventName ,WritableMap event ){
-        this.reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit(eventName, event);
+        EventEmitter.sendEvent(this.reactContext,"onError", event);
     }
 }
