@@ -12,14 +12,14 @@ class WebContentListScreenletView: RCTView, WebContentListScreenletDelegate {
   // Variables
   var screenlet: WebContentListScreenlet!
   
-  private var folderId: NSNumber = 0
-  var FolderId: NSNumber {
-    get{
-      return folderId
+  var _screenletAttributes: NSDictionary = NSDictionary()
+  var screenletAttributes: NSDictionary {
+    get {
+      return _screenletAttributes
     }
-    set {
-      folderId = newValue
-      self.screenlet.folderId = folderId.int64Value
+    set{
+      _screenletAttributes = newValue
+      self.setConfiguration(_screenletAttributes)
     }
   }
   
@@ -32,18 +32,26 @@ class WebContentListScreenletView: RCTView, WebContentListScreenletDelegate {
     super.init(frame: frame)
     self.screenlet = WebContentListScreenlet(frame: frame, themeName: "default")
     self.screenlet.delegate = self
-    self.addSubview(self.screenlet)
-    
-    self.screenlet.translatesAutoresizingMaskIntoConstraints = false
-    
-    self.screenlet.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-    self.screenlet.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-    self.screenlet.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-    self.screenlet.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+    self.updateViewConstraints(screenlet: self.screenlet)
   }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  private func setConfiguration(_ screenletConfiguration: NSDictionary) {
+    let groupId = screenletConfiguration["groupId"]! as! NSNumber
+    let folderId = screenletConfiguration["folderId"]! as! NSNumber
+    let autoLoad = screenletConfiguration["autoLoad"]! as! Bool
+    let refreshControl = screenletConfiguration["refreshControl"]! as! Bool
+    let firstPageSize = screenletConfiguration["firstPageSize"]! as! NSNumber
+    let pageSize = screenletConfiguration["pageSize"]! as! NSNumber
+    self.screenlet.groupId = groupId.int64Value
+    self.screenlet.folderId = folderId.int64Value
+    self.screenlet.autoLoad = autoLoad
+    self.screenlet.refreshControl = refreshControl
+    self.screenlet.firstPageSize = firstPageSize.intValue
+    self.screenlet.pageSize = pageSize.intValue
   }
   
   // MARK: WebContentListScreenletDelegate methods
@@ -52,26 +60,17 @@ class WebContentListScreenletView: RCTView, WebContentListScreenletDelegate {
     let htmls = contents.map{
       $0.html
     }
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "contents": htmls
-    ]
+    let event = self.createEvent(attributeName: "contents", attribute: htmls)
     self.onWebContentListResponse?(event)
   }
   
   func screenlet(_ screenlet: WebContentListScreenlet, onWebContentListError error: NSError) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "error": error.description
-    ]
+    let event = self.createEvent(attributeName: "error", attribute: error.description)
     self.onWebContentListError?(event)
   }
   
   func screenlet(_ screenlet: WebContentListScreenlet, onWebContentSelected content: WebContent) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "content": content.html ?? ""
-    ]
+    let event = self.createEvent(attributeName: "content", attribute: content.html ?? "")
     self.onWebContentSelected?(event)
   }
 }

@@ -19,6 +19,6 @@ RCT_EXPORT_VIEW_PROPERTY(onWebContentListError, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onWebContentSelected, RCTBubblingEventBlock)
 
 // Properties
-RCT_EXPORT_VIEW_PROPERTY(folderId, NSNumber)
+RCT_EXPORT_VIEW_PROPERTY(screenletAttributes, NSDictionary)
 
 @end

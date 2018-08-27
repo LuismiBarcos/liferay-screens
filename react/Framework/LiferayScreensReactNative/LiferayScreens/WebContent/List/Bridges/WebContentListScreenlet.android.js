@@ -1,6 +1,6 @@
 'use strict'
 import React, {Component} from 'react';
-import { NativeModules, requireNativeComponent, View } from 'react-native';
+import { requireNativeComponent} from 'react-native';
 import { DeviceEventEmitter } from 'react-native';
 
 const NativeWebContentListScreenlet = requireNativeComponent('WebContentListScreenlet');
@@ -8,7 +8,14 @@ const NativeWebContentListScreenlet = requireNativeComponent('WebContentListScre
 export default class WebContentListScreenlet extends Component {
     constructor(props) {
         super(props);
-
+        this.state = {
+            autoLoad: props.autoLoad || true,
+            folderId: props.folderId || 0,
+            groupId: props.groupId || 0,
+            labelFields: props.labelFields || "",
+            firstPageSize: props.firstPageSize || 50,
+            pageSize: props.pageSize || 25
+        }
         this._onListPageFailed = this._onListPageFailed.bind(this);
         this._onListPageReceived = this._onListPageReceived.bind(this);
         this._onListItemSelected = this._onListItemSelected.bind(this);
@@ -27,6 +34,7 @@ export default class WebContentListScreenlet extends Component {
         return(
             <NativeWebContentListScreenlet 
                 {...this.props}
+                screenletAttributes={this.state}
             />
         );
     }

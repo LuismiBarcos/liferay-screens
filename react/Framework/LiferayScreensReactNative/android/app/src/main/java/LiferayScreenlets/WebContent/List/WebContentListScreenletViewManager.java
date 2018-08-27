@@ -3,12 +3,11 @@ package LiferayScreenlets.WebContent.List;
 import android.view.View;
 
 import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
-import com.liferay.mobile.screens.asset.list.AssetListScreenlet;
 import com.liferay.mobile.screens.base.list.BaseListListener;
 import com.liferay.mobile.screens.context.LiferayServerContext;
 import com.liferay.mobile.screens.util.LiferayLocale;
@@ -18,6 +17,8 @@ import com.liferay.mobile.screens.webcontent.list.WebContentListScreenlet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import LiferayScreenlets.Base.EventEmitter;
 
 public class WebContentListScreenletViewManager extends SimpleViewManager<WebContentListScreenlet> implements BaseListListener {
 
@@ -35,32 +36,23 @@ public class WebContentListScreenletViewManager extends SimpleViewManager<WebCon
         this.reactContext = reactContext;
         this.screenlet = new WebContentListScreenlet(reactContext);
         this.screenlet.render(com.liferay.mobile.screens.R.layout.webcontentlist_default);
-        initializeDefaultValues();
         this.screenlet.setListener(this);
         return this.screenlet;
     }
 
-    private void initializeDefaultValues() {
-        this.screenlet.setLabelFields(parse(""));
-        this.screenlet.setAutoLoad(false);
-        this.screenlet.setGroupId(LiferayServerContext.getGroupId());
-        this.screenlet.setFirstPageSize(50);
-        this.screenlet.setPageSize(25);
+    @ReactProp(name="screenletAttributes")
+    public void setConfiguration(WebContentListScreenlet screenlet, ReadableMap screenletAttributes) {
+        this.screenlet.setAutoLoad(screenletAttributes.getBoolean("autoLoad"));
+        this.screenlet.setFolderId(screenletAttributes.getInt("folderId"));
+        long groupId = screenletAttributes.getInt("groupId") == 0
+                ? LiferayServerContext.getGroupId()
+                : screenletAttributes.getInt("groupId");
+        this.screenlet.setGroupId(groupId);
+        this.screenlet.setLabelFields(parse(screenletAttributes.getString("labelFields")));
+        this.screenlet.setFirstPageSize(screenletAttributes.getInt("firstPageSize"));
+        this.screenlet.setPageSize(screenletAttributes.getInt("pageSize"));
         this.screenlet.setLocale(new Locale(LiferayLocale.getDefaultSupportedLocale()));
-    }
-
-    @ReactProp(name = "folderId")
-    public void setFolderId(WebContentListScreenlet screenlet, int folderId) {
-        this.screenlet.setFolderId(folderId);
         this.screenlet.loadPage(0);
-    }
-
-    @ReactProp(name = "labelFields")
-    public void setLabelFields(WebContentListScreenlet screenlet, String labelFields) {
-        this.screenlet.setLabelFields(parse(labelFields));
-        if(this.screenlet.getFolderId() == 0) {
-            this.screenlet.loadPage(0);
-        }
     }
 
     private List<String> parse(String labelFields) {
@@ -88,32 +80,27 @@ public class WebContentListScreenletViewManager extends SimpleViewManager<WebCon
         WritableMap event = Arguments.createMap();
         event.putInt("pageNumber", i);
         event.putString("error", e.toString());
-        this.sendEvent("onListPageFailed", event);
+        EventEmitter.sendEvent(this.reactContext,"onListPageFailed", event);
     }
 
     @Override
     public void onListPageReceived(int i, int i1, List list, int i2) {
         WritableMap event = Arguments.createMap();
         event.putString("list", list.toString());
-        this.sendEvent("onListPageReceived", event);
+        EventEmitter.sendEvent(this.reactContext,"onListPageReceived", event);
     }
 
     @Override
     public void onListItemSelected(Object o, View view) {
         WritableMap event = Arguments.createMap();
         event.putString("itemSelected", o.toString());
-        this.sendEvent("onListItemSelected", event);
+        EventEmitter.sendEvent(this.reactContext,"onListItemSelected", event);
     }
 
     @Override
     public void error(Exception e, String s) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.toString());
-        this.sendEvent("onError", event);
-    }
-
-    private void sendEvent(String eventName ,WritableMap event ){
-        this.reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit(eventName, event);
+        EventEmitter.sendEvent(this.reactContext,"onError", event);
     }
 }
