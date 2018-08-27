@@ -9,6 +9,13 @@ export default class SignUpScreenlet extends Component {
     constructor(props){
         super(props);
 
+        this.state = {
+            anonymousApiUserName: props.anonymousApiUserName || "",
+            anonymousApiPassword: props.anonymousApiPassword || "",
+            companyId: props.companyId || 0,
+            autoLogin: props.autoLoad || true
+        }
+
         this._onSignUpSuccess = this._onSignUpSuccess.bind(this);
         this._onSignUpFailure = this._onSignUpFailure.bind(this);
     }
@@ -21,14 +28,13 @@ export default class SignUpScreenlet extends Component {
         return(
             <NativeSignUpScreenlet 
                 {...this.props}
+                screenletAttributes={this.state}
             />
         );
     }
 
     // Events
     _onSignUpSuccess(event) {
-        console.log('Sign up!');
-        debugger;
         if(!this.props.onSignUpSuccess) {
             return;
         }
@@ -36,8 +42,6 @@ export default class SignUpScreenlet extends Component {
     }
 
     _onSignUpFailure(event) {
-        console.log('Sign up error!');
-        debugger;
         if(!this.props.onSignUpFailure) {
             return;
         }

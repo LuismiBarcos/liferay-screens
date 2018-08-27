@@ -2,15 +2,19 @@ package LiferayScreenlets.Auth.SignUp;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
+import com.liferay.mobile.screens.auth.BasicAuthMethod;
 import com.liferay.mobile.screens.auth.signup.SignUpListener;
 import com.liferay.mobile.screens.auth.signup.SignUpScreenlet;
 import com.liferay.mobile.screens.context.LiferayServerContext;
 import com.liferay.mobile.screens.context.User;
+import com.liferay.mobile.screens.context.storage.CredentialsStorageBuilder;
+import com.liferay.mobile.screens.imagegallery.ImageGalleryScreenlet;
 import com.liferayscreensreactnative.R;
 
 import org.json.JSONObject;
@@ -36,14 +40,14 @@ public class SignUpScreenletViewManager extends SimpleViewManager<SignUpScreenle
         return this.screenlet;
     }
 
-    @ReactProp(name="anonymousApiUserName")
-    public void setAnonymousApiUserName(SignUpScreenlet signUpScreenlet, String anonymousApiUserName) {
-        this.screenlet.setAnonymousApiUserName(anonymousApiUserName);
-    }
-
-    @ReactProp(name="anonymousApiPassword")
-    public void setAnonymousApiPassword(SignUpScreenlet signUpScreenlet, String anonymousApiPassword) {
-        this.screenlet.setAnonymousApiPassword(anonymousApiPassword);
+    @ReactProp(name="screenletAttributes")
+    public void setConfiguration(SignUpScreenlet screenlet, ReadableMap screenletAttributes) {
+        this.screenlet.setAnonymousApiUserName(screenletAttributes.getString("anonymousApiUserName"));
+        this.screenlet.setAnonymousApiPassword(screenletAttributes.getString("anonymousApiPassword"));
+        this.screenlet.setCompanyId(screenletAttributes.getInt("companyId"));
+        this.screenlet.setAutoLogin(screenletAttributes.getBoolean("autoLogin"));
+        this.screenlet.setCredentialsStorage(CredentialsStorageBuilder.StorageType.NONE);
+        this.screenlet.setBasicAuthMethod(BasicAuthMethod.EMAIL);
     }
 
     // SignUpListener methods

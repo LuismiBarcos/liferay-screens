@@ -12,27 +12,14 @@ class SignUpScreenletView: RCTView, SignUpScreenletDelegate {
   // Variables
   var screenlet: SignUpScreenlet!
   
-  private var anonymousApiUserName: String = ""
-  var AnonymousApiUserName: String {
-    get{
-      return anonymousApiUserName
+  var _screenletAttributes: NSDictionary = NSDictionary()
+  var screenletAttributes: NSDictionary {
+    get {
+      return _screenletAttributes
     }
-    set {
-      anonymousApiUserName = newValue
-      self.screenlet.anonymousApiUserName = anonymousApiUserName
-    }
-  }
-  
-  /// We have to rename anonymousApiPassword to ApiPassword because the first name
-  /// create a conflict with ReactNative
-  private var anonymousApiPassword: String = ""
-  var AnonymousApiPassword: String {
-    get{
-      return anonymousApiPassword
-    }
-    set {
-      anonymousApiPassword = newValue
-      self.screenlet.anonymousApiPassword = anonymousApiPassword
+    set{
+      _screenletAttributes = newValue
+      self.setConfiguration(_screenletAttributes)
     }
   }
   
@@ -44,18 +31,24 @@ class SignUpScreenletView: RCTView, SignUpScreenletDelegate {
     super.init(frame: frame)
     self.screenlet = SignUpScreenlet(frame: frame, themeName: "default")
     self.screenlet.delegate = self
-    self.addSubview(self.screenlet)
-    
-    self.screenlet.translatesAutoresizingMaskIntoConstraints = false
-    
-    self.screenlet.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-    self.screenlet.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-    self.screenlet.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-    self.screenlet.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+    self.updateViewConstraints(screenlet: self.screenlet)
   }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  private func setConfiguration(_ screenletConfiguration: NSDictionary) {
+    let anonymousApiUserName = screenletAttributes["anonymousApiUserName"]! as! String
+    let anonymousApiPassword = screenletAttributes["anonymousApiPassword"]! as! String
+    let companyId = screenletAttributes["companyId"]! as! NSNumber
+    let autoLogin = screenletAttributes["autoLogin"]! as! Bool
+    let saveCredentials = screenletAttributes["saveCredentials"]! as! Bool
+    self.screenlet.anonymousApiUserName = anonymousApiUserName
+    self.screenlet.anonymousApiPassword = anonymousApiPassword
+    self.screenlet.companyId = companyId.int64Value
+    self.screenlet.autoLogin = autoLogin
+    self.screenlet.saveCredentials = saveCredentials
   }
   
   // MARK: SignUpScreenletDelegate methods

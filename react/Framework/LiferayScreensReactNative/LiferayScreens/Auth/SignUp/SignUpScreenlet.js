@@ -22,7 +22,6 @@ export default class SignUpScreenlet extends Component {
     // Common events
     _onSignUpSuccess(user) {
         console.log('Sign up! -> new user', user);
-        debugger;
         if(!this.props.onSignUpSuccess) {
             return;
         }
@@ -31,7 +30,6 @@ export default class SignUpScreenlet extends Component {
 
     _onSignUpFailure(error) {
         console.log('Sign up error! -> ', error);
-        debugger;
         if(!this.props.onSignUpFailure) {
             return;
         }

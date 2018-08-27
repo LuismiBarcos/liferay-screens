@@ -9,10 +9,22 @@ import {
 const NativeUserPortraitScreenlet = requireNativeComponent('SignUpScreenlet');
 
 export default class SignUpScreenlet extends Component {
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            anonymousApiUserName: props.anonymousApiUserName || "",
+            anonymousApiPassword: props.anonymousApiPassword || "",
+            companyId: props.companyId || 0,
+            autoLogin: props.autoLoad || true,
+            saveCredentials: props.saveCredentials || true
+        }
+    }
     render(){
         return(
             <NativeUserPortraitScreenlet 
                 {...this.props}
+                screenletAttributes={this.state}
                 onSignUpResponseUserAttributes={this._onSignUpResponseUserAttributes.bind(this)}
                 onSignUpError={this._onSignUpError.bind(this)}
             />
@@ -21,8 +33,6 @@ export default class SignUpScreenlet extends Component {
 
     // Events 
     _onSignUpResponseUserAttributes(event) {
-        console.log("SignUp done!");
-        debugger;
         if(!this.props.onSignUpSuccess) {
             return;
         }
@@ -30,8 +40,6 @@ export default class SignUpScreenlet extends Component {
     }
 
     _onSignUpError(event) {
-        console.log("SignUp fail!");
-        debugger;
         if(!this.props.onSignUpFailure) {
             return;
         }

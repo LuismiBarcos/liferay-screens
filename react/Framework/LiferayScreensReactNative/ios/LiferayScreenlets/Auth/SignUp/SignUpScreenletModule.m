@@ -18,7 +18,6 @@ RCT_EXPORT_VIEW_PROPERTY(onSignUpResponseUserAttributes, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onSignUpError, RCTBubblingEventBlock)
 
 // Attributes
-RCT_EXPORT_VIEW_PROPERTY(anonymousApiUserName, NSString)
-RCT_EXPORT_VIEW_PROPERTY(anonymousApiPassword, NSString)
+RCT_EXPORT_VIEW_PROPERTY(screenletAttributes, NSDictionary)
 
 @end
