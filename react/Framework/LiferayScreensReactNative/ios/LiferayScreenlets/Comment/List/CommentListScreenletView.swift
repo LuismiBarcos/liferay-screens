@@ -44,12 +44,12 @@ class CommentListScreenletView: RCTView, CommentListScreenletDelegate {
   }
   
   private func setConfiguration(_ screenletConfiguration: NSDictionary) {
-    let className = screenletAttributes["className"]! as! String
-    let classPK = screenletAttributes["classPK"]! as! NSNumber
-    let autoLoad = screenletAttributes["autoLoad"]! as! Bool
-    let refreshControl = screenletAttributes["refreshControl"]! as! Bool
-    let firstPageSize = screenletAttributes["firstPageSize"]! as! NSNumber
-    let pageSize = screenletAttributes["pageSize"]! as! NSNumber
+    let className = screenletConfiguration["className"]! as! String
+    let classPK = screenletConfiguration["classPK"]! as! NSNumber
+    let autoLoad = screenletConfiguration["autoLoad"]! as! Bool
+    let refreshControl = screenletConfiguration["refreshControl"]! as! Bool
+    let firstPageSize = screenletConfiguration["firstPageSize"]! as! NSNumber
+    let pageSize = screenletConfiguration["pageSize"]! as! NSNumber
     self.screenlet.className = className
     self.screenlet.classPK = classPK.int64Value
     self.screenlet.autoLoad = autoLoad

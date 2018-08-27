@@ -47,12 +47,12 @@ class ImageGalleryScreenletView: RCTView, ImageGalleryScreenletDelegate {
   }
   
   private func setConfiguration(_ screenletConfiguration: NSDictionary) {
-    let repositoryId = screenletAttributes["repositoryId"]! as! NSNumber
-    let folderId = screenletAttributes["folderId"]! as! NSNumber
-    let autoLoad = screenletAttributes["autoLoad"]! as! Bool
-    let refreshControl = screenletAttributes["refreshControl"]! as! Bool
-    let firstPageSize = screenletAttributes["firstPageSize"]! as! NSNumber
-    let pageSize = screenletAttributes["pageSize"]! as! NSNumber
+    let repositoryId = screenletConfiguration["repositoryId"]! as! NSNumber
+    let folderId = screenletConfiguration["folderId"]! as! NSNumber
+    let autoLoad = screenletConfiguration["autoLoad"]! as! Bool
+    let refreshControl = screenletConfiguration["refreshControl"]! as! Bool
+    let firstPageSize = screenletConfiguration["firstPageSize"]! as! NSNumber
+    let pageSize = screenletConfiguration["pageSize"]! as! NSNumber
     self.screenlet.repositoryId = repositoryId.int64Value
     self.screenlet.folderId = folderId.int64Value
     self.screenlet.autoLoad = autoLoad

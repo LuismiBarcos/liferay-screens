@@ -41,9 +41,9 @@ class UserPortraitScreenletView: RCTView, UserPortraitScreenletDelegate {
   }
   
   private func setConfiguration(_ screenletConfiguration: NSDictionary) {
-    let userId = screenletAttributes["userId"]! as! NSNumber
-    let borderWidth = screenletAttributes["borderWidth"]! as! NSNumber
-    let editable = screenletAttributes["editable"]! as! Bool
+    let userId = screenletConfiguration["userId"]! as! NSNumber
+    let borderWidth = screenletConfiguration["borderWidth"]! as! NSNumber
+    let editable = screenletConfiguration["editable"]! as! Bool
     self.screenlet.borderWidth = CGFloat(borderWidth)
     self.screenlet.editable = editable
     self.screenlet.presentingViewController = UIApplication.shared.delegate?.window??.rootViewController

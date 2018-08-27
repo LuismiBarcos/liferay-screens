@@ -39,11 +39,11 @@ class SignUpScreenletView: RCTView, SignUpScreenletDelegate {
   }
   
   private func setConfiguration(_ screenletConfiguration: NSDictionary) {
-    let anonymousApiUserName = screenletAttributes["anonymousApiUserName"]! as! String
-    let anonymousApiPassword = screenletAttributes["anonymousApiPassword"]! as! String
-    let companyId = screenletAttributes["companyId"]! as! NSNumber
-    let autoLogin = screenletAttributes["autoLogin"]! as! Bool
-    let saveCredentials = screenletAttributes["saveCredentials"]! as! Bool
+    let anonymousApiUserName = screenletConfiguration["anonymousApiUserName"]! as! String
+    let anonymousApiPassword = screenletConfiguration["anonymousApiPassword"]! as! String
+    let companyId = screenletConfiguration["companyId"]! as! NSNumber
+    let autoLogin = screenletConfiguration["autoLogin"]! as! Bool
+    let saveCredentials = screenletConfiguration["saveCredentials"]! as! Bool
     self.screenlet.anonymousApiUserName = anonymousApiUserName
     self.screenlet.anonymousApiPassword = anonymousApiPassword
     self.screenlet.companyId = companyId.int64Value

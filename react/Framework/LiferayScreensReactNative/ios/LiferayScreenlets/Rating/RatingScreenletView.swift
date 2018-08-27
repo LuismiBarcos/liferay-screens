@@ -40,11 +40,11 @@ class RatingScreenletView: RCTView, RatingScreenletDelegate {
 }
   
   private func setConfiguration(_ screenletConfiguration: NSDictionary) {
-    let autoLoad = screenletAttributes["autoLoad"]! as! Bool
-    let editable = screenletAttributes["editable"]! as! Bool
-    let entryId = screenletAttributes["entryId"]! as! NSNumber
-    let className = screenletAttributes["className"]! as! String
-    let classPK = screenletAttributes["classPK"]! as! NSNumber
+    let autoLoad = screenletConfiguration["autoLoad"]! as! Bool
+    let editable = screenletConfiguration["editable"]! as! Bool
+    let entryId = screenletConfiguration["entryId"]! as! NSNumber
+    let className = screenletConfiguration["className"]! as! String
+    let classPK = screenletConfiguration["classPK"]! as! NSNumber
     self.screenlet.autoLoad = autoLoad
     self.screenlet.editable = editable
     self.screenlet.entryId = entryId.int64Value
