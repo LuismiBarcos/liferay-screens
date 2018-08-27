@@ -20,7 +20,6 @@ RCT_EXPORT_VIEW_PROPERTY(onConfigureScreenlet, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onAsset, RCTBubblingEventBlock)
 
 // Properties
-RCT_EXPORT_VIEW_PROPERTY(className, NSString)
-RCT_EXPORT_VIEW_PROPERTY(classPK, NSNumber)
+RCT_EXPORT_VIEW_PROPERTY(screenletAttributes, NSDictionary)
 
 @end

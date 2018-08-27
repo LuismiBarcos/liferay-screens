@@ -1,6 +1,6 @@
 'use strict'
 import React, {Component} from 'react';
-import { NativeModules, requireNativeComponent, View } from 'react-native';
+import { requireNativeComponent } from 'react-native';
 import { DeviceEventEmitter } from 'react-native';
 
 const NativeAssetDisplayScreenlet = requireNativeComponent('AssetDisplayScreenlet');
@@ -8,7 +8,13 @@ const NativeAssetDisplayScreenlet = requireNativeComponent('AssetDisplayScreenle
 export default class AssetDisplayScreenlet extends Component {
     constructor(props){
         super(props)
-
+        this.state = {
+            autoLoad: props.autoLoad || true,
+            entryId: props.entryId || 0,
+            className: props.className || "",
+            classPK: props.classPK || 0,
+            portletItemName: props.portletItemName || "",
+        }
         this._onRetrieveAssetSuccess = this._onRetrieveAssetSuccess.bind(this);
         this._onError = this._onError.bind(this);
     }
@@ -23,6 +29,7 @@ export default class AssetDisplayScreenlet extends Component {
         return(
             <NativeAssetDisplayScreenlet 
                 {...this.props}
+                screenletAttributes={this.state}
             />
         );
     }
