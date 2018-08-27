@@ -11,25 +11,14 @@ import LiferayScreens
 class AssetListScreenletView: RCTView, AssetListScreenletDelegate {
   // Variables
   var screenlet: AssetListScreenlet!
-  private var portletItemName: String = ""
-  var PortletItemName : String {
+  var _screenletAttributes: NSDictionary = NSDictionary()
+  var screenletAttributes: NSDictionary {
     get {
-      return portletItemName
+      return _screenletAttributes
     }
-    set {
-      portletItemName = newValue
-      screenlet.portletItemName = portletItemName
-    }
-  }
-  
-  private var classNameId: NSNumber = 0
-  var ClassNameId: NSNumber {
-    get{
-      return classNameId
-    }
-    set {
-      classNameId = newValue
-      self.screenlet.classNameId = classNameId.int64Value
+    set{
+      _screenletAttributes = newValue
+      self.setConfiguration(_screenletAttributes)
     }
   }
   
@@ -42,18 +31,28 @@ class AssetListScreenletView: RCTView, AssetListScreenletDelegate {
     super.init(frame: frame)
     self.screenlet = AssetListScreenlet(frame: frame, themeName: "default")
     self.screenlet.delegate = self
-    self.addSubview(self.screenlet)
-    
-    self.screenlet.translatesAutoresizingMaskIntoConstraints = false
-    
-    self.screenlet.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-    self.screenlet.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-    self.screenlet.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-    self.screenlet.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+    self.updateViewConstraints(screenlet: self.screenlet)
   }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  private func setConfiguration(_ screenletConfiguration: NSDictionary) {
+    let groupId = screenletConfiguration["groupId"]! as! NSNumber
+    let classNameId = screenletConfiguration["classNameId"]! as! NSNumber
+    let portletItemName = screenletConfiguration["portletItemName"]! as! String
+    let autoLoad = screenletConfiguration["autoLoad"]! as! Bool
+    let refreshControl = screenletConfiguration["refreshControl"]! as! Bool
+    let firstPageSize = screenletConfiguration["firstPageSize"]! as! NSNumber
+    let pageSize = screenletConfiguration["pageSize"]! as! NSNumber
+    self.screenlet.groupId = groupId.int64Value
+    self.screenlet.classNameId = classNameId.int64Value
+    self.screenlet.portletItemName = portletItemName
+    self.screenlet.autoLoad = autoLoad
+    self.screenlet.refreshControl = refreshControl
+    self.screenlet.firstPageSize = firstPageSize.intValue
+    self.screenlet.pageSize = pageSize.intValue
   }
   
   // MARK: AssetListScreenletDelegate methods
@@ -62,26 +61,17 @@ class AssetListScreenletView: RCTView, AssetListScreenletDelegate {
     let assetsAttributes = assets.map{
       $0.attributes
     }
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "assets": assetsAttributes
-    ]
+    let event = self.createEvent(attributeName: "assets", attribute: assetsAttributes)
     self.onAssetListResponse?(event)
   }
   
   func screenlet(_ screenlet: AssetListScreenlet, onAssetListError error: NSError) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "error": error.description
-    ]
+    let event = self.createEvent(attributeName: "error", attribute: error.description)
     self.onAssetListError?(event)
   }
   
   func screenlet(_ screenlet: AssetListScreenlet, onAssetSelected asset: Asset) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "asset": asset.attributes
-    ]
+    let event = self.createEvent(attributeName: "asset", attribute: asset.attributes)
     self.onAssetSelected?(event);
   }
 }

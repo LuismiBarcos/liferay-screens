@@ -19,7 +19,6 @@ RCT_EXPORT_VIEW_PROPERTY(onAssetListError, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onAssetSelected, RCTBubblingEventBlock)
 
 // Properties
-RCT_EXPORT_VIEW_PROPERTY(portletItemName, NSString)
-RCT_EXPORT_VIEW_PROPERTY(classNameId, NSNumber)
+RCT_EXPORT_VIEW_PROPERTY(screenletAttributes, NSDictionary)
 
 @end
