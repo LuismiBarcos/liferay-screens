@@ -11,26 +11,14 @@ import LiferayScreens
 class CommentAddScreenletView: RCTView, CommentAddScreenletDelegate {
   // Variables
   var screenlet: CommentAddScreenlet!
-  
-  private var className: String = ""
-  var ClassName : String {
+  var _screenletAttributes: NSDictionary = NSDictionary()
+  var screenletAttributes: NSDictionary {
     get {
-      return className
+      return _screenletAttributes
     }
-    set {
-      className = newValue
-      screenlet.className = className
-    }
-  }
-  
-  private var classPK: NSNumber = 0
-  var ClassPK: NSNumber {
-    get{
-      return classPK
-    }
-    set {
-      classPK = newValue
-      self.screenlet.classPK = classPK.int64Value
+    set{
+      _screenletAttributes = newValue
+      self.setConfiguration(_screenletAttributes)
     }
   }
   
@@ -44,51 +32,39 @@ class CommentAddScreenletView: RCTView, CommentAddScreenletDelegate {
     super.init(frame: frame)
     self.screenlet = CommentAddScreenlet(frame: frame, themeName: "default")
     self.screenlet.delegate = self
-    self.addSubview(self.screenlet)
-    
-    self.screenlet.translatesAutoresizingMaskIntoConstraints = false
-    
-    self.screenlet.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-    self.screenlet.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-    self.screenlet.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-    self.screenlet.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+    self.updateViewConstraints(screenlet: self.screenlet)
   }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
+  private func setConfiguration(_ screenletConfiguration: NSDictionary) {
+    let className = screenletConfiguration["className"]! as! String
+    let classPK = screenletConfiguration["classPK"]! as! NSNumber
+    self.screenlet.className = className
+    self.screenlet.classPK = classPK.int64Value
+  }
+  
   // MARK: CommentAddScreenletDelegate methods
   
   func screenlet(_ screenlet: CommentAddScreenlet, onCommentAdded comment: Comment) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "comment": comment.attributes
-    ]
+    let event = self.createEvent(attributeName: "comment", attribute: comment.attributes)
     self.onCommentAdded?(event)
   }
   
   func screenlet(_ screenlet: CommentAddScreenlet, onAddCommentError error: NSError) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "error": error.description
-    ]
+    let event = self.createEvent(attributeName: "error", attribute: error.description)
     self.onAddCommentError?(event)
   }
   
   func screenlet(_ screenlet: CommentAddScreenlet, onCommentUpdated comment: Comment) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "comment": comment.attributes
-    ]
+    let event = self.createEvent(attributeName: "comment", attribute: comment.attributes)
     self.onCommentUpdated?(event)
   }
 
   func screenlet(_ screenlet: CommentAddScreenlet, onUpdateCommentError error: NSError) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "error": error.description
-    ]
+    let event = self.createEvent(attributeName: "error", attribute: error.description)
     self.onUpdateCommentError?(event)
   }
 }

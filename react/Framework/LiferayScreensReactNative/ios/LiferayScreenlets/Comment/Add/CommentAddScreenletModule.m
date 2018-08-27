@@ -20,7 +20,6 @@ RCT_EXPORT_VIEW_PROPERTY(onCommentUpdated, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onUpdateCommentError, RCTBubblingEventBlock)
 
 // Properties
-RCT_EXPORT_VIEW_PROPERTY(className, NSString)
-RCT_EXPORT_VIEW_PROPERTY(classPK, NSNumber)
+RCT_EXPORT_VIEW_PROPERTY(screenletAttributes, NSDictionary)
 
 @end

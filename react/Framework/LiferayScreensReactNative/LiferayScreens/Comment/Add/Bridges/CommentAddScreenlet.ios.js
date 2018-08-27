@@ -1,18 +1,22 @@
 'use strict'
 import React, {Component} from 'react';
-import {
-    StyleSheet,
-    View,
-    requireNativeComponent,
-} from 'react-native'
+import { requireNativeComponent } from 'react-native'
 
 const NativeCommentAddScreenlet = requireNativeComponent('CommentAddScreenlet');
 
 export default class CommentAddScreenlet extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            className: props.className || "",
+            classPK: props.classPK || 0,
+        }
+    }
     render(){
         return(
             <NativeCommentAddScreenlet 
                 {...this.props}
+                screenletAttributes={this.state}
                 onCommentAdded={this._onCommentAdded.bind(this)}
                 onAddCommentError={this._onAddCommentError.bind(this)}
                 onCommentUpdated={this._onCommentUpdated.bind(this)}
