@@ -11,14 +11,14 @@ import LiferayScreens
 class RatingScreenletView: RCTView, RatingScreenletDelegate {
   // Variables
   var screenlet: RatingScreenlet!
-  private var className: String = ""
-  var ClassName : String {
+  var _screenletAttributes: NSDictionary = NSDictionary()
+  var screenletAttributes: NSDictionary {
     get {
-      return className
+      return _screenletAttributes
     }
-    set {
-      className = newValue
-      screenlet.className = className
+    set{
+      _screenletAttributes = newValue
+      self.setConfiguration(_screenletAttributes)
     }
   }
   
@@ -43,51 +43,45 @@ class RatingScreenletView: RCTView, RatingScreenletDelegate {
     super.init(frame: frame)
     self.screenlet = RatingScreenlet(frame: frame, themeName: "default")
     self.screenlet.delegate = self
-    self.addSubview(self.screenlet)
-    
-    self.screenlet.translatesAutoresizingMaskIntoConstraints = false
-    
-    self.screenlet.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-    self.screenlet.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-    self.screenlet.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-    self.screenlet.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+    self.updateViewConstraints(screenlet: self.screenlet)
   }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
 }
   
+  private func setConfiguration(_ screenletConfiguration: NSDictionary) {
+    let autoLoad = screenletAttributes["autoLoad"]! as! Bool
+    let editable = screenletAttributes["editable"]! as! Bool
+    let entryId = screenletAttributes["entryId"]! as! NSNumber
+    let className = screenletAttributes["className"]! as! String
+    let classPK = screenletAttributes["classPK"]! as! NSNumber
+    self.screenlet.autoLoad = autoLoad
+    self.screenlet.editable = editable
+    self.screenlet.entryId = entryId.int64Value
+    self.screenlet.className = className
+    self.screenlet.classPK = classPK.int64Value
+  }
+  
   // MARK: RatingScreenletDelegate methods
   
   func screenlet(_ screenlet: RatingScreenlet, onRatingRetrieve rating: RatingEntry) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "rating": rating.attributes
-    ]
+    let event = self.createEvent(attributeName: "rating", attribute: rating.attributes)
     self.onRatingRetrieve?(event)
   }
 
   func screenlet(_ screenlet: RatingScreenlet, onRatingDeleted rating: RatingEntry) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "rating": rating.attributes
-    ]
+    let event = self.createEvent(attributeName: "rating", attribute: rating.attributes)
     self.onRatingDeleted?(event)
   }
   
   func screenlet(_ screenlet: RatingScreenlet, onRatingUpdated rating: RatingEntry) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "rating": rating.attributes
-    ]
+    let event = self.createEvent(attributeName: "rating", attribute: rating.attributes)
     self.onRatingUpdated?(event)
   }
   
   func screenlet(_ screenlet: RatingScreenlet, onRatingError error: NSError) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "error": error.description
-    ]
+    let event = self.createEvent(attributeName: "error", attribute: error.description)
     self.onRatingError?(event)
   }
 }

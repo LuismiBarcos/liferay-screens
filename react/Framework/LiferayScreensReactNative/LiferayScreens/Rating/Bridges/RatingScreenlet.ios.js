@@ -1,14 +1,22 @@
 'use strict'
 import React, {Component} from 'react';
-import {
-    StyleSheet,
-    View,
-    requireNativeComponent,
-} from 'react-native'
+import { requireNativeComponent } from 'react-native'
 
 const NativeRatingScreenlet = requireNativeComponent('RatingScreenlet');
 
 export default class RatingScreenlet extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            autoLoad: props.autoLoad || true,
+            editable: props.editable || true,
+            entryId: props.entryId || 0,
+            className: props.className || "",
+            classPK: props.classPK || 0
+        }
+    }
+
     render(){
         return(
             <NativeRatingScreenlet 

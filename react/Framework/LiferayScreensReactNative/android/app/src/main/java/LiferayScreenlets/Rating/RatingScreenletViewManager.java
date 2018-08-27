@@ -1,14 +1,17 @@
 package LiferayScreenlets.Rating;
 
 import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
+import com.liferay.mobile.screens.context.LiferayServerContext;
 import com.liferay.mobile.screens.rating.AssetRating;
 import com.liferay.mobile.screens.rating.RatingListener;
 import com.liferay.mobile.screens.rating.RatingScreenlet;
+
+import LiferayScreenlets.Base.EventEmitter;
 
 public class RatingScreenletViewManager extends SimpleViewManager<RatingScreenlet> implements RatingListener{
 
@@ -31,49 +34,35 @@ public class RatingScreenletViewManager extends SimpleViewManager<RatingScreenle
         return this.screenlet;
     }
 
-    @ReactProp(name = "entryId", defaultInt = -1)
-    public void setEntryId(RatingScreenlet screenlet, int entryId) {
-        this.screenlet.setEntryId(entryId);
+    @ReactProp(name="screenletAttributes")
+    public void setConfiguration(RatingScreenlet screenlet, ReadableMap screenletAttributes) {
+        this.screenlet.setAutoLoad(screenletAttributes.getBoolean("autoLoad"));
+        this.screenlet.enableEdition(screenletAttributes.getBoolean("editable"));
+        this.screenlet.setEntryId(screenletAttributes.getInt("entryId"));
+        this.screenlet.setClassName(screenletAttributes.getString("className"));
+        this.screenlet.setClassPK(screenletAttributes.getInt("classPK"));
+        long groupId = screenletAttributes.getInt("groupId") == 0
+                ? LiferayServerContext.getGroupId()
+                : screenletAttributes.getInt("groupId");
+        this.screenlet.setGroupId(groupId);
         this.screenlet.load();
-    }
-
-    @ReactProp(name = "className")
-    public void setClassName(RatingScreenlet screenlet, String className) {
-        screenlet.setClassName(className);
-        if(screenlet.getClassPK() != 0){
-            this.screenlet.load();
-        }
-    }
-
-    @ReactProp(name = "classPK")
-    public void setClassPK(RatingScreenlet screenlet, int classPK) {
-        screenlet.setClassPK(classPK);
-        if(this.screenlet.getClassName() != null){
-            this.screenlet.load();
-        }
     }
 
     // RatingListener methods
 
     @Override
     public void onRatingOperationSuccess(AssetRating assetRating) {
-//        JSONObject jsonObject = new JSONObject(user.getValues());
         // Create map for params
         WritableMap event = Arguments.createMap();
         // Put data to map
         event.putString("user", assetRating.toString());
-        this.sendEvent("onRatingOperationSuccess", event);
+        EventEmitter.sendEvent(this.reactContext,"onRatingOperationSuccess", event);
     }
 
     @Override
     public void error(Exception e, String s) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.toString());
-        this.sendEvent("onError", event);
-    }
-
-    private void sendEvent(String eventName ,WritableMap event ){
-        this.reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit(eventName, event);
+        EventEmitter.sendEvent(this.reactContext,"onError", event);
     }
 }

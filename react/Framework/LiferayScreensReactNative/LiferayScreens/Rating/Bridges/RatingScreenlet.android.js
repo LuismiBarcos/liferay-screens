@@ -1,6 +1,6 @@
 'use srict'
 import React, {Component} from 'react';
-import { NativeModules, requireNativeComponent, View } from 'react-native';
+import { requireNativeComponent } from 'react-native';
 import { DeviceEventEmitter } from 'react-native';
 
 const NativeRatingScreenlet = requireNativeComponent('RatingScreenlet');
@@ -10,8 +10,13 @@ export default class RatingScreenlet extends Component {
         super(props);
 
         this.state = {
-            "loaded":false
-        };
+            autoLoad: props.autoLoad || true,
+            editable: props.editable || true,
+            entryId: props.entryId || 0,
+            className: props.className || "",
+            classPK: props.classPK || 0,
+            groupId: props.groupId || 0
+        }
 
         this._onRatingOperationSuccess = this._onRatingOperationSuccess.bind(this);
         this._onError = this._onError.bind(this);
@@ -27,23 +32,19 @@ export default class RatingScreenlet extends Component {
         return(
             <NativeRatingScreenlet 
                 {...this.props}
+                screenletAttributes={this.state}
             />
         );
     }
 
     _onRatingOperationSuccess(event) {
-        console.log('rating success!');
         if(!this.props.onRatingOperationSuccess) {
             return;
         }
-        this.setState({
-            "loaded":true
-        });
         this.props.onRatingOperationSuccess(event.user);
     }
 
     _onError(event) {
-        console.log('error!');
         if(!this.props.onError) {
             return;
         }
