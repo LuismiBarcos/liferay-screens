@@ -1,8 +1,8 @@
 package LiferayScreenlets.Comment.Display;
 
 import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
@@ -11,6 +11,8 @@ import com.liferay.mobile.screens.comment.display.CommentDisplayListener;
 import com.liferay.mobile.screens.comment.display.CommentDisplayScreenlet;
 
 import org.json.JSONObject;
+
+import LiferayScreenlets.Base.EventEmitter;
 
 public class CommentDisplayScreenletViewManager extends SimpleViewManager<CommentDisplayScreenlet> implements CommentDisplayListener{
 
@@ -32,9 +34,10 @@ public class CommentDisplayScreenletViewManager extends SimpleViewManager<Commen
         return this.screenlet;
     }
 
-    @ReactProp(name = "commentId")
-    public void setCommentId(CommentDisplayScreenlet screenlet, int commentId) {
-        this.screenlet.setCommentId(commentId);
+    @ReactProp(name="screenletAttributes")
+    public void setConfiguration(CommentDisplayScreenlet screenlet, ReadableMap screenletAttributes) {
+        this.screenlet.setCommentId(screenletAttributes.getInt("commentId"));
+        this.screenlet.setEditable(screenletAttributes.getBoolean("editable"));
         this.screenlet.load();
     }
 
@@ -45,7 +48,7 @@ public class CommentDisplayScreenletViewManager extends SimpleViewManager<Commen
         JSONObject jsonObject = new JSONObject(commentEntry.getValues());
         WritableMap event = Arguments.createMap();
         event.putString("comment", jsonObject.toString());
-        this.sendEvent("onLoadCommentSuccess", event);
+        EventEmitter.sendEvent(this.reactContext,"onLoadCommentSuccess", event);
     }
 
     @Override
@@ -53,7 +56,7 @@ public class CommentDisplayScreenletViewManager extends SimpleViewManager<Commen
         JSONObject jsonObject = new JSONObject(commentEntry.getValues());
         WritableMap event = Arguments.createMap();
         event.putString("comment", jsonObject.toString());
-        this.sendEvent("onDeleteCommentSuccess", event);
+        EventEmitter.sendEvent(this.reactContext,"onDeleteCommentSuccess", event);
     }
 
     @Override
@@ -61,18 +64,13 @@ public class CommentDisplayScreenletViewManager extends SimpleViewManager<Commen
         JSONObject jsonObject = new JSONObject(commentEntry.getValues());
         WritableMap event = Arguments.createMap();
         event.putString("comment", jsonObject.toString());
-        this.sendEvent("onUpdateCommentSuccess", event);
+        EventEmitter.sendEvent(this.reactContext,"onUpdateCommentSuccess", event);
     }
 
     @Override
     public void error(Exception e, String s) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.toString());
-        this.sendEvent("onError", event);
-    }
-
-    private void sendEvent(String eventName ,WritableMap event ){
-        this.reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit(eventName, event);
+        EventEmitter.sendEvent(this.reactContext,"onError", event);
     }
 }

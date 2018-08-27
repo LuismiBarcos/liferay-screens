@@ -1,6 +1,6 @@
 'use sctrict'
 import React, {Component} from 'react';
-import { NativeModules, requireNativeComponent, View } from 'react-native';
+import { requireNativeComponent } from 'react-native';
 import { DeviceEventEmitter } from 'react-native';
 
 const NativeCommentDisplayScreenlet = requireNativeComponent('CommentDisplayScreenlet');
@@ -8,7 +8,10 @@ const NativeCommentDisplayScreenlet = requireNativeComponent('CommentDisplayScre
 export default class CommentDisplayScreenlet extends Component {
     constructor(props) {
         super(props);
-
+        this.state = {
+            commentId: props.commentId || 0,
+            editable: props.editable || true
+        }
         this._onLoadCommentSuccess = this._onLoadCommentSuccess.bind(this);
         this._onDeleteCommentSuccess = this._onDeleteCommentSuccess.bind(this);
         this._onUpdateCommentSuccess = this._onUpdateCommentSuccess.bind(this);
@@ -27,6 +30,7 @@ export default class CommentDisplayScreenlet extends Component {
         return(
             <NativeCommentDisplayScreenlet 
                 {...this.props}
+                screenletAttributes={this.state}
             />
         );
     }
