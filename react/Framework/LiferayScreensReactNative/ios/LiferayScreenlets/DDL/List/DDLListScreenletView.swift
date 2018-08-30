@@ -12,25 +12,14 @@ class DDLListScreenletView: RCTView, DDLListScreenletDelegate {
   // Variables
   var screenlet: DDLListScreenlet!
   
-  private var labelFields: String = ""
-  var LabelFields : String {
+  var _screenletAttributes: NSDictionary = NSDictionary()
+  var screenletAttributes: NSDictionary {
     get {
-      return labelFields
+      return _screenletAttributes
     }
-    set {
-      labelFields = newValue
-      screenlet.labelFields = labelFields
-    }
-  }
-  
-  private var recordSetId: NSNumber = 0
-  var RecordSetId: NSNumber {
-    get {
-      return recordSetId
-    }
-    set {
-      recordSetId = newValue
-      self.screenlet.recordSetId = recordSetId.int64Value
+    set{
+      _screenletAttributes = newValue
+      self.setConfiguration(_screenletAttributes)
     }
   }
   
@@ -43,18 +32,28 @@ class DDLListScreenletView: RCTView, DDLListScreenletDelegate {
     super.init(frame: frame)
     self.screenlet = DDLListScreenlet(frame: frame, themeName: "default")
     self.screenlet.delegate = self
-    self.addSubview(self.screenlet)
-    
-    self.screenlet.translatesAutoresizingMaskIntoConstraints = false
-    
-    self.screenlet.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-    self.screenlet.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-    self.screenlet.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-    self.screenlet.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+    self.updateViewConstraints(screenlet: self.screenlet)
   }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  private func setConfiguration(_ screenletConfiguration: NSDictionary) {
+    let recordSetId = screenletConfiguration["recordSetId"]! as! NSNumber
+    let userId = screenletConfiguration["userId"]! as! NSNumber
+    let labelFields = screenletConfiguration["labelFields"]! as! String
+    let autoLoad = screenletConfiguration["autoLoad"]! as! Bool
+    let refreshControl = screenletConfiguration["refreshControl"]! as! Bool
+    let firstPageSize = screenletConfiguration["firstPageSize"]! as! NSNumber
+    let pageSize = screenletConfiguration["pageSize"]! as! NSNumber
+    self.screenlet.recordSetId = recordSetId.int64Value
+    self.screenlet.userId = userId.int64Value
+    self.screenlet.labelFields = labelFields
+    self.screenlet.autoLoad = autoLoad
+    self.screenlet.refreshControl = refreshControl
+    self.screenlet.firstPageSize = firstPageSize.intValue
+    self.screenlet.pageSize = pageSize.intValue
   }
   
   // MARK: DDLListScreenletDelegate methods
@@ -63,26 +62,17 @@ class DDLListScreenletView: RCTView, DDLListScreenletDelegate {
     let recordsAttributes = records.map {
       $0.attributes
     }
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "records": recordsAttributes
-    ]
+    let event = self.createEvent(attributeName: "records", attribute: recordsAttributes)
     self.onDDLListResponseRecords?(event)
   }
   
   func screenlet(_ screenlet: DDLListScreenlet, onDDLListError error: NSError) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "error": error.description
-    ]
+    let event = self.createEvent(attributeName: "error", attribute: error.description)
     self.onDDLListError?(event)
   }
 
   func screenlet(_ screenlet: DDLListScreenlet, onDDLSelectedRecord record: DDLRecord) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "record": record.attributes
-    ]
+    let event = self.createEvent(attributeName: "record", attribute: record.attributes)
     self.onDDLSelectedRecord?(event)
   }
 }

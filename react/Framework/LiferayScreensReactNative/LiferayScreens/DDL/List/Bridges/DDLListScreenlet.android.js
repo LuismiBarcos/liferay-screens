@@ -1,6 +1,6 @@
 'use strict'
 import React, {Component} from 'react';
-import { NativeModules, requireNativeComponent, View } from 'react-native';
+import { requireNativeComponent } from 'react-native';
 import { DeviceEventEmitter } from 'react-native';
 
 const NativeDDLListScreenlet = requireNativeComponent('DDLListScreenlet');
@@ -8,7 +8,16 @@ const NativeDDLListScreenlet = requireNativeComponent('DDLListScreenlet');
 export default class DDLListScreenlet extends Component {
     constructor(props){
         super(props);
-
+        
+        this.state = {
+            autoLoad: props.autoLoad || true,
+            recordSetId: props.recordSetId || 0,
+            userId: props.userId || 0,
+            firstPageSize: props.firstPageSize || 50,
+            pageSize: props.pageSize || 25,
+            labelFields: props.labelFields || ""
+        }
+        
         this._onListPageFailed = this._onListPageFailed.bind(this);
         this._onListPageReceived = this._onListPageReceived.bind(this);
         this._onListItemSelected = this._onListItemSelected.bind(this);
@@ -27,6 +36,7 @@ export default class DDLListScreenlet extends Component {
         return(
             <NativeDDLListScreenlet 
                 {...this.props}
+                screenletAttributes={this.state}
             />
         );
     }

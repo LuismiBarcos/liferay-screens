@@ -19,7 +19,6 @@ RCT_EXPORT_VIEW_PROPERTY(onDDLListError, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onDDLSelectedRecord, RCTBubblingEventBlock)
 
 // Properties
-RCT_EXPORT_VIEW_PROPERTY(labelFields, NSString)
-RCT_EXPORT_VIEW_PROPERTY(recordSetId, NSNumber)
+RCT_EXPORT_VIEW_PROPERTY(screenletAttributes, NSDictionary)
 
 @end
