@@ -12,25 +12,14 @@ class BlogsEntryDisplayScreenletView: RCTView, BlogsEntryDisplayScreenletDelegat
   // Variables
   var screenlet: BlogsEntryDisplayScreenlet!
   
-  private var assetEntryId: NSNumber = 0
-  var AssetEntryId: NSNumber {
-    get{
-      return assetEntryId
+  var _screenletAttributes: NSDictionary = NSDictionary()
+  var screenletAttributes: NSDictionary {
+    get {
+      return _screenletAttributes
     }
-    set {
-      assetEntryId = newValue
-      self.screenlet.assetEntryId = assetEntryId.int64Value
-    }
-  }
-  
-  private var classPK: NSNumber = 0
-  var ClassPK: NSNumber {
-    get{
-      return classPK
-    }
-    set {
-      classPK = newValue
-      self.screenlet.classPK = classPK.int64Value
+    set{
+      _screenletAttributes = newValue
+      self.setConfiguration(_screenletAttributes)
     }
   }
   
@@ -42,35 +31,32 @@ class BlogsEntryDisplayScreenletView: RCTView, BlogsEntryDisplayScreenletDelegat
     super.init(frame: frame)
     self.screenlet = BlogsEntryDisplayScreenlet(frame: frame, themeName: "default")
     self.screenlet.delegate = self
-    self.addSubview(self.screenlet)
-    
-    self.screenlet.translatesAutoresizingMaskIntoConstraints = false
-    
-    self.screenlet.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-    self.screenlet.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-    self.screenlet.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-    self.screenlet.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+    self.updateViewConstraints(screenlet: self.screenlet)
   }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
+  private func setConfiguration(_ screenletConfiguration: NSDictionary) {
+    let assetEntryId = screenletConfiguration["assetEntryId"]! as! NSNumber
+//    let className = screenletConfiguration["className"]! as! String
+    let classPK = screenletConfiguration["classPK"]! as! NSNumber
+    let autoLoad = screenletConfiguration["autoLoad"]! as! Bool
+    self.screenlet.assetEntryId = assetEntryId.int64Value
+    self.screenlet.classPK = classPK.int64Value
+    self.screenlet.autoLoad = autoLoad
+  }
+  
   // MARK: BlogsEntryDisplayScreenletDelegate methods
   
   func screenlet(_ screenlet: BlogsEntryDisplayScreenlet, onBlogEntryResponse blogEntry: BlogsEntry) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "blogEntry": blogEntry.attributes
-    ]
+    let event = self.createEvent(attributeName: "blogEntry", attribute: blogEntry.attributes)
     self.onBlogEntryResponse?(event)
   }
   
   func screenlet(_ screenlet: BlogsEntryDisplayScreenlet, onBlogEntryError error: NSError) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "error": error.description
-    ]
+    let event = self.createEvent(attributeName: "error", attribute: error.description)
     self.onBlogEntryError?(event)
   }
 }

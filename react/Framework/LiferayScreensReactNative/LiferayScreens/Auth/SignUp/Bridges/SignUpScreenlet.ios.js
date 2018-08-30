@@ -16,7 +16,7 @@ export default class SignUpScreenlet extends Component {
             anonymousApiUserName: props.anonymousApiUserName || "",
             anonymousApiPassword: props.anonymousApiPassword || "",
             companyId: props.companyId || 0,
-            autoLogin: props.autoLoad || true,
+            autoLogin: props.autoLogin || true,
             saveCredentials: props.saveCredentials || true
         }
     }

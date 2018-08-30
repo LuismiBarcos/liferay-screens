@@ -1,11 +1,6 @@
 'use strict'
 import React, {Component} from 'react';
-import {Platform, 
-  StyleSheet, 
-  Text, 
-  View,
-  NativeModules
-} from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 import BlogsEntryDisplayScreenlet from "./../LiferayScreens/Blogs/BlogsEntryDisplayScreenlet";
 
@@ -22,10 +17,10 @@ export default class BlogsEntryDisplay extends Component {
         );
     }
 }
-
+const { height, width } = Dimensions.get('window');
 const styles = StyleSheet.create({
     blogs: {
-      height: 350,
-      width: 400
+      height: height,
+      width: width
     }
 });

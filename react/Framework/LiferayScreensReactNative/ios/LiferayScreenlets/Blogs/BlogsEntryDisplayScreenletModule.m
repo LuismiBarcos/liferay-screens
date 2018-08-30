@@ -18,7 +18,6 @@ RCT_EXPORT_VIEW_PROPERTY(onBlogEntryResponse, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onBlogEntryError, RCTBubblingEventBlock)
 
 // Properties
-RCT_EXPORT_VIEW_PROPERTY(assetEntryId, NSNumber)
-RCT_EXPORT_VIEW_PROPERTY(classPK, NSNumber)
+RCT_EXPORT_VIEW_PROPERTY(screenletAttributes, NSDictionary)
 
 @end
