@@ -81,14 +81,7 @@ class WebScreenletView: RCTView, WebScreenletDelegate {
     super.init(frame: frame)
     self.screenlet = WebScreenlet(frame: frame, themeName: "default")
     self.screenlet.delegate = self
-    self.addSubview(self.screenlet)
-    
-    self.screenlet.translatesAutoresizingMaskIntoConstraints = false
-    
-    self.screenlet.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-    self.screenlet.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-    self.screenlet.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-    self.screenlet.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+    self.updateViewConstraints(screenlet: self.screenlet)
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -97,18 +90,12 @@ class WebScreenletView: RCTView, WebScreenletDelegate {
   // MARK: WebScreenletDelegate methods
   
   func onWebLoad(_ screenlet: WebScreenlet, url: String) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "url": url
-    ]
+    let event = self.createEvent(attributeName: "url", attribute: url)
     self.onPageLoaded?(event)
   }
   
   func screenlet(_ screenlet: WebScreenlet, onError error: NSError) {
-    let event: [String: Any] = [
-      "target": self.reactTag,
-      "error": error.description
-    ]
+    let event = self.createEvent(attributeName: "error", attribute: error.description)
     self.onWebError?(event)
   }
   

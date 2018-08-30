@@ -3,13 +3,14 @@ package LiferayScreenlets.Web;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
 import com.liferay.mobile.screens.web.WebListener;
 import com.liferay.mobile.screens.web.WebScreenlet;
 import com.liferay.mobile.screens.web.WebScreenletConfiguration;
+
+import LiferayScreenlets.Base.EventEmitter;
 
 public class WebScreenletViewManager extends SimpleViewManager<WebScreenlet> implements WebListener {
 
@@ -81,25 +82,21 @@ public class WebScreenletViewManager extends SimpleViewManager<WebScreenlet> imp
     public void onPageLoaded(String s) {
         WritableMap event = Arguments.createMap();
         event.putString("page", s);
-        this.sendEvent("onPageLoaded", event);
+        EventEmitter.sendEvent(this.reactContext,"onPageLoaded", event);
     }
 
     @Override
     public void onScriptMessageHandler(String s, String s1) {
         WritableMap event = Arguments.createMap();
         event.putString("message", s);
-        this.sendEvent("onScriptMessageHandler", event);
+        EventEmitter.sendEvent(this.reactContext,"onScriptMessageHandler", event);
     }
 
     @Override
     public void error(Exception e, String s) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.toString());
-        this.sendEvent("onError", event);
+        EventEmitter.sendEvent(this.reactContext,"onError", event);
     }
-
-    private void sendEvent(String eventName ,WritableMap event ){
-        this.reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit(eventName, event);
-    }
+    
 }
