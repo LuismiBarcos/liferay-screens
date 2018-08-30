@@ -18,8 +18,7 @@ RCT_EXPORT_VIEW_PROPERTY(onFileAssetResponse, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onFileAssetError, RCTBubblingEventBlock)
 
 // Properties
-RCT_EXPORT_VIEW_PROPERTY(className, NSString)
-RCT_EXPORT_VIEW_PROPERTY(classPK, NSNumber)
+RCT_EXPORT_VIEW_PROPERTY(screenletAttributes, NSDictionary)
 
 
 @end

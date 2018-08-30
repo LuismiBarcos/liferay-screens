@@ -1,12 +1,6 @@
 'use strict'
 import React, {Component} from 'react';
-import {Platform, 
-  StyleSheet, 
-  Dimensions,
-  Text, 
-  View,
-  NativeModules
-} from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import FileDisplayScreenlet from "./../LiferayScreens/FileDisplay/FileDisplayScreenlet";
 
 export default class FileDisplay extends Component {
