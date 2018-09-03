@@ -1,6 +1,6 @@
 'use strict'
 import React, {Component} from 'react';
-import { NativeModules, requireNativeComponent, View } from 'react-native';
+import { requireNativeComponent} from 'react-native';
 import { DeviceEventEmitter } from 'react-native';
 
 const NativeForgotPasswordScreenlet = requireNativeComponent('ForgotPasswordScreenlet');
@@ -8,7 +8,11 @@ const NativeForgotPasswordScreenlet = requireNativeComponent('ForgotPasswordScre
 export default class ForgotPasswordScreenlet extends Component {
     constructor(props){
         super(props);
-
+        this.state = {
+            anonymousApiUserName: props.anonymousApiUserName || "",
+            anonymousApiPassword: props.anonymousApiPassword || "",
+            companyId: props.companyId || 0
+        };
         this._onForgotPasswordRequestSuccess = this._onForgotPasswordRequestSuccess.bind(this);
         this._onForgotPasswordRequestFailure = this._onForgotPasswordRequestFailure.bind(this);
     }
@@ -22,6 +26,7 @@ export default class ForgotPasswordScreenlet extends Component {
         return(
             <NativeForgotPasswordScreenlet 
                 {...this.props}
+                screenletAttributes={this.state}
             />
         );
     }

@@ -78,6 +78,13 @@ export default class HomeScreen extends Component {
 
                         <View style={styles.button}>
                             <Button style={styles.button}
+                                onPress={() => navigate('ForgotPassword')}
+                                title="Forgot password"
+                            />
+                        </View>
+
+                        <View style={styles.button}>
+                            <Button style={styles.button}
                                 onPress={() => navigate('DDLForm')}
                                 title="DDL Form"
                             />

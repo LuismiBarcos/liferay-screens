@@ -17,4 +17,7 @@
 RCT_EXPORT_VIEW_PROPERTY(onForgotPasswordSent, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onForgotPasswordError, RCTBubblingEventBlock)
 
+// Properties
+RCT_EXPORT_VIEW_PROPERTY(screenletAttributes, NSDictionary)
+
 @end

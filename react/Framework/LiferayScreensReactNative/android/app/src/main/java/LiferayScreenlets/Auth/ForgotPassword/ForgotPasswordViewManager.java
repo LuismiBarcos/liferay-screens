@@ -1,6 +1,7 @@
 package LiferayScreenlets.Auth.ForgotPassword;
 
 import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.facebook.react.uimanager.SimpleViewManager;
@@ -26,21 +27,20 @@ public class ForgotPasswordViewManager extends SimpleViewManager<ForgotPasswordS
     protected ForgotPasswordScreenlet createViewInstance(ThemedReactContext reactContext) {
         this.reactContext = reactContext;
         this.screenlet = new ForgotPasswordScreenlet(reactContext);
-        this.screenlet.setCompanyId(LiferayServerContext.getCompanyId());
         this.screenlet.render(com.liferay.mobile.screens.R.layout.forgotpassword_default);
-        this.screenlet.setBasicAuthMethod(BasicAuthMethod.EMAIL);
         this.screenlet.setListener(this);
         return this.screenlet;
     }
 
-    @ReactProp(name="anonymousApiUserName")
-    public void setAnonymousApiUserName(ForgotPasswordScreenlet forgotPasswordScreenlet, String anonymousApiUserName) {
-        this.screenlet.setAnonymousApiUserName(anonymousApiUserName);
-    }
-
-    @ReactProp(name="anonymousApiPassword")
-    public void setAnonymousApiPassword(ForgotPasswordScreenlet forgotPasswordScreenlet, String anonymousApiPassword) {
-        this.screenlet.setAnonymousApiPassword(anonymousApiPassword);
+    @ReactProp(name="screenletAttributes")
+    public void setConfiguration(ForgotPasswordScreenlet screenlet, ReadableMap screenletAttributes) {
+        this.screenlet.setAnonymousApiUserName(screenletAttributes.getString("anonymousApiUserName"));
+        this.screenlet.setAnonymousApiPassword(screenletAttributes.getString("anonymousApiPassword"));
+        long companyId = screenletAttributes.getInt("companyId") == 0
+                ? LiferayServerContext.getCompanyId()
+                : screenletAttributes.getInt("companyId");
+        this.screenlet.setCompanyId(companyId);
+        this.screenlet.setBasicAuthMethod(BasicAuthMethod.EMAIL);
     }
 
     // ForgotPasswordListener methods

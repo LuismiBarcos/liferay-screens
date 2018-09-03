@@ -11,6 +11,16 @@ import LiferayScreens
 class ForgotPasswordScreenletView: RCTView, ForgotPasswordScreenletDelegate{
   // Variables
   var screenlet: ForgotPasswordScreenlet!
+  var _screenletAttributes: NSDictionary = NSDictionary()
+  var screenletAttributes: NSDictionary {
+    get {
+      return _screenletAttributes
+    }
+    set{
+      _screenletAttributes = newValue
+      self.setConfiguration(_screenletAttributes)
+    }
+  }
   
   // MARK: Events
   var onForgotPasswordSent: RCTBubblingEventBlock?
@@ -20,18 +30,18 @@ class ForgotPasswordScreenletView: RCTView, ForgotPasswordScreenletDelegate{
     super.init(frame: frame)
     self.screenlet = ForgotPasswordScreenlet(frame: frame, themeName: "default")
     self.screenlet.delegate = self
-    self.addSubview(self.screenlet)
-    
-    self.screenlet.translatesAutoresizingMaskIntoConstraints = false
-    
-    self.screenlet.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-    self.screenlet.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-    self.screenlet.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-    self.screenlet.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+    self.updateViewConstraints(screenlet: self.screenlet)
   }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  private func setConfiguration(_ screenletConfiguration: NSDictionary) {
+    let anonymousApiUserName = screenletConfiguration["anonymousApiUserName"]! as! String
+    let anonymousApiPassword = screenletConfiguration["anonymousApiPassword"]! as! String
+    self.screenlet.anonymousApiUserName = anonymousApiUserName
+    self.screenlet.anonymousApiPassword = anonymousApiPassword
   }
   
   // MARK: ForgotPasswordScreenletDelegate methods
