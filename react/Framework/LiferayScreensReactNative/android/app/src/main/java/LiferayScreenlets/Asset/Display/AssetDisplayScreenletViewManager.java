@@ -21,6 +21,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 import LiferayScreenlets.Base.EventEmitter;
+import LiferayScreenlets.Base.ViewUpdater;
 
 public class AssetDisplayScreenletViewManager extends SimpleViewManager<AssetDisplayScreenlet> implements AssetDisplayListener{
 
@@ -70,6 +71,7 @@ public class AssetDisplayScreenletViewManager extends SimpleViewManager<AssetDis
         JSONObject jsonObject = new JSONObject(assetEntry.getValues());
         WritableMap event = Arguments.createMap();
         event.putString("assetEntry", jsonObject.toString());
+        ViewUpdater.forceViewUpdate(this.reactContext, this.screenlet.getMeasuredWidth(), this.screenlet.getMeasuredHeight());
         EventEmitter.sendEvent(this.reactContext,"onRetrieveAssetSuccess", event);
     }
 

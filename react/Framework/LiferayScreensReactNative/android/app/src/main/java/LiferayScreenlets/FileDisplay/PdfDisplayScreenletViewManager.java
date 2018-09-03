@@ -13,6 +13,7 @@ import com.liferay.mobile.screens.dlfile.display.pdf.PdfDisplayScreenlet;
 import org.json.JSONObject;
 
 import LiferayScreenlets.Base.EventEmitter;
+import LiferayScreenlets.Base.ViewUpdater;
 
 public class PdfDisplayScreenletViewManager extends SimpleViewManager<PdfDisplayScreenlet> implements AssetDisplayListener{
 
@@ -50,6 +51,7 @@ public class PdfDisplayScreenletViewManager extends SimpleViewManager<PdfDisplay
         JSONObject jsonObject = new JSONObject(assetEntry.getValues());
         WritableMap event = Arguments.createMap();
         event.putString("assetEntry", jsonObject.toString());
+        ViewUpdater.forceViewUpdate(this.reactContext, this.screenlet.getMeasuredWidth(), this.screenlet.getMeasuredHeight());
         EventEmitter.sendEvent(this.reactContext,"onRetrieveAssetSuccess", event);
     }
 

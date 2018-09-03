@@ -13,6 +13,7 @@ import com.liferay.mobile.screens.dlfile.display.video.VideoDisplayScreenlet;
 import org.json.JSONObject;
 
 import LiferayScreenlets.Base.EventEmitter;
+import LiferayScreenlets.Base.ViewUpdater;
 
 public class VideoDisplayScreenletViewManager extends SimpleViewManager<VideoDisplayScreenlet> implements VideoDisplayListener{
 
@@ -49,6 +50,7 @@ public class VideoDisplayScreenletViewManager extends SimpleViewManager<VideoDis
     public void onVideoPrepared() {
         WritableMap event = Arguments.createMap();
         event.putString("status", "video prepared");
+        ViewUpdater.forceViewUpdate(this.reactContext, this.screenlet.getMeasuredWidth(), this.screenlet.getMeasuredHeight());
         EventEmitter.sendEvent(this.reactContext,"onVideoPrepared", event);
     }
 

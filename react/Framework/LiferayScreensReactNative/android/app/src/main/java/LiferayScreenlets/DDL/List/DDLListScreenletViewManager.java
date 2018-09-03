@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Locale;
 
 import LiferayScreenlets.Base.EventEmitter;
+import LiferayScreenlets.Base.ViewUpdater;
 
 public class DDLListScreenletViewManager extends SimpleViewManager<DDLListScreenlet> implements BaseListListener {
 
@@ -85,6 +86,7 @@ public class DDLListScreenletViewManager extends SimpleViewManager<DDLListScreen
     public void onListPageReceived(int i, int i1, List list, int i2) {
         WritableMap event = Arguments.createMap();
         event.putString("list", list.toString());
+        ViewUpdater.forceViewUpdate(this.reactContext, this.screenlet.getMeasuredWidth(), this.screenlet.getMeasuredHeight());
         EventEmitter.sendEvent(this.reactContext,"onListPageReceived", event);
     }
 

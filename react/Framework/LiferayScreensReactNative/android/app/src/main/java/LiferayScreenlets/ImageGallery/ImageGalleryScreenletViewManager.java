@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Locale;
 
 import LiferayScreenlets.Base.EventEmitter;
+import LiferayScreenlets.Base.ViewUpdater;
 
 public class ImageGalleryScreenletViewManager extends SimpleViewManager<ImageGalleryScreenlet> implements ImageGalleryListener{
 
@@ -122,6 +123,7 @@ public class ImageGalleryScreenletViewManager extends SimpleViewManager<ImageGal
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        ViewUpdater.forceViewUpdate(this.reactContext, this.screenlet.getMeasuredWidth(), this.screenlet.getMeasuredHeight());
         event.putString("images", jsonObject.toString());
         EventEmitter.sendEvent(this.reactContext,"onListPageReceived", event);
     }

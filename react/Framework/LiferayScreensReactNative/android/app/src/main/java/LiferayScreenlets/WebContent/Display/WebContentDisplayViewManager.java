@@ -19,6 +19,7 @@ import com.liferay.mobile.screens.webcontent.display.WebContentDisplayScreenlet;
 import java.util.Locale;
 
 import LiferayScreenlets.Base.EventEmitter;
+import LiferayScreenlets.Base.ViewUpdater;
 
 public class WebContentDisplayViewManager extends SimpleViewManager<WebContentDisplayScreenlet> implements WebContentDisplayListener{
 
@@ -65,6 +66,7 @@ public class WebContentDisplayViewManager extends SimpleViewManager<WebContentDi
         WritableMap event = Arguments.createMap();
         // Put data to map
         event.putString("html", webContent.getHtml());
+        ViewUpdater.forceViewUpdate(this.reactContext, this.screenlet.getMeasuredWidth(), this.screenlet.getMeasuredHeight());
         EventEmitter.sendEvent(this.reactContext,"onWebContentReceived", event);
         return webContent;
     }

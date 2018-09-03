@@ -12,6 +12,7 @@ import com.liferay.mobile.screens.rating.RatingListener;
 import com.liferay.mobile.screens.rating.RatingScreenlet;
 
 import LiferayScreenlets.Base.EventEmitter;
+import LiferayScreenlets.Base.ViewUpdater;
 
 public class RatingScreenletViewManager extends SimpleViewManager<RatingScreenlet> implements RatingListener{
 
@@ -56,6 +57,7 @@ public class RatingScreenletViewManager extends SimpleViewManager<RatingScreenle
         WritableMap event = Arguments.createMap();
         // Put data to map
         event.putString("user", assetRating.toString());
+        ViewUpdater.forceViewUpdate(this.reactContext, this.screenlet.getMeasuredWidth(), this.screenlet.getMeasuredHeight());
         EventEmitter.sendEvent(this.reactContext,"onRatingOperationSuccess", event);
     }
 

@@ -11,6 +11,7 @@ import com.liferay.mobile.screens.web.WebScreenlet;
 import com.liferay.mobile.screens.web.WebScreenletConfiguration;
 
 import LiferayScreenlets.Base.EventEmitter;
+import LiferayScreenlets.Base.ViewUpdater;
 
 public class WebScreenletViewManager extends SimpleViewManager<WebScreenlet> implements WebListener {
 
@@ -82,6 +83,7 @@ public class WebScreenletViewManager extends SimpleViewManager<WebScreenlet> imp
     public void onPageLoaded(String s) {
         WritableMap event = Arguments.createMap();
         event.putString("page", s);
+        ViewUpdater.forceViewUpdate(this.reactContext, this.screenlet.getMeasuredWidth(), this.screenlet.getMeasuredHeight());
         EventEmitter.sendEvent(this.reactContext,"onPageLoaded", event);
     }
 

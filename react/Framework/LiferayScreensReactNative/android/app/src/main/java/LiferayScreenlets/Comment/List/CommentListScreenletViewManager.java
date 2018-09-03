@@ -9,6 +9,7 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.annotations.ReactProp;
+import com.liferay.mobile.screens.base.BaseScreenlet;
 import com.liferay.mobile.screens.comment.CommentEntry;
 import com.liferay.mobile.screens.comment.list.CommentListListener;
 import com.liferay.mobile.screens.comment.list.CommentListScreenlet;
@@ -22,6 +23,7 @@ import java.util.List;
 import java.util.Locale;
 
 import LiferayScreenlets.Base.EventEmitter;
+import LiferayScreenlets.Base.ViewUpdater;
 
 public class CommentListScreenletViewManager extends SimpleViewManager<CommentListScreenlet> implements CommentListListener{
 
@@ -89,6 +91,7 @@ public class CommentListScreenletViewManager extends SimpleViewManager<CommentLi
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        ViewUpdater.forceViewUpdate(this.reactContext, this.screenlet.getMeasuredWidth(), this.screenlet.getMeasuredHeight());
         event.putString("comments", jsonObject.toString());
         EventEmitter.sendEvent(this.reactContext,"onListPageReceived", event);
     }

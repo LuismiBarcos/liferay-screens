@@ -13,6 +13,7 @@ import com.liferay.mobile.screens.comment.display.CommentDisplayScreenlet;
 import org.json.JSONObject;
 
 import LiferayScreenlets.Base.EventEmitter;
+import LiferayScreenlets.Base.ViewUpdater;
 
 public class CommentDisplayScreenletViewManager extends SimpleViewManager<CommentDisplayScreenlet> implements CommentDisplayListener{
 
@@ -48,6 +49,7 @@ public class CommentDisplayScreenletViewManager extends SimpleViewManager<Commen
         JSONObject jsonObject = new JSONObject(commentEntry.getValues());
         WritableMap event = Arguments.createMap();
         event.putString("comment", jsonObject.toString());
+        ViewUpdater.forceViewUpdate(this.reactContext, this.screenlet.getMeasuredWidth(), this.screenlet.getMeasuredHeight());
         EventEmitter.sendEvent(this.reactContext,"onLoadCommentSuccess", event);
     }
 
