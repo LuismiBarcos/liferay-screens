@@ -23,11 +23,11 @@ export default class VideoDisplayScreenlet extends Component {
 
     componentWillMount(){
         // Events
-        DeviceEventEmitter.addListener('onVideoPrepared', this._onVideoPrepared);
-        DeviceEventEmitter.addListener('onVideoError', this._onVideoError);
-        DeviceEventEmitter.addListener('onVideoCompleted', this._onVideoCompleted);
-        DeviceEventEmitter.addListener('onRetrieveAssetSuccess', this._onRetrieveAssetSuccess);
-        DeviceEventEmitter.addListener('onError', this._onError);
+        DeviceEventEmitter.addListener('onVideoDisplayScreenletVideoPrepared', this._onVideoPrepared);
+        DeviceEventEmitter.addListener('onVideoDisplayScreenletVideoError', this._onVideoError);
+        DeviceEventEmitter.addListener('onVideoDisplayScreenletVideoCompleted', this._onVideoCompleted);
+        DeviceEventEmitter.addListener('onVideoDisplayScreenletRetrieveAssetSuccess', this._onRetrieveAssetSuccess);
+        DeviceEventEmitter.addListener('onVideoDisplayScreenletError', this._onError);
     }
 
     componentWillUnmount(){

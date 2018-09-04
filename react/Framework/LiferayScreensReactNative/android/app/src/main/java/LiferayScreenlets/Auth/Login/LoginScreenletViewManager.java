@@ -77,20 +77,20 @@ public class LoginScreenletViewManager extends SimpleViewManager<LoginScreenlet>
         WritableMap event = Arguments.createMap();
         // Put data to map
         event.putString("user", jsonObject.toString());
-        this.sendEvent("onLoginSuccess", event);
+        this.sendEvent("onLoginScreenletSuccess", event);
     }
 
     @Override
     public void onLoginFailure(Exception e) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.toString());
-        this.sendEvent("onLoginError", event);
+        this.sendEvent("onLoginScreenletError", event);
     }
 
     @Override
     public void onAuthenticationBrowserShown() {
         WritableMap event = Arguments.createMap();
-        this.sendEvent("onAuthenticationBrowserShown", event);
+        this.sendEvent("onLoginScreenletAuthenticationBrowserShown", event);
     }
 
     private void sendEvent(String eventName ,WritableMap event ){

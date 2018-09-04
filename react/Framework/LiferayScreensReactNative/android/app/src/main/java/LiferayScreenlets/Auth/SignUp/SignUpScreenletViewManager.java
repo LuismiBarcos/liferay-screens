@@ -61,7 +61,7 @@ public class SignUpScreenletViewManager extends SimpleViewManager<SignUpScreenle
     public void onSignUpFailure(Exception e) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.getMessage());
-        EventEmitter.sendEvent(this.reactContext,"onSignUpFailure", event);
+        EventEmitter.sendEvent(this.reactContext,"onSignUpScreenletFailure", event);
     }
 
     @Override
@@ -71,6 +71,6 @@ public class SignUpScreenletViewManager extends SimpleViewManager<SignUpScreenle
         WritableMap event = Arguments.createMap();
         // Put data to map
         event.putString("user", jsonObject.toString());
-        EventEmitter.sendEvent(this.reactContext,"onSignUpSuccess", event);
+        EventEmitter.sendEvent(this.reactContext,"onSignUpScreenletSuccess", event);
     }
 }

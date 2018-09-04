@@ -24,8 +24,8 @@ export default class RatingScreenlet extends Component {
     
     componentWillMount(){
         //Events
-        DeviceEventEmitter.addListener('onRatingOperationSuccess', this._onRatingOperationSuccess);
-        DeviceEventEmitter.addListener('onError', this._onError);
+        DeviceEventEmitter.addListener('onRatingScreenletOperationSuccess', this._onRatingOperationSuccess);
+        DeviceEventEmitter.addListener('onRatingScreenletError', this._onError);
     }
 
     componentWillUnmount(){

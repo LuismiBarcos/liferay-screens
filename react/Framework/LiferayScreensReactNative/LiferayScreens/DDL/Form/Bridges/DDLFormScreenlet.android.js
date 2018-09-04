@@ -31,13 +31,13 @@ export default class DDLFormScreenlet extends Component {
 
     componentWillMount(){
         // Events
-        DeviceEventEmitter.addListener('onDDLFormLoaded', this._onDDLFormLoaded);
-        DeviceEventEmitter.addListener('onDDLFormRecordLoaded', this._onDDLFormRecordLoaded);
-        DeviceEventEmitter.addListener('onDDLFormRecordAdded', this._onDDLFormRecordAdded);
-        DeviceEventEmitter.addListener('onDDLFormRecordUpdated', this._onDDLFormRecordUpdated);
-        DeviceEventEmitter.addListener('onDDLFormDocumentUploaded', this._onDDLFormDocumentUploaded);
-        DeviceEventEmitter.addListener('onDDLFormDocumentUploadFailed', this._onDDLFormDocumentUploadFailed);
-        DeviceEventEmitter.addListener('onError', this._onError);
+        DeviceEventEmitter.addListener('onDDLFormScreenletLoaded', this._onDDLFormLoaded);
+        DeviceEventEmitter.addListener('onDDLFormScreenletRecordLoaded', this._onDDLFormRecordLoaded);
+        DeviceEventEmitter.addListener('onDDLFormScreenletRecordAdded', this._onDDLFormRecordAdded);
+        DeviceEventEmitter.addListener('onDDLFormScreenletRecordUpdated', this._onDDLFormRecordUpdated);
+        DeviceEventEmitter.addListener('onDDLFormScreenletDocumentUploaded', this._onDDLFormDocumentUploaded);
+        DeviceEventEmitter.addListener('onDDLFormScreenletDocumentUploadFailed', this._onDDLFormDocumentUploadFailed);
+        DeviceEventEmitter.addListener('onDDLFormScreenletError', this._onError);
     }
 
     componentWillUnmount(){

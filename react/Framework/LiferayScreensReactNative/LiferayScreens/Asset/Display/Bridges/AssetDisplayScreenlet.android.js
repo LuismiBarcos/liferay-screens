@@ -21,8 +21,8 @@ export default class AssetDisplayScreenlet extends Component {
 
     componentWillMount(){
         // Events
-        DeviceEventEmitter.addListener('onRetrieveAssetSuccess', this._onRetrieveAssetSuccess);
-        DeviceEventEmitter.addListener('onError', this._onError);
+        DeviceEventEmitter.addListener('onAssetDisplayScreenletRetrieveAssetSuccess', this._onRetrieveAssetSuccess);
+        DeviceEventEmitter.addListener('onAssetDisplayScreenletError', this._onError);
     }
 
     componentWillUnmount(){

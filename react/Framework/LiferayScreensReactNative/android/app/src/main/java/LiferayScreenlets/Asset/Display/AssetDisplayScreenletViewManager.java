@@ -74,13 +74,13 @@ public class AssetDisplayScreenletViewManager extends SimpleViewManager<AssetDis
         WritableMap event = Arguments.createMap();
         event.putString("assetEntry", jsonObject.toString());
         ViewUpdater.forceViewUpdate(this.reactContext, this.screenlet.getMeasuredWidth(), this.screenlet.getMeasuredHeight());
-        EventEmitter.sendEvent(this.reactContext,"onRetrieveAssetSuccess", event);
+        EventEmitter.sendEvent(this.reactContext,"onAssetDisplayScreenletRetrieveAssetSuccess", event);
     }
 
     @Override
     public void error(Exception e, String s) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.toString());
-        EventEmitter.sendEvent(this.reactContext,"onError", event);
+        EventEmitter.sendEvent(this.reactContext,"onAssetDisplayScreenletError", event);
     }
 }

@@ -1,6 +1,6 @@
 'use strict';
 import React, {Component} from 'react';
-import { NativeModules, requireNativeComponent, View } from 'react-native';
+import { requireNativeComponent } from 'react-native';
 import { DeviceEventEmitter } from 'react-native';
 
 const NativeLoginScreenlet = requireNativeComponent('LoginScreenlet');
@@ -16,9 +16,9 @@ export default class LoginScreenlet extends Component {
     
     componentWillMount() {
         // Events
-        DeviceEventEmitter.addListener('onLoginSuccess', this._onLoginSuccess);
-        DeviceEventEmitter.addListener('onLoginError', this._onLoginError);
-        DeviceEventEmitter.addListener('onAuthenticationBrowserShown', this._onAuthenticationBrowserShown);
+        DeviceEventEmitter.addListener('onLoginScreenletSuccess', this._onLoginSuccess);
+        DeviceEventEmitter.addListener('onLoginScreenletError', this._onLoginError);
+        DeviceEventEmitter.addListener('onLoginScreenletAuthenticationBrowserShown', this._onAuthenticationBrowserShown);
     }
 
     componentWillUnmount(){
@@ -34,7 +34,6 @@ export default class LoginScreenlet extends Component {
     }
 
     _onLoginSuccess(event) {
-        console.log("login success!");
         if(!this.props.onLoginSuccess) {
             return;
         }
@@ -42,7 +41,6 @@ export default class LoginScreenlet extends Component {
     }
 
     _onLoginError(event) {
-        console.log("login fail!");
         if(!this.props.onLoginError) {
             return;
         }
@@ -50,7 +48,6 @@ export default class LoginScreenlet extends Component {
     }
 
     _onAuthenticationBrowserShown() {
-        console.log("authentication browser show");
         if(!this.props.onAuthenticationBrowserShown) {
             return;
         }

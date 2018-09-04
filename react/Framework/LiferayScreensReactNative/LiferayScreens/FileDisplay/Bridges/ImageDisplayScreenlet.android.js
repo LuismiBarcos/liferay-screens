@@ -20,8 +20,8 @@ export default class ImageDisplayScreenlet extends Component {
 
     componentWillMount() {
         // Events
-        DeviceEventEmitter.addListener('onRetrieveAssetSuccess', this._onRetrieveAssetSuccess);
-        DeviceEventEmitter.addListener('onError', this._onError);
+        DeviceEventEmitter.addListener('onImageDisplayScreenletRetrieveAssetSuccess', this._onRetrieveAssetSuccess);
+        DeviceEventEmitter.addListener('onImageDisplayScreenletError', this._onError);
     }
     
     componentWillUnmount(){

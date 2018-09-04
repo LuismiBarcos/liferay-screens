@@ -20,10 +20,10 @@ export default class CommentDisplayScreenlet extends Component {
 
     componentWillMount() {
         // Events
-        DeviceEventEmitter.addListener('onLoadCommentSuccess', this._onLoadCommentSuccess);
-        DeviceEventEmitter.addListener('onDeleteCommentSuccess', this._onDeleteCommentSuccess);
-        DeviceEventEmitter.addListener('onUpdateCommentSuccess', this._onUpdateCommentSuccess);
-        DeviceEventEmitter.addListener('onError', this._onError);
+        DeviceEventEmitter.addListener('onCommentDisplayScreenletLoadCommentSuccess', this._onLoadCommentSuccess);
+        DeviceEventEmitter.addListener('onCommentDisplayScreenletDeleteCommentSuccess', this._onDeleteCommentSuccess);
+        DeviceEventEmitter.addListener('onCommentDisplayScreenletUpdateCommentSuccess', this._onUpdateCommentSuccess);
+        DeviceEventEmitter.addListener('onCommentDisplayScreenletError', this._onError);
     }
 
     componentWillUnmount(){

@@ -83,7 +83,7 @@ public class WebContentListScreenletViewManager extends SimpleViewManager<WebCon
         WritableMap event = Arguments.createMap();
         event.putInt("pageNumber", i);
         event.putString("error", e.toString());
-        EventEmitter.sendEvent(this.reactContext,"onListPageFailed", event);
+        EventEmitter.sendEvent(this.reactContext,"onWebContentListScreenletListPageFailed", event);
     }
 
     @Override
@@ -91,20 +91,20 @@ public class WebContentListScreenletViewManager extends SimpleViewManager<WebCon
         WritableMap event = Arguments.createMap();
         event.putString("list", list.toString());
         ViewUpdater.forceViewUpdate(this.reactContext, this.screenlet.getMeasuredWidth(), this.screenlet.getMeasuredHeight());
-        EventEmitter.sendEvent(this.reactContext,"onListPageReceived", event);
+        EventEmitter.sendEvent(this.reactContext,"onWebContentListScreenletListPageReceived", event);
     }
 
     @Override
     public void onListItemSelected(Object o, View view) {
         WritableMap event = Arguments.createMap();
         event.putString("itemSelected", o.toString());
-        EventEmitter.sendEvent(this.reactContext,"onListItemSelected", event);
+        EventEmitter.sendEvent(this.reactContext,"onWebContentListScreenletListItemSelected", event);
     }
 
     @Override
     public void error(Exception e, String s) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.toString());
-        EventEmitter.sendEvent(this.reactContext,"onError", event);
+        EventEmitter.sendEvent(this.reactContext,"onWebContentListScreenletError", event);
     }
 }

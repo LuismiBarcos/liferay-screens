@@ -51,14 +51,14 @@ public class ForgotPasswordViewManager extends SimpleViewManager<ForgotPasswordS
         WritableMap event = Arguments.createMap();
         // Put data to map
         event.putBoolean("passwordSent",b);
-        this.sendEvent("onForgotPasswordRequestSuccess", event);
+        this.sendEvent("onForgotPasswordScreenletRequestSuccess", event);
     }
 
     @Override
     public void onForgotPasswordRequestFailure(Exception e) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.getMessage());
-        this.sendEvent("onForgotPasswordRequestFailure", event);
+        this.sendEvent("onForgotPasswordScreenletRequestFailure", event);
     }
 
     private void sendEvent(String eventName ,WritableMap event ){

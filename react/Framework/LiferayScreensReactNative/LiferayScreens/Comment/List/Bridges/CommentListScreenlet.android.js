@@ -28,12 +28,12 @@ export default class CommentListScreenlet extends Component {
     
     componentWillMount() {
         // Events
-        DeviceEventEmitter.addListener('onDeleteCommentSuccess', this._onDeleteCommentSuccess);
-        DeviceEventEmitter.addListener('onUpdateCommentSuccess', this._onUpdateCommentSuccess);
-        DeviceEventEmitter.addListener('onListPageFailed', this._onListPageFailed);
-        DeviceEventEmitter.addListener('onListPageReceived', this._onListPageReceived);
-        DeviceEventEmitter.addListener('onListItemSelected', this._onListItemSelected);
-        DeviceEventEmitter.addListener('onError', this._onError);
+        DeviceEventEmitter.addListener('onCommentListScreenletDeleteCommentSuccess', this._onDeleteCommentSuccess);
+        DeviceEventEmitter.addListener('onCommentListScreenletUpdateCommentSuccess', this._onUpdateCommentSuccess);
+        DeviceEventEmitter.addListener('onCommentListScreenletListPageFailed', this._onListPageFailed);
+        DeviceEventEmitter.addListener('onCommentListScreenletListPageReceived', this._onListPageReceived);
+        DeviceEventEmitter.addListener('onCommentListScreenletListItemSelected', this._onListItemSelected);
+        DeviceEventEmitter.addListener('onCommentListScreenletError', this._onError);
     }
 
     componentWillUnmount(){
@@ -75,7 +75,6 @@ export default class CommentListScreenlet extends Component {
         if(!this.props.onListPageReceived) {
             return;
         }
-        debugger;
         this.props.onListPageReceived(JSON.parse(event.comments));
     }
 

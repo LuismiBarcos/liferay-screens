@@ -47,13 +47,13 @@ public class CommentAddScreenletViewManager extends SimpleViewManager<CommentAdd
         JSONObject jsonObject = new JSONObject(commentEntry.getValues());
         WritableMap event = Arguments.createMap();
         event.putString("comment", jsonObject.toString());
-        EventEmitter.sendEvent(this.reactContext,"onAddCommentSuccess", event);
+        EventEmitter.sendEvent(this.reactContext,"onCommentAddScreenletAddCommentSuccess", event);
     }
 
     @Override
     public void error(Exception e, String s) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.toString());
-        EventEmitter.sendEvent(this.reactContext,"onError", event);
+        EventEmitter.sendEvent(this.reactContext,"onCommentAddScreenletError", event);
     }
 }

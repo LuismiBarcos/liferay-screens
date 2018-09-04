@@ -69,7 +69,7 @@ public class WebContentDisplayViewManager extends SimpleViewManager<WebContentDi
         // Put data to map
         event.putString("html", webContent.getHtml());
         ViewUpdater.forceViewUpdate(this.reactContext, this.screenlet.getMeasuredWidth(), this.screenlet.getMeasuredHeight());
-        EventEmitter.sendEvent(this.reactContext,"onWebContentReceived", event);
+        EventEmitter.sendEvent(this.reactContext,"onWebContentDisplayScreenletReceived", event);
         return webContent;
     }
 
@@ -79,7 +79,7 @@ public class WebContentDisplayViewManager extends SimpleViewManager<WebContentDi
         WritableMap event = Arguments.createMap();
         // Put data to map
         event.putString("url", s);
-        EventEmitter.sendEvent(this.reactContext,"onUrlClicked", event);
+        EventEmitter.sendEvent(this.reactContext,"onWebContentDisplayScreenletUrlClicked", event);
         return false;
     }
 
@@ -89,7 +89,7 @@ public class WebContentDisplayViewManager extends SimpleViewManager<WebContentDi
         WritableMap event = Arguments.createMap();
         // Put data to map
         event.putString("touched", motionEvent.toString());
-        EventEmitter.sendEvent(this.reactContext,"onWebContentTouched", event);
+        EventEmitter.sendEvent(this.reactContext,"onWebContentDisplayScreenletTouched", event);
         return false;
     }
 
@@ -99,7 +99,7 @@ public class WebContentDisplayViewManager extends SimpleViewManager<WebContentDi
         WritableMap event = Arguments.createMap();
         // Put data to map
         event.putString("error", e.getMessage());
-        EventEmitter.sendEvent(this.reactContext,"onError", event);
+        EventEmitter.sendEvent(this.reactContext,"onWebContentDisplayScreenletError", event);
     }
     
 }

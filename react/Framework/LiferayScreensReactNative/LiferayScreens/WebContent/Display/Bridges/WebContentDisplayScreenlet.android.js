@@ -25,10 +25,10 @@ export default class WebContentDisplayScreenlet extends Component {
 
     componentWillMount(){
         //Events
-        DeviceEventEmitter.addListener('onWebContentReceived', this._onWebContentReceived);
-        DeviceEventEmitter.addListener('onUrlClicked', this._onUrlClicked);
-        DeviceEventEmitter.addListener('onWebContentTouched', this._onWebContentTouched);
-        DeviceEventEmitter.addListener('onError', this._onError);
+        DeviceEventEmitter.addListener('onWebContentDisplayScreenletReceived', this._onWebContentReceived);
+        DeviceEventEmitter.addListener('onWebContentDisplayScreenletUrlClicked', this._onUrlClicked);
+        DeviceEventEmitter.addListener('onWebContentDisplayScreenletTouched', this._onWebContentTouched);
+        DeviceEventEmitter.addListener('onWebContentDisplayScreenletError', this._onError);
     }
     
     componentWillUnmount(){

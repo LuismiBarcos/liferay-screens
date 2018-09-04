@@ -52,13 +52,13 @@ public class ImageDisplayScreenletViewManager extends SimpleViewManager<ImageDis
         JSONObject jsonObject = new JSONObject(assetEntry.getValues());
         WritableMap event = Arguments.createMap();
         event.putString("assetEntry", jsonObject.toString());
-        EventEmitter.sendEvent(this.reactContext,"onRetrieveAssetSuccess", event);
+        EventEmitter.sendEvent(this.reactContext,"onImageDisplayScreenletRetrieveAssetSuccess", event);
     }
 
     @Override
     public void error(Exception e, String s) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.toString());
-        EventEmitter.sendEvent(this.reactContext,"onError", event);
+        EventEmitter.sendEvent(this.reactContext,"onImageDisplayScreenletError", event);
     }
 }

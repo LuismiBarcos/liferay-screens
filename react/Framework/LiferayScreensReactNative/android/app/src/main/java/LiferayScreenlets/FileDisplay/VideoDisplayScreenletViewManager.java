@@ -53,21 +53,21 @@ public class VideoDisplayScreenletViewManager extends SimpleViewManager<VideoDis
         WritableMap event = Arguments.createMap();
         event.putString("status", "video prepared");
         ViewUpdater.forceViewUpdate(this.reactContext, this.screenlet.getMeasuredWidth(), this.screenlet.getMeasuredHeight());
-        EventEmitter.sendEvent(this.reactContext,"onVideoPrepared", event);
+        EventEmitter.sendEvent(this.reactContext,"onVideoDisplayScreenletVideoPrepared", event);
     }
 
     @Override
     public void onVideoError(Exception e) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.toString());
-        EventEmitter.sendEvent(this.reactContext,"onVideoError", event);
+        EventEmitter.sendEvent(this.reactContext,"onVideoDisplayScreenletVideoError", event);
     }
 
     @Override
     public void onVideoCompleted() {
         WritableMap event = Arguments.createMap();
         event.putString("status", "video completed");
-        EventEmitter.sendEvent(this.reactContext,"onVideoCompleted", event);
+        EventEmitter.sendEvent(this.reactContext,"onVideoDisplayScreenletVideoCompleted", event);
     }
 
     @Override
@@ -75,13 +75,13 @@ public class VideoDisplayScreenletViewManager extends SimpleViewManager<VideoDis
         JSONObject jsonObject = new JSONObject(assetEntry.getValues());
         WritableMap event = Arguments.createMap();
         event.putString("assetEntry", jsonObject.toString());
-        EventEmitter.sendEvent(this.reactContext,"onRetrieveAssetSuccess", event);
+        EventEmitter.sendEvent(this.reactContext,"onVideoDisplayScreenletRetrieveAssetSuccess", event);
     }
 
     @Override
     public void error(Exception e, String s) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.toString());
-        EventEmitter.sendEvent(this.reactContext,"onError", event);
+        EventEmitter.sendEvent(this.reactContext,"onVideoDisplayScreenletError", event);
     }
 }

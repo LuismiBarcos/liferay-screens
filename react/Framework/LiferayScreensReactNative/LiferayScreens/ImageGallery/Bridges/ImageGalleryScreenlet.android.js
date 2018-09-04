@@ -30,15 +30,15 @@ export default class ImageGalleryScreenlet extends Component {
     
     componentWillMount() {
         // Events
-        DeviceEventEmitter.addListener('onImageEntryDeleted', this._onImageEntryDeleted);
-        DeviceEventEmitter.addListener('onImageUploadStarted', this._onImageUploadStarted);
-        DeviceEventEmitter.addListener('onImageUploadProgress', this._onImageUploadProgress);
-        DeviceEventEmitter.addListener('onImageUploadEnd', this._onImageUploadEnd);
-        DeviceEventEmitter.addListener('onShowUploadImageView', this._onShowUploadImageView);
-        DeviceEventEmitter.addListener('onListPageFailed', this._onListPageFailed);
-        DeviceEventEmitter.addListener('onListPageReceived', this._onListPageReceived);
-        DeviceEventEmitter.addListener('onItemSelected', this._onItemSelected);
-        DeviceEventEmitter.addListener('onImageGalleryError', this._onImageGalleryError);
+        DeviceEventEmitter.addListener('onImageGalleryScreenletImageEntryDeleted', this._onImageEntryDeleted);
+        DeviceEventEmitter.addListener('onImageGalleryScreenletImageUploadStarted', this._onImageUploadStarted);
+        DeviceEventEmitter.addListener('onImageGalleryScreenletImageUploadProgress', this._onImageUploadProgress);
+        DeviceEventEmitter.addListener('onImageGalleryScreenletImageUploadEnd', this._onImageUploadEnd);
+        DeviceEventEmitter.addListener('onImageGalleryScreenletShowUploadImageView', this._onShowUploadImageView);
+        DeviceEventEmitter.addListener('onImageGalleryScreenletListPageFailed', this._onListPageFailed);
+        DeviceEventEmitter.addListener('onImageGalleryScreenletListPageReceived', this._onListPageReceived);
+        DeviceEventEmitter.addListener('onImageGalleryScreenletItemSelected', this._onItemSelected);
+        DeviceEventEmitter.addListener('onImageGalleryScreenletImageGalleryError', this._onImageGalleryError);
     }
     
     componentWillUnmount(){

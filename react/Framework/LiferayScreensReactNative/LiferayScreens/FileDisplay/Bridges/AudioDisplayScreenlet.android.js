@@ -20,8 +20,8 @@ export default class AudioDisplayScreenlet extends Component {
 
     componentWillMount() {
         // Events
-        DeviceEventEmitter.addListener('onRetrieveAssetSuccess', this._onRetrieveAssetSuccess);
-        DeviceEventEmitter.addListener('onError', this._onError);
+        DeviceEventEmitter.addListener('onAudioDisplayScreenletRetrieveAssetSuccess', this._onRetrieveAssetSuccess);
+        DeviceEventEmitter.addListener('onAudioDisplayScreenletError', this._onError);
     }
 
     componentWillUnmount(){

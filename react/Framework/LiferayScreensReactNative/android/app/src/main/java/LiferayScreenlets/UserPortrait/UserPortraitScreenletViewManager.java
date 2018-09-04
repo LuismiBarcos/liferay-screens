@@ -53,7 +53,7 @@ public class UserPortraitScreenletViewManager extends SimpleViewManager<UserPort
         WritableMap event = Arguments.createMap();
         int imageSize = bitmap.getRowBytes() * bitmap.getHeight();
         event.putInt("image", imageSize);
-        EventEmitter.sendEvent(this.reactContext, "onUserPortraitLoadReceived", event);
+        EventEmitter.sendEvent(this.reactContext, "onUserPortraitScreenletLoadReceived", event);
         return bitmap;
     }
 
@@ -61,13 +61,13 @@ public class UserPortraitScreenletViewManager extends SimpleViewManager<UserPort
     public void onUserPortraitUploaded() {
         WritableMap event = Arguments.createMap();
         event.putBoolean("userPortraitLoadReceived", true);
-        EventEmitter.sendEvent(this.reactContext, "onUserPortraitUploaded", event);
+        EventEmitter.sendEvent(this.reactContext, "onUserPortraitScreenletUploaded", event);
     }
 
     @Override
     public void error(Exception e, String s) {
         WritableMap event = Arguments.createMap();
         event.putString("error", s);
-        EventEmitter.sendEvent(this.reactContext, "onUserPortraitError", event);
+        EventEmitter.sendEvent(this.reactContext, "onUserPortraitScreenletError", event);
     }
 }

@@ -86,21 +86,21 @@ public class WebScreenletViewManager extends SimpleViewManager<WebScreenlet> imp
         WritableMap event = Arguments.createMap();
         event.putString("page", s);
         ViewUpdater.forceViewUpdate(this.reactContext, this.screenlet.getMeasuredWidth(), this.screenlet.getMeasuredHeight());
-        EventEmitter.sendEvent(this.reactContext,"onPageLoaded", event);
+        EventEmitter.sendEvent(this.reactContext,"onWebScreenletPageLoaded", event);
     }
 
     @Override
     public void onScriptMessageHandler(String s, String s1) {
         WritableMap event = Arguments.createMap();
         event.putString("message", s);
-        EventEmitter.sendEvent(this.reactContext,"onScriptMessageHandler", event);
+        EventEmitter.sendEvent(this.reactContext,"onWebScreenletScriptMessageHandler", event);
     }
 
     @Override
     public void error(Exception e, String s) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.toString());
-        EventEmitter.sendEvent(this.reactContext,"onError", event);
+        EventEmitter.sendEvent(this.reactContext,"onWebScreenletError", event);
     }
     
 }

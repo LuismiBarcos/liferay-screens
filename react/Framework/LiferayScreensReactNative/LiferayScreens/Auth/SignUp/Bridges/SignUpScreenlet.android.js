@@ -21,8 +21,8 @@ export default class SignUpScreenlet extends Component {
     }
     componentWillMount() {
         // Events
-        DeviceEventEmitter.addListener('onSignUpSuccess', this._onSignUpSuccess);
-        DeviceEventEmitter.addListener('onSignUpFailure', this._onSignUpFailure);
+        DeviceEventEmitter.addListener('onSignUpScreenletSuccess', this._onSignUpSuccess);
+        DeviceEventEmitter.addListener('onSignUpScreenletFailure', this._onSignUpFailure);
     }
 
     componentWillUnmount(){

@@ -52,13 +52,13 @@ public class AudioDisplayScreenletViewManager extends SimpleViewManager<AudioDis
         JSONObject jsonObject = new JSONObject(assetEntry.getValues());
         WritableMap event = Arguments.createMap();
         event.putString("assetEntry", jsonObject.toString());
-        EventEmitter.sendEvent(this.reactContext,"onRetrieveAssetSuccess", event);
+        EventEmitter.sendEvent(this.reactContext,"onAudioDisplayScreenletRetrieveAssetSuccess", event);
     }
 
     @Override
     public void error(Exception e, String s) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.toString());
-        EventEmitter.sendEvent(this.reactContext,"onError", event);
+        EventEmitter.sendEvent(this.reactContext,"onAudioDisplayScreenletError", event);
     }
 }

@@ -24,10 +24,10 @@ export default class AssetListScreenlet extends Component {
 
     componentWillMount() {
         // Events
-        DeviceEventEmitter.addListener('onListPageFailed', this._onListPageFailed);
-        DeviceEventEmitter.addListener('onListPageReceived', this._onListPageReceived);
-        DeviceEventEmitter.addListener('onListItemSelected', this._onListItemSelected);
-        DeviceEventEmitter.addListener('onError', this._onError);
+        DeviceEventEmitter.addListener('onAssetListScreenletListPageFailed', this._onListPageFailed);
+        DeviceEventEmitter.addListener('onAssetListScreenletListPageReceived', this._onListPageReceived);
+        DeviceEventEmitter.addListener('onAssetListScreenletListItemSelected', this._onListItemSelected);
+        DeviceEventEmitter.addListener('onAssetListScreenletError', this._onError);
     }
 
     componentWillUnmount(){

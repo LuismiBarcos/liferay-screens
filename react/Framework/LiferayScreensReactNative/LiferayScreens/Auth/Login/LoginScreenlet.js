@@ -12,16 +12,17 @@ export default class LoginScreenlet extends Component {
     constructor(props){
         super(props);
         
-        // this._onLoginSuccess = this._onLoginSuccess.bind(this);
-        // this._onLoginError = this._onLoginError.bind(this);
-        // this._onAuthenticationBrowserShown = this.componentDidCatch.bind(this);
-        // this._onCredentialsSavedUserAttributes = this.componentDidCatch.bind(this);
-        // this._onCredentialsLoadedUserAttributes = this._onCredentialsLoadedUserAttributes.bind(this);
+        
     }
     render() {
         return(
             <NativeLoginScreenlet 
                 {...this.props}
+                onLoginSuccess = {this._onLoginSuccess.bind(this)}
+                onLoginError = {this._onLoginError.bind(this)}
+                onAuthenticationBrowserShown = {this._onAuthenticationBrowserShown.bind(this)}
+                onCredentialsSavedUserAttributes = {this._onCredentialsSavedUserAttributes.bind(this)}
+                onCredentialsLoadedUserAttributes = {this._onCredentialsLoadedUserAttributes.bind(this)}
             />
         );
     }

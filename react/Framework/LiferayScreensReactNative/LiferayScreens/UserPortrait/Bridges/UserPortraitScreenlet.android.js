@@ -24,9 +24,9 @@ export default class UserPortraitScreenlet extends Component {
     
     componentWillMount() {
         // Events
-        DeviceEventEmitter.addListener('onUserPortraitLoadReceived', this._onUserPortraitLoadReceived);
-        DeviceEventEmitter.addListener('onUserPortraitUploaded', this._onUserPortraitUploaded);
-        DeviceEventEmitter.addListener('onUserPortraitError', this._onUserPortraitError);
+        DeviceEventEmitter.addListener('onUserPortraitScreenletLoadReceived', this._onUserPortraitLoadReceived);
+        DeviceEventEmitter.addListener('onUserPortraitScreenletUploaded', this._onUserPortraitUploaded);
+        DeviceEventEmitter.addListener('onUserPortraitScreenletError', this._onUserPortraitError);
     }
 
     componentWillUnmount(){

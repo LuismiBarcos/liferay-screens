@@ -46,6 +46,12 @@ export default class HomeScreen extends Component {
                     <View style={styles.container}>
                         <View style={styles.button}>
                             <Button 
+                                onPress={() => navigate('TestComponent')}
+                                title="Test"
+                            />
+                        </View>
+                        <View style={styles.button}>
+                            <Button 
                                 onPress={() => navigate('UserPortrait', { userId: this.state.userId })}
                                 title="User portrait"
                             />

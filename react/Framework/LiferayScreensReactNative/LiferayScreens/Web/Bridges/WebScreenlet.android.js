@@ -24,9 +24,9 @@ export default class WebScreenlet extends Component {
         // DeviceEventEmitter.addListener('onPageLoaded', this.handleListener('onPageLoaded'))
         
         // Events
-        DeviceEventEmitter.addListener('onPageLoaded', this._onPageLoaded);
-        DeviceEventEmitter.addListener('onScriptMessageHandler', this._onScriptMessageHandler);
-        DeviceEventEmitter.addListener('onError', this._onError);
+        DeviceEventEmitter.addListener('onWebScreenletPageLoaded', this._onPageLoaded);
+        DeviceEventEmitter.addListener('onWebScreenletScriptMessageHandler', this._onScriptMessageHandler);
+        DeviceEventEmitter.addListener('onWebScreenletError', this._onError);
     }
 
     componentWillUnmount(){

@@ -62,7 +62,7 @@ public class ImageGalleryScreenletViewManager extends SimpleViewManager<ImageGal
     public void onImageEntryDeleted(long l) {
         WritableMap event = Arguments.createMap();
         event.putInt("l", (int) l);
-        EventEmitter.sendEvent(this.reactContext,"onImageEntryDeleted", event);
+        EventEmitter.sendEvent(this.reactContext,"onImageGalleryScreenletImageEntryDeleted", event);
     }
 
     @Override
@@ -72,7 +72,7 @@ public class ImageGalleryScreenletViewManager extends SimpleViewManager<ImageGal
         event.putString("s", s);
         event.putString("s1", s1);
         event.putString("s2", s2);
-        EventEmitter.sendEvent(this.reactContext,"onImageUploadStarted", event);
+        EventEmitter.sendEvent(this.reactContext,"onImageGalleryScreenletImageUploadStarted", event);
     }
 
     @Override
@@ -80,21 +80,21 @@ public class ImageGalleryScreenletViewManager extends SimpleViewManager<ImageGal
         WritableMap event = Arguments.createMap();
         event.putInt("i", i);
         event.putInt("i1", i1);
-        EventEmitter.sendEvent(this.reactContext,"onImageUploadProgress", event);
+        EventEmitter.sendEvent(this.reactContext,"onImageGalleryScreenletImageUploadProgress", event);
     }
 
     @Override
     public void onImageUploadEnd(ImageEntry imageEntry) {
         WritableMap event = Arguments.createMap();
         event.putString("imageEntry", new JSONObject(imageEntry.getValues()).toString());
-        EventEmitter.sendEvent(this.reactContext,"onImageUploadEnd", event);
+        EventEmitter.sendEvent(this.reactContext,"onImageGalleryScreenletImageUploadEnd", event);
     }
 
     @Override
     public boolean showUploadImageView(String s, Uri uri, int i) {
         WritableMap event = Arguments.createMap();
         event.putString("imageView", s);
-        EventEmitter.sendEvent(this.reactContext,"onShowUploadImageView", event);
+        EventEmitter.sendEvent(this.reactContext,"onImageGalleryScreenletShowUploadImageView", event);
         return false;
     }
 
@@ -107,7 +107,7 @@ public class ImageGalleryScreenletViewManager extends SimpleViewManager<ImageGal
     public void onListPageFailed(int i, Exception e) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.toString());
-        EventEmitter.sendEvent(this.reactContext,"onListPageFailed", event);
+        EventEmitter.sendEvent(this.reactContext,"onImageGalleryScreenletListPageFailed", event);
     }
 
     @Override
@@ -124,7 +124,7 @@ public class ImageGalleryScreenletViewManager extends SimpleViewManager<ImageGal
             e.printStackTrace();
         }
         event.putString("images", jsonObject.toString());
-        EventEmitter.sendEvent(this.reactContext,"onListPageReceived", event);
+        EventEmitter.sendEvent(this.reactContext,"onImageGalleryScreenletListPageReceived", event);
         ViewUpdater.forceViewUpdate(this.reactContext, this.screenlet.getMeasuredWidth(), this.screenlet.getMeasuredHeight());
     }
 
@@ -132,13 +132,13 @@ public class ImageGalleryScreenletViewManager extends SimpleViewManager<ImageGal
     public void onListItemSelected(ImageEntry imageEntry, View view) {
         WritableMap event = Arguments.createMap();
         event.putString("item", new JSONObject(imageEntry.getValues()).toString());
-        EventEmitter.sendEvent(this.reactContext,"onItemSelected", event);
+        EventEmitter.sendEvent(this.reactContext,"onImageGalleryScreenletItemSelected", event);
     }
 
     @Override
     public void error(Exception e, String s) {
         WritableMap event = Arguments.createMap();
         event.putString("error", s);
-        EventEmitter.sendEvent(this.reactContext,"onImageGalleryError", event);
+        EventEmitter.sendEvent(this.reactContext,"onImageGalleryScreenletImageGalleryError", event);
     }
 }

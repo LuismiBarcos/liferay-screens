@@ -26,10 +26,10 @@ export default class DDLListScreenlet extends Component {
 
     componentWillMount(){
         // Events
-        DeviceEventEmitter.addListener('onListPageFailed', this._onListPageFailed);
-        DeviceEventEmitter.addListener('onListPageReceived', this._onListPageReceived);
-        DeviceEventEmitter.addListener('onListItemSelected', this._onListItemSelected);
-        DeviceEventEmitter.addListener('onError', this._onError);
+        DeviceEventEmitter.addListener('onDDLListScreenletListPageFailed', this._onListPageFailed);
+        DeviceEventEmitter.addListener('onDDLListScreenletListPageReceived', this._onListPageReceived);
+        DeviceEventEmitter.addListener('onDDLListScreenletListItemSelected', this._onListItemSelected);
+        DeviceEventEmitter.addListener('onDDLListScreenletError', this._onError);
     }
 
     componentWillUnmount(){

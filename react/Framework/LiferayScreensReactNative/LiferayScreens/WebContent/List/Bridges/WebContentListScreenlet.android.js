@@ -24,10 +24,10 @@ export default class WebContentListScreenlet extends Component {
 
     componentWillMount() {
         // Events
-        DeviceEventEmitter.addListener('onListPageFailed', this._onListPageFailed);
-        DeviceEventEmitter.addListener('onListPageReceived', this._onListPageReceived);
-        DeviceEventEmitter.addListener('onListItemSelected', this._onListItemSelected);
-        DeviceEventEmitter.addListener('onError', this._onError);
+        DeviceEventEmitter.addListener('onWebContentListScreenletListPageFailed', this._onListPageFailed);
+        DeviceEventEmitter.addListener('onWebContentListScreenletListPageReceived', this._onListPageReceived);
+        DeviceEventEmitter.addListener('onWebContentListScreenletListItemSelected', this._onListItemSelected);
+        DeviceEventEmitter.addListener('onWebContentListScreenletError', this._onError);
     }
 
     componentWillUnmount(){

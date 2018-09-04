@@ -20,6 +20,7 @@ import org.json.JSONObject;
 import java.util.Map;
 
 import LiferayScreenlets.Base.EventEmitter;
+import LiferayScreenlets.Base.ViewUpdater;
 
 public class DDLFormScreenletViewManager extends SimpleViewManager<DDLFormScreenlet> implements DDLFormListener{
 
@@ -60,6 +61,7 @@ public class DDLFormScreenletViewManager extends SimpleViewManager<DDLFormScreen
     @ReactProp(name="screenletAttributes")
     public void setConfiguration(DDLFormScreenlet screenlet, ReadableMap screenletAttributes) {
         Record record = new Record(LiferayLocale.getDefaultLocale());
+        record.setCreatorUserId(0);
         this.screenlet.setRecord(record);
         this.screenlet.setStructureId(screenletAttributes.getInt("structureId"));
         long groupId = screenletAttributes.getInt("groupId") == 0
@@ -87,7 +89,8 @@ public class DDLFormScreenletViewManager extends SimpleViewManager<DDLFormScreen
         WritableMap event = Arguments.createMap();
         // Put data to map
         event.putString("record", jsonObject.toString());
-        EventEmitter.sendEvent(this.reactContext,"onDDLFormLoaded", event);
+        ViewUpdater.forceViewUpdate(this.reactContext, this.screenlet.getMeasuredWidth(), this.screenlet.getMeasuredHeight());
+        EventEmitter.sendEvent(this.reactContext,"onDDLFormScreenletLoaded", event);
     }
 
     @Override
@@ -95,7 +98,7 @@ public class DDLFormScreenletViewManager extends SimpleViewManager<DDLFormScreen
         JSONObject jsonObject = new JSONObject(map);
         WritableMap event = Arguments.createMap();
         event.putString("map", jsonObject.toString());
-        EventEmitter.sendEvent(this.reactContext,"onDDLFormRecordLoaded", event);
+        EventEmitter.sendEvent(this.reactContext,"onDDLFormScreenletRecordLoaded", event);
     }
 
     @Override
@@ -103,7 +106,7 @@ public class DDLFormScreenletViewManager extends SimpleViewManager<DDLFormScreen
         JSONObject jsonObject = new JSONObject(record.getData());
         WritableMap event = Arguments.createMap();
         event.putString("record", jsonObject.toString());
-        EventEmitter.sendEvent(this.reactContext,"onDDLFormRecordAdded", event);
+        EventEmitter.sendEvent(this.reactContext,"onDDLFormScreenletRecordAdded", event);
     }
 
     @Override
@@ -111,27 +114,27 @@ public class DDLFormScreenletViewManager extends SimpleViewManager<DDLFormScreen
         JSONObject jsonObject = new JSONObject(record.getData());
         WritableMap event = Arguments.createMap();
         event.putString("record", jsonObject.toString());
-        EventEmitter.sendEvent(this.reactContext,"onDDLFormRecordUpdated", event);
+        EventEmitter.sendEvent(this.reactContext,"onDDLFormScreenletRecordUpdated", event);
     }
 
     @Override
     public void onDDLFormDocumentUploaded(DocumentField documentField, JSONObject jsonObject) {
         WritableMap event = Arguments.createMap();
         event.putString("documentField", jsonObject.toString());
-        EventEmitter.sendEvent(this.reactContext,"onDDLFormDocumentUploaded", event);
+        EventEmitter.sendEvent(this.reactContext,"onDDLFormScreenletDocumentUploaded", event);
     }
 
     @Override
     public void onDDLFormDocumentUploadFailed(DocumentField documentField, Exception e) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.getMessage());
-        EventEmitter.sendEvent(this.reactContext,"onDDLFormDocumentUploadFailed", event);
+        EventEmitter.sendEvent(this.reactContext,"onDDLFormScreenletDocumentUploadFailed", event);
     }
 
     @Override
     public void error(Exception e, String s) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.getMessage());
-        EventEmitter.sendEvent(this.reactContext,"onError", event);
+        EventEmitter.sendEvent(this.reactContext,"onDDLFormScreenletError", event);
     }
 }

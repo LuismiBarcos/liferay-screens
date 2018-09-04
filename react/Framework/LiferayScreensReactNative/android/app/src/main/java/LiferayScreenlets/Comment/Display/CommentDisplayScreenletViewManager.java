@@ -50,7 +50,7 @@ public class CommentDisplayScreenletViewManager extends SimpleViewManager<Commen
         WritableMap event = Arguments.createMap();
         event.putString("comment", jsonObject.toString());
         ViewUpdater.forceViewUpdate(this.reactContext, this.screenlet.getMeasuredWidth(), this.screenlet.getMeasuredHeight());
-        EventEmitter.sendEvent(this.reactContext,"onLoadCommentSuccess", event);
+        EventEmitter.sendEvent(this.reactContext,"onCommentDisplayScreenletLoadCommentSuccess", event);
     }
 
     @Override
@@ -58,7 +58,7 @@ public class CommentDisplayScreenletViewManager extends SimpleViewManager<Commen
         JSONObject jsonObject = new JSONObject(commentEntry.getValues());
         WritableMap event = Arguments.createMap();
         event.putString("comment", jsonObject.toString());
-        EventEmitter.sendEvent(this.reactContext,"onDeleteCommentSuccess", event);
+        EventEmitter.sendEvent(this.reactContext,"onCommentDisplayScreenletDeleteCommentSuccess", event);
     }
 
     @Override
@@ -66,13 +66,13 @@ public class CommentDisplayScreenletViewManager extends SimpleViewManager<Commen
         JSONObject jsonObject = new JSONObject(commentEntry.getValues());
         WritableMap event = Arguments.createMap();
         event.putString("comment", jsonObject.toString());
-        EventEmitter.sendEvent(this.reactContext,"onUpdateCommentSuccess", event);
+        EventEmitter.sendEvent(this.reactContext,"onCommentDisplayScreenletUpdateCommentSuccess", event);
     }
 
     @Override
     public void error(Exception e, String s) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.toString());
-        EventEmitter.sendEvent(this.reactContext,"onError", event);
+        EventEmitter.sendEvent(this.reactContext,"onCommentDisplayScreenletError", event);
     }
 }

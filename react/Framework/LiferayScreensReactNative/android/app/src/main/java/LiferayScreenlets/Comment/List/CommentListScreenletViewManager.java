@@ -61,21 +61,21 @@ public class CommentListScreenletViewManager extends SimpleViewManager<CommentLi
     public void onDeleteCommentSuccess(CommentEntry commentEntry) {
         WritableMap event = Arguments.createMap();
         event.putString("commentEntry", new JSONObject(commentEntry.getValues()).toString());
-        EventEmitter.sendEvent(this.reactContext,"onDeleteCommentSuccess", event);
+        EventEmitter.sendEvent(this.reactContext,"onCommentListScreenletDeleteCommentSuccess", event);
     }
 
     @Override
     public void onUpdateCommentSuccess(CommentEntry commentEntry) {
         WritableMap event = Arguments.createMap();
         event.putString("commentEntry", new JSONObject(commentEntry.getValues()).toString());
-        EventEmitter.sendEvent(this.reactContext,"onUpdateCommentSuccess", event);
+        EventEmitter.sendEvent(this.reactContext,"onCommentListScreenletUpdateCommentSuccess", event);
     }
 
     @Override
     public void onListPageFailed(int i, Exception e) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.getMessage());
-        EventEmitter.sendEvent(this.reactContext,"onListPageFailed", event);
+        EventEmitter.sendEvent(this.reactContext,"onCommentListScreenletListPageFailed", event);
     }
 
     @Override
@@ -92,7 +92,7 @@ public class CommentListScreenletViewManager extends SimpleViewManager<CommentLi
             e.printStackTrace();
         }
         event.putString("comments", jsonObject.toString());
-        EventEmitter.sendEvent(this.reactContext,"onListPageReceived", event);
+        EventEmitter.sendEvent(this.reactContext,"onCommentListScreenletListPageReceived", event);
         ViewUpdater.forceViewUpdate(this.reactContext, this.screenlet.getMeasuredWidth(), this.screenlet.getMeasuredHeight());
     }
 
@@ -100,13 +100,13 @@ public class CommentListScreenletViewManager extends SimpleViewManager<CommentLi
     public void onListItemSelected(CommentEntry commentEntry, View view) {
         WritableMap event = Arguments.createMap();
         event.putString("commentEntry", new JSONObject(commentEntry.getValues()).toString());
-        EventEmitter.sendEvent(this.reactContext,"onListItemSelected", event);
+        EventEmitter.sendEvent(this.reactContext,"onCommentListScreenletListItemSelected", event);
     }
 
     @Override
     public void error(Exception e, String s) {
         WritableMap event = Arguments.createMap();
         event.putString("error", e.getMessage());
-        EventEmitter.sendEvent(this.reactContext,"onError", event);
+        EventEmitter.sendEvent(this.reactContext,"onCommentListScreenletError", event);
     }
 }

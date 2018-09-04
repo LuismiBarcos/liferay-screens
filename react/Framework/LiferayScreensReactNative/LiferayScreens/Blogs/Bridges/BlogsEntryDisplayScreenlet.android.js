@@ -20,8 +20,8 @@ export default class BlogsEntryDisplayScreenlet extends Component {
 
     componentWillMount() {
         // Events
-        DeviceEventEmitter.addListener('onRetrieveAssetSuccess', this._onRetrieveAssetSuccess);
-        DeviceEventEmitter.addListener('onError', this._onError);
+        DeviceEventEmitter.addListener('onBlogsEntryDisplayScreenletRetrieveAssetSuccess', this._onRetrieveAssetSuccess);
+        DeviceEventEmitter.addListener('onBlogsEntryDisplayScreenletError', this._onError);
     }
 
     componentWillUnmount(){
