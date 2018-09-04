@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native'
 
-import ImageGalleryScreenlet from './../LiferayScreens/ImageGallery/ImageGalleryScreenlet';
+import { ImageGalleryScreenlet } from './../LiferayScreens';
 
 export default class ImageGallery extends Component {
     render() {

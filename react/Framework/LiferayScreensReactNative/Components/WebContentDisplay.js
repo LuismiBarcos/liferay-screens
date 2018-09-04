@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import { StyleSheet, Dimensions } from 'react-native';
 
-import WebContentDisplayScreenlet from "./../LiferayScreens/WebContent/Display/WebContentDisplayScreenlet";
+import { WebContentDisplayScreenlet } from "./../LiferayScreens";
 
 export default class WebContent extends Component {
     render(){

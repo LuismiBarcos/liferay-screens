@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import { StyleSheet } from 'react-native';
 
-import AssetDisplayScreenlet from "./../LiferayScreens/Asset/Display/AssetDisplayScreenlet";
+import { AssetDisplayScreenlet } from "./../LiferayScreens";
 
 export default class AssetDisplay extends Component {
     render(){

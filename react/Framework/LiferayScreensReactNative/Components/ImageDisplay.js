@@ -1,7 +1,8 @@
 'use strict'
 import React, {Component} from 'react';
 import { StyleSheet } from 'react-native';
-import ImageDisplayScreenlet from "./../LiferayScreens/FileDisplay/ImageDisplayScreenlet";
+
+import { ImageDisplayScreenlet } from "./../LiferayScreens";
 
 export default class ImageDisplay extends Component {
   render(){

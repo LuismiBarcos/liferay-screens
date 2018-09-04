@@ -8,7 +8,7 @@ import {Platform,
   NativeModules
 } from 'react-native';
 
-import WebScreenlet from "./../LiferayScreens/Web/WebScreenlet";
+import { WebScreenlet } from "./../LiferayScreens";
 
 export default class Web extends Component {
     render() {

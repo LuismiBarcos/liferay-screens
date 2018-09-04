@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import { StyleSheet } from 'react-native';
 
-import CommentDisplayScreenlet from './../LiferayScreens/Comment/Display/CommentDisplayScreenlet';
+import { CommentDisplayScreenlet } from './../LiferayScreens';
 
 export default class CommentDisplay extends Component {
     render() {

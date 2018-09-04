@@ -2,15 +2,15 @@
 import React, {Component} from 'react';
 import { View ,ScrollView, StyleSheet, Text } from 'react-native';
 
-import UserPortrait from './../LiferayScreens/UserPortrait/UserPortraitScreenlet';
-import CommentListScreenlet from './../LiferayScreens/Comment/List/CommentListScreenlet';
-import ImageGalleryScreenlet from './../LiferayScreens/ImageGallery/ImageGalleryScreenlet';
+import { UserPortraitScreenlet } from './../LiferayScreens';
+import { CommentListScreenlet } from './../LiferayScreens';
+import { ImageGalleryScreenlet } from './../LiferayScreens';
 
 export default class TestComponent extends Component {
     render(){
         return(
             <View>
-                <UserPortrait 
+                <UserPortraitScreenlet 
                     style={styles.comments}
                     userId={20156}
                 />
@@ -26,8 +26,8 @@ export default class TestComponent extends Component {
 
 const styles = StyleSheet.create({
     comments: {
-        height: 300,
-        width: 300,
+        height: 150,
+        width: 150,
     },
     gallery: {
         height: 300,

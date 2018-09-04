@@ -1,7 +1,8 @@
 'use strict'
 import React, {Component} from 'react';
 import { StyleSheet } from 'react-native';
-import RatingScreenlet from "./../LiferayScreens/Rating/RatingScreenlet";
+
+import { RatingScreenlet } from "./../LiferayScreens";
 
 export default class Rating extends Component {
     render() {

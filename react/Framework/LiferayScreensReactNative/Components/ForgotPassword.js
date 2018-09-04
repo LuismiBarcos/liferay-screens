@@ -1,7 +1,8 @@
 'use strict'
 import React, {Component} from 'react';
 import { StyleSheet } from 'react-native';
-import ForgotPasswordScreenlet from "./../LiferayScreens/Auth/ForgotPassword/ForgotPasswordScreenlet";
+
+import { ForgotPasswordScreenlet } from "./../LiferayScreens";
 
 export default class ForgotPassword extends Component {
     render(){

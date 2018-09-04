@@ -1,7 +1,8 @@
 'use strict'
 import React, {Component} from 'react';
 import { StyleSheet } from 'react-native';
-import UserPortraitScreenlet from "./../LiferayScreens/UserPortrait/UserPortraitScreenlet";
+
+import { UserPortraitScreenlet } from "./../LiferayScreens";
 
 export default class UserPortrait extends Component {
   constructor(props) {

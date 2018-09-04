@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import { StyleSheet, Dimensions } from 'react-native';
 
-import BlogsEntryDisplayScreenlet from "./../LiferayScreens/Blogs/BlogsEntryDisplayScreenlet";
+import { BlogsEntryDisplayScreenlet } from "./../LiferayScreens";
 
 export default class BlogsEntryDisplay extends Component {
     render(){

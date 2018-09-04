@@ -6,7 +6,8 @@ import {Platform,
   View,
   NativeModules
 } from 'react-native';
-import SignUpScreenlet from "./../LiferayScreens/Auth/SignUp/SignUpScreenlet";
+
+import { SignUpScreenlet } from "./../LiferayScreens";
 
 export default class SignUp extends Component {
     render(){

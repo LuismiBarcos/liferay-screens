@@ -1,7 +1,7 @@
 'use strict'
 import React, {Component} from 'react';
 import { StyleSheet } from 'react-native';
-import AudioDisplayScreenlet from "./../LiferayScreens/FileDisplay/AudioDisplayScreenlet";
+import { AudioDisplayScreenlet } from "./../LiferayScreens";
 
 export default class AudioDisplay extends Component {
   render(){

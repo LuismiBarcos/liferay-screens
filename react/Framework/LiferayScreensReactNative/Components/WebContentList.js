@@ -1,7 +1,8 @@
 'use strict'
 import React, {Component} from 'react';
 import { StyleSheet } from 'react-native';
-import WebContentListScreenlet from "./../LiferayScreens/WebContent/List/WebContentListScreenlet";
+
+import { WebContentListScreenlet } from "./../LiferayScreens";
 
 export default class WebContentList extends Component {
     render() {

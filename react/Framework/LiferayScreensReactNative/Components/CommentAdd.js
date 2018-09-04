@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import { StyleSheet } from 'react-native';
 
-import CommentAddScreenlet from './../LiferayScreens/Comment/Add/CommentAddScreenlet';
+import { CommentAddScreenlet } from './../LiferayScreens';
 
 export default class CommentAdd extends Component {
     render(){

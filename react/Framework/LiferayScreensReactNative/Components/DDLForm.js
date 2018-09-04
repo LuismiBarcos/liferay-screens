@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import { StyleSheet, Dimensions } from 'react-native';
 
-import DDLFormScreenlet from "./../LiferayScreens/DDL/Form/DDLFormScreenlet";
+import { DDLFormScreenlet } from "./../LiferayScreens";
 
 export default class  DDLForm extends Component {
     render(){

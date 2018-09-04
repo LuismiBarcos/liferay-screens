@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import { StyleSheet } from 'react-native';
 
-import DDLListScreenlet from "./../LiferayScreens/DDL/List/DDLListScreenlet";
+import { DDLListScreenlet } from "./../LiferayScreens";
 
 export default class DDLList extends Component {
     render() {

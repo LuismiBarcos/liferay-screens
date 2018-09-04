@@ -6,7 +6,7 @@ import {Platform,
   View,
   NativeModules
 } from 'react-native';
-import LoginScreenlet from './../LiferayScreens/Auth/Login/LoginScreenlet';
+import { LoginScreenlet } from './../LiferayScreens';
 export default class Login extends Component {
     constructor(props) {
         super(props);
