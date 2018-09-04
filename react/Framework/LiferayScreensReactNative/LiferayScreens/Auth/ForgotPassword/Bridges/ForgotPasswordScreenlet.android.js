@@ -21,6 +21,10 @@ export default class ForgotPasswordScreenlet extends Component {
         DeviceEventEmitter.addListener('onForgotPasswordRequestSuccess', this._onForgotPasswordRequestSuccess);
         DeviceEventEmitter.addListener('onForgotPasswordRequestFailure', this._onForgotPasswordRequestFailure);
     }
+
+    componentWillUnmount(){
+        DeviceEventEmitter.removeAllListeners();
+    }
     
     render(){
         return(

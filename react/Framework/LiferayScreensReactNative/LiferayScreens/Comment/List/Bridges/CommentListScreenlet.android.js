@@ -36,6 +36,10 @@ export default class CommentListScreenlet extends Component {
         DeviceEventEmitter.addListener('onError', this._onError);
     }
 
+    componentWillUnmount(){
+        DeviceEventEmitter.removeAllListeners();
+    }
+
     render() {
         return(
             <NativeCommentListScreenlet
@@ -71,6 +75,7 @@ export default class CommentListScreenlet extends Component {
         if(!this.props.onListPageReceived) {
             return;
         }
+        debugger;
         this.props.onListPageReceived(JSON.parse(event.comments));
     }
 

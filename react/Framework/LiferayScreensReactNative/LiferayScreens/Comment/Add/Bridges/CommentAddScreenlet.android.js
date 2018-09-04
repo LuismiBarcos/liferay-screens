@@ -21,6 +21,10 @@ export default class CommentAddScreenlet extends Component {
         DeviceEventEmitter.addListener('onAddCommentSuccess', this._onAddCommentSuccess);
         DeviceEventEmitter.addListener('onError', this._onError);
     }
+
+    componentWillUnmount(){
+        DeviceEventEmitter.removeAllListeners();
+    }
     
     render(){
         return(

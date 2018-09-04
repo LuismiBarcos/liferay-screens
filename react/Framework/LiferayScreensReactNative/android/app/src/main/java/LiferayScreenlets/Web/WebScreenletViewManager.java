@@ -39,7 +39,9 @@ public class WebScreenletViewManager extends SimpleViewManager<WebScreenlet> imp
         String jsFileName = props.getString("jsFileName");
         String cssFileName = props.getString("cssFileName");
         this.screenlet.setWebScreenletConfiguration(this.createConfiguration(url, jsFileName, cssFileName));
-        this.screenlet.load();
+        if(!this.screenlet.isAutoLoad()) {
+            this.screenlet.load();
+        }
     }
 
     private WebScreenletConfiguration createConfiguration(String url, String jsFileName, String cssFileName) {

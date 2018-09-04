@@ -29,6 +29,10 @@ export default class AssetListScreenlet extends Component {
         DeviceEventEmitter.addListener('onListItemSelected', this._onListItemSelected);
         DeviceEventEmitter.addListener('onError', this._onError);
     }
+
+    componentWillUnmount(){
+        DeviceEventEmitter.removeAllListeners();
+    }
     
     render(){
         return(

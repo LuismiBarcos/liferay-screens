@@ -29,6 +29,11 @@ export default class VideoDisplayScreenlet extends Component {
         DeviceEventEmitter.addListener('onRetrieveAssetSuccess', this._onRetrieveAssetSuccess);
         DeviceEventEmitter.addListener('onError', this._onError);
     }
+
+    componentWillUnmount(){
+        DeviceEventEmitter.removeAllListeners();
+    }
+
     render() {
         return(
             <NativeVideoDisplayScreenlet 

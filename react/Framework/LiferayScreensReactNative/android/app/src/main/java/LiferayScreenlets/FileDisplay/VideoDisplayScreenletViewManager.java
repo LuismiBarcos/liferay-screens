@@ -41,7 +41,9 @@ public class VideoDisplayScreenletViewManager extends SimpleViewManager<VideoDis
         this.screenlet.setEntryId(screenletAttributes.getInt("entryId"));
         this.screenlet.setClassName(screenletAttributes.getString("className"));
         this.screenlet.setClassPK(screenletAttributes.getInt("classPK"));
-        this.screenlet.load();
+        if(!this.screenlet.getAutoLoad()) {
+            this.screenlet.load();
+        }
     }
 
     // VideoDisplayListener implementation

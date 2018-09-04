@@ -28,6 +28,10 @@ export default class UserPortraitScreenlet extends Component {
         DeviceEventEmitter.addListener('onUserPortraitUploaded', this._onUserPortraitUploaded);
         DeviceEventEmitter.addListener('onUserPortraitError', this._onUserPortraitError);
     }
+
+    componentWillUnmount(){
+        DeviceEventEmitter.removeAllListeners();
+    }
     
     render(){
         return(

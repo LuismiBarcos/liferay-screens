@@ -46,7 +46,9 @@ public class RatingScreenletViewManager extends SimpleViewManager<RatingScreenle
                 ? LiferayServerContext.getGroupId()
                 : screenletAttributes.getInt("groupId");
         this.screenlet.setGroupId(groupId);
-        this.screenlet.load();
+        if(!this.screenlet.isAutoLoad()) {
+            this.screenlet.load();
+        }
     }
 
     // RatingListener methods

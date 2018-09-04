@@ -28,6 +28,10 @@ export default class RatingScreenlet extends Component {
         DeviceEventEmitter.addListener('onError', this._onError);
     }
 
+    componentWillUnmount(){
+        DeviceEventEmitter.removeAllListeners();
+    }
+
     render(){
         return(
             <NativeRatingScreenlet 

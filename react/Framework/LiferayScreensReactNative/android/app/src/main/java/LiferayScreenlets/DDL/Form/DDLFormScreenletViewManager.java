@@ -73,7 +73,9 @@ public class DDLFormScreenletViewManager extends SimpleViewManager<DDLFormScreen
         this.screenlet.setAutoLoad(screenletAttributes.getBoolean("autoLoad"));
         this.screenlet.setAutoScrollOnValidation(screenletAttributes.getBoolean("autoscrollOnValidation"));
         this.screenlet.setFilePrefix(null);
-        this.screenlet.load();
+        if(!this.screenlet.isAutoLoad()) {
+            this.screenlet.load();
+        }
     }
 
     // DDLFormListener methods

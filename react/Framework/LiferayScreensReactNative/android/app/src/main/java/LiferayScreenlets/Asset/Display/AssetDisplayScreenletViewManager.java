@@ -61,7 +61,9 @@ public class AssetDisplayScreenletViewManager extends SimpleViewManager<AssetDis
         this.screenlet.setEntryId(screenletAttributes.getInt("entryId"));
         this.screenlet.setClassName(screenletAttributes.getString("className"));
         this.screenlet.setClassPK(screenletAttributes.getInt("classPK"));
-        this.screenlet.loadAsset();
+        if(!this.screenlet.isAutoLoad()) {
+            this.screenlet.loadAsset();
+        }
     }
 
     // AssetDisplayListener implementation

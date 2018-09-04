@@ -51,7 +51,9 @@ public class DDLListScreenletViewManager extends SimpleViewManager<DDLListScreen
         this.screenlet.setLabelFields(parse(screenletAttributes.getString("labelFields")));
         this.screenlet.setLocale(new Locale(LiferayLocale.getDefaultSupportedLocale()));
         this.screenlet.setGroupId(LiferayServerContext.getGroupId());
-        this.screenlet.loadPage(0);
+        if(!this.screenlet.isAutoLoad()) {
+            this.screenlet.loadPage(0);
+        }
     }
 
     private List<String> parse(String labelFields) {

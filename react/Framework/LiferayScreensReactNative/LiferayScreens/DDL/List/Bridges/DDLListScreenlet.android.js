@@ -32,6 +32,10 @@ export default class DDLListScreenlet extends Component {
         DeviceEventEmitter.addListener('onError', this._onError);
     }
 
+    componentWillUnmount(){
+        DeviceEventEmitter.removeAllListeners();
+    }
+
     render(){
         return(
             <NativeDDLListScreenlet 

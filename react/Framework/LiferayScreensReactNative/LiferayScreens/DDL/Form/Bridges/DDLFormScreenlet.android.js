@@ -40,6 +40,10 @@ export default class DDLFormScreenlet extends Component {
         DeviceEventEmitter.addListener('onError', this._onError);
     }
 
+    componentWillUnmount(){
+        DeviceEventEmitter.removeAllListeners();
+    }
+
     render(){
         return(
             <NativeDDLFormScreenlet 

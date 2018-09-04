@@ -42,7 +42,9 @@ public class UserPortraitScreenletViewManager extends SimpleViewManager<UserPort
         this.screenlet.setPortraitId(attributes.getInt("portraitId"));
         this.screenlet.setUuid(attributes.getString("uuid"));
         this.screenlet.setEditable(attributes.getBoolean("editable"));
-        this.screenlet.load();
+        if(!this.screenlet.isAutoLoad()) {
+            this.screenlet.load();
+        }
     }
 
     // UserPortraitListener methods

@@ -20,6 +20,10 @@ export default class LoginScreenlet extends Component {
         DeviceEventEmitter.addListener('onLoginError', this._onLoginError);
         DeviceEventEmitter.addListener('onAuthenticationBrowserShown', this._onAuthenticationBrowserShown);
     }
+
+    componentWillUnmount(){
+        DeviceEventEmitter.removeAllListeners();
+    }
     
     render() {
         return(

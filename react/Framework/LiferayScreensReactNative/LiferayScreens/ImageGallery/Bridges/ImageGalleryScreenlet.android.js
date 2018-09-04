@@ -41,6 +41,10 @@ export default class ImageGalleryScreenlet extends Component {
         DeviceEventEmitter.addListener('onImageGalleryError', this._onImageGalleryError);
     }
     
+    componentWillUnmount(){
+        DeviceEventEmitter.removeAllListeners();
+    }
+
     render(){
         return(
             <NativeImageGalleryScreenlet 

@@ -53,7 +53,9 @@ public class WebContentListScreenletViewManager extends SimpleViewManager<WebCon
         this.screenlet.setFirstPageSize(screenletAttributes.getInt("firstPageSize"));
         this.screenlet.setPageSize(screenletAttributes.getInt("pageSize"));
         this.screenlet.setLocale(new Locale(LiferayLocale.getDefaultSupportedLocale()));
-        this.screenlet.loadPage(0);
+        if(!this.screenlet.isAutoLoad()) {
+            this.screenlet.loadPage(0);
+        }
     }
 
     private List<String> parse(String labelFields) {

@@ -55,7 +55,9 @@ public class WebContentDisplayViewManager extends SimpleViewManager<WebContentDi
         this.screenlet.setAutoLoad(screenletAttributes.getBoolean("autoLoad"));
         this.screenlet.setJavascriptEnabled(false);
         this.screenlet.setUserId(SessionContext.getUserId());
-        this.screenlet.load();
+        if(!this.screenlet.isAutoLoad()) {
+            this.screenlet.load();
+        }
     }
 
     // WebContentDisplayListener methods

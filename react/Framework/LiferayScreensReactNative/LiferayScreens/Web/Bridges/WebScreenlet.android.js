@@ -4,7 +4,6 @@ import { NativeModules, requireNativeComponent, View } from 'react-native';
 import { DeviceEventEmitter } from 'react-native';
 
 const NativeWebScreenlet = requireNativeComponent('WebScreenlet');
-const Module = NativeModules.WebScreenlet;
 
 export default class WebScreenlet extends Component {
     constructor(props) {
@@ -30,9 +29,8 @@ export default class WebScreenlet extends Component {
         DeviceEventEmitter.addListener('onError', this._onError);
     }
 
-    componentDidMount() {
-        
-        // Module.test(JSON.stringify(this.props));
+    componentWillUnmount(){
+        DeviceEventEmitter.removeAllListeners();
     }
 
     render() {

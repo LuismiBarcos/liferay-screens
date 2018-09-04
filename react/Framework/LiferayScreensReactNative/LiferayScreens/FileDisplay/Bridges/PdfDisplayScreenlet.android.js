@@ -24,6 +24,10 @@ export default class PdfDisplayScreenlet extends Component {
         DeviceEventEmitter.addListener('onError', this._onError);
     }
 
+    componentWillUnmount(){
+        DeviceEventEmitter.removeAllListeners();
+    }
+    
     render(){
         return(
             <NativePdfDisplayScreenlet 

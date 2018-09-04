@@ -91,9 +91,9 @@ public class CommentListScreenletViewManager extends SimpleViewManager<CommentLi
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        ViewUpdater.forceViewUpdate(this.reactContext, this.screenlet.getMeasuredWidth(), this.screenlet.getMeasuredHeight());
         event.putString("comments", jsonObject.toString());
         EventEmitter.sendEvent(this.reactContext,"onListPageReceived", event);
+        ViewUpdater.forceViewUpdate(this.reactContext, this.screenlet.getMeasuredWidth(), this.screenlet.getMeasuredHeight());
     }
 
     @Override

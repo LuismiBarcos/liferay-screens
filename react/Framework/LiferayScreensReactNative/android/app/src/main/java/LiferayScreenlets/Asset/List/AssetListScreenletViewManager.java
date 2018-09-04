@@ -51,7 +51,9 @@ public class AssetListScreenletViewManager extends SimpleViewManager<AssetListSc
         this.screenlet.setClassNameId(screenletAttributes.getInt("classNameId"));
         this.screenlet.setFirstPageSize(screenletAttributes.getInt("firstPageSize"));
         this.screenlet.setPageSize(screenletAttributes.getInt("pageSize"));
-        this.screenlet.loadPage(0);
+        if(!this.screenlet.isAutoLoad()) {
+            this.screenlet.loadPage(0);
+        }
     }
 
     // BaseListListener implementation
