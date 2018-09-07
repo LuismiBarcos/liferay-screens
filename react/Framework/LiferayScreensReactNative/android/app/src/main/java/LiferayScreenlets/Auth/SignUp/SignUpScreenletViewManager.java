@@ -11,11 +11,8 @@ import com.liferay.mobile.screens.auth.BasicAuthMethod;
 import com.liferay.mobile.screens.auth.signup.SignUpListener;
 import com.liferay.mobile.screens.auth.signup.SignUpScreenlet;
 import com.liferay.mobile.screens.context.LiferayServerContext;
-import com.liferay.mobile.screens.context.SessionContext;
 import com.liferay.mobile.screens.context.User;
 import com.liferay.mobile.screens.context.storage.CredentialsStorageBuilder;
-import com.liferay.mobile.screens.util.LiferayLocale;
-import com.liferayscreensreactnative.R;
 
 import org.json.JSONObject;
 
@@ -36,7 +33,7 @@ public class SignUpScreenletViewManager extends SimpleViewManager<SignUpScreenle
     protected SignUpScreenlet createViewInstance(ThemedReactContext reactContext) {
         this.reactContext = reactContext;
         this.screenlet = new SignUpScreenlet(reactContext);
-        this.screenlet.render(R.layout.sign_up_default);
+        this.screenlet.render(com.liferayscreensreactnative.R.layout.sign_up_default);
         this.screenlet.setCompanyId(LiferayServerContext.getCompanyId());
         this.screenlet.setListener(this);
         return this.screenlet;
